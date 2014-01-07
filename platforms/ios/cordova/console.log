@@ -1,0 +1,89 @@
+2014-01-07 13:53:16.324 XcodeTest[89589:80b] Multi-tasking -> Device: YES, App: YES
+2014-01-07 13:53:16.331 XcodeTest[89589:80b] Unlimited access to network resources
+2014-01-07 13:53:16.559 XcodeTest[89589:80b] Resetting plugins due to page load.
+2014-01-07 13:53:16.611 XcodeTest[89589:80b] Finished load of: file:///Users/ryanbowman/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/A81E52D3-906F-4380-A09F-38682BD29EE8/XcodeTest.app/www/index.html
+2014-01-07 13:54:48.233 XcodeTest[90582:80b] Multi-tasking -> Device: YES, App: YES
+2014-01-07 13:54:48.240 XcodeTest[90582:80b] Unlimited access to network resources
+2014-01-07 13:54:48.381 XcodeTest[90582:80b] Resetting plugins due to page load.
+2014-01-07 13:54:48.460 XcodeTest[90582:80b] Finished load of: file:///Users/ryanbowman/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/A81E52D3-906F-4380-A09F-38682BD29EE8/XcodeTest.app/www/index.html
+2014-01-07 13:54:48.500 XcodeTest[90582:80b] Received Event: deviceready
+2014-01-07 13:54:48.501 XcodeTest[90582:80b] RRRRRRRRRRRRRRRRRRRRRRRRR
+2014-01-07 14:06:03.097 XcodeTest[91309:80b] Multi-tasking -> Device: YES, App: YES
+2014-01-07 14:06:03.105 XcodeTest[91309:80b] Unlimited access to network resources
+2014-01-07 14:06:03.360 XcodeTest[91309:80b] Resetting plugins due to page load.
+2014-01-07 14:06:03.414 XcodeTest[91309:80b] Finished load of: file:///Users/ryanbowman/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/A81E52D3-906F-4380-A09F-38682BD29EE8/XcodeTest.app/www/index.html
+2014-01-07 14:08:01.322 XcodeTest[92034:80b] Multi-tasking -> Device: YES, App: YES
+2014-01-07 14:08:01.329 XcodeTest[92034:80b] Unlimited access to network resources
+2014-01-07 14:08:01.433 XcodeTest[92034:80b] Resetting plugins due to page load.
+2014-01-07 14:08:01.470 XcodeTest[92034:80b] Finished load of: file:///Users/ryanbowman/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/A81E52D3-906F-4380-A09F-38682BD29EE8/XcodeTest.app/www/index.html
+Terminating in response to SpringBoard's termination.
+2014-01-07 14:08:21.663 XcodeTest[92380:80b] Multi-tasking -> Device: YES, App: YES
+2014-01-07 14:08:21.670 XcodeTest[92380:80b] Unlimited access to network resources
+2014-01-07 14:08:21.777 XcodeTest[92380:80b] Resetting plugins due to page load.
+2014-01-07 14:08:21.824 XcodeTest[92380:80b] Finished load of: file:///Users/ryanbowman/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/A81E52D3-906F-4380-A09F-38682BD29EE8/XcodeTest.app/www/index.html
+2014-01-07 14:09:58.406 XcodeTest[92723:80b] Multi-tasking -> Device: YES, App: YES
+2014-01-07 14:09:58.411 XcodeTest[92723:80b] Unlimited access to network resources
+2014-01-07 14:09:58.499 XcodeTest[92723:80b] Resetting plugins due to page load.
+2014-01-07 14:09:58.528 XcodeTest[92723:80b] Finished load of: file:///Users/ryanbowman/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/A81E52D3-906F-4380-A09F-38682BD29EE8/XcodeTest.app/www/index.html
+2014-01-07 14:10:20.859 XcodeTest[93053:80b] Multi-tasking -> Device: YES, App: YES
+2014-01-07 14:10:20.865 XcodeTest[93053:80b] Unlimited access to network resources
+2014-01-07 14:10:20.987 XcodeTest[93053:80b] Resetting plugins due to page load.
+2014-01-07 14:10:21.019 XcodeTest[93053:80b] Finished load of: file:///Users/ryanbowman/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/A81E52D3-906F-4380-A09F-38682BD29EE8/XcodeTest.app/www/index.html
+2014-01-07 14:11:02.728 XcodeTest[93385:80b] Multi-tasking -> Device: YES, App: YES
+2014-01-07 14:11:02.736 XcodeTest[93385:80b] Unlimited access to network resources
+2014-01-07 14:11:02.855 XcodeTest[93385:80b] Resetting plugins due to page load.
+2014-01-07 14:11:02.911 XcodeTest[93385:80b] Finished load of: file:///Users/ryanbowman/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/A81E52D3-906F-4380-A09F-38682BD29EE8/XcodeTest.app/www/index.html
+2014-01-07 14:11:02.934 XcodeTest[93385:80b] Received Event: deviceready
+2014-01-07 15:46:47.395 XcodeTest[1729:80b] Multi-tasking -> Device: YES, App: YES
+2014-01-07 15:46:47.404 XcodeTest[1729:80b] Unlimited access to network resources
+2014-01-07 15:46:47.432 XcodeTest[1729:80b] [CDVTimer][statusbar] 8.948982ms
+2014-01-07 15:46:47.433 XcodeTest[1729:80b] [CDVTimer][TotalPluginStartup] 9.411991ms
+2014-01-07 15:46:47.547 XcodeTest[1729:80b] Resetting plugins due to page load.
+2014-01-07 15:46:47.595 XcodeTest[1729:80b] Finished load of: file:///Users/ryanbowman/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/A81E52D3-906F-4380-A09F-38682BD29EE8/XcodeTest.app/www/index.html
+2014-01-07 15:46:47.635 XcodeTest[1729:80b] Detected docs path: /Users/ryanbowman/Library/Application Support/iPhone Simulator/7.0.3/Applications/A81E52D3-906F-4380-A09F-38682BD29EE8/Documents
+2014-01-07 15:46:47.636 XcodeTest[1729:80b] Good news: SQLite is thread safe!
+2014-01-07 15:46:47.637 XcodeTest[1729:80b] stupid piece of crap
+2014-01-07 15:46:47.638 XcodeTest[1729:80b] SQLitePlugin openargs: {"name":"Database"}
+2014-01-07 15:46:47.638 XcodeTest[1729:80b] DB opened: Database
+2014-01-07 15:46:52.859 XcodeTest[1729:80b] insertId: 1 -- probably 1
+2014-01-07 15:46:54.180 XcodeTest[1729:80b] res.rows.length: 1 -- should be 1
+2014-01-07 16:00:04.112 XcodeTest[2921:80b] Multi-tasking -> Device: YES, App: YES
+2014-01-07 16:00:04.118 XcodeTest[2921:80b] Unlimited access to network resources
+2014-01-07 16:00:04.144 XcodeTest[2921:80b] [CDVTimer][statusbar] 6.869018ms
+2014-01-07 16:00:04.144 XcodeTest[2921:80b] [CDVTimer][TotalPluginStartup] 7.265031ms
+2014-01-07 16:00:04.261 XcodeTest[2921:80b] Resetting plugins due to page load.
+2014-01-07 16:00:04.293 XcodeTest[2921:80b] Finished load of: file:///Users/ryanbowman/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/A81E52D3-906F-4380-A09F-38682BD29EE8/XcodeTest.app/www/index.html
+2014-01-07 16:00:04.352 XcodeTest[2921:80b] Detected docs path: /Users/ryanbowman/Library/Application Support/iPhone Simulator/7.0.3/Applications/A81E52D3-906F-4380-A09F-38682BD29EE8/Documents
+2014-01-07 16:00:04.353 XcodeTest[2921:80b] Good news: SQLite is thread safe!
+2014-01-07 16:00:04.355 XcodeTest[2921:80b] stupid piece of crap
+2014-01-07 16:00:04.355 XcodeTest[2921:80b] SQLitePlugin openargs: {"name":"Database"}
+2014-01-07 16:00:04.356 XcodeTest[2921:80b] DB opened: Database
+2014-01-07 16:00:12.107 XcodeTest[2921:80b] insertId: 1 -- probably 1
+2014-01-07 16:00:13.971 XcodeTest[2921:80b] res.rows.length: 1 -- should be 1
+2014-01-07 16:00:15.369 XcodeTest[2921:80b] Resetting plugins due to page load.
+2014-01-07 16:00:15.377 XcodeTest[2921:80b] Finished load of: file:///Users/ryanbowman/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/A81E52D3-906F-4380-A09F-38682BD29EE8/XcodeTest.app/www/index.html
+2014-01-07 16:00:15.386 XcodeTest[2921:80b] Good news: SQLite is thread safe!
+2014-01-07 16:00:15.387 XcodeTest[2921:80b] stupid piece of crap
+2014-01-07 16:00:15.388 XcodeTest[2921:80b] SQLitePlugin openargs: {"name":"Database"}
+2014-01-07 16:00:15.388 XcodeTest[2921:80b] DB opened: Database
+2014-01-07 16:00:17.150 XcodeTest[2921:80b] insertId: undefined -- probably 1
+2014-01-07 16:00:18.730 XcodeTest[2921:80b] res.rows.length: 1 -- should be 1
+2014-01-07 16:02:57.583 XcodeTest[3803:80b] Multi-tasking -> Device: YES, App: YES
+2014-01-07 16:02:57.590 XcodeTest[3803:80b] Unlimited access to network resources
+2014-01-07 16:02:57.629 XcodeTest[3803:80b] [CDVTimer][statusbar] 14.267981ms
+2014-01-07 16:02:57.629 XcodeTest[3803:80b] [CDVTimer][TotalPluginStartup] 14.820039ms
+2014-01-07 16:02:57.831 XcodeTest[3803:80b] Resetting plugins due to page load.
+2014-01-07 16:02:57.876 XcodeTest[3803:80b] Finished load of: file:///Users/ryanbowman/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/A81E52D3-906F-4380-A09F-38682BD29EE8/XcodeTest.app/www/index.html
+2014-01-07 16:02:57.933 XcodeTest[3803:80b] Detected docs path: /Users/ryanbowman/Library/Application Support/iPhone Simulator/7.0.3/Applications/A81E52D3-906F-4380-A09F-38682BD29EE8/Documents
+2014-01-07 16:02:57.934 XcodeTest[3803:80b] Good news: SQLite is thread safe!
+2014-01-07 16:02:57.936 XcodeTest[3803:80b] stupid piece of crap
+2014-01-07 16:02:57.936 XcodeTest[3803:80b] SQLitePlugin openargs: {"name":"Database"}
+2014-01-07 16:02:57.937 XcodeTest[3803:80b] DB opened: Database
+2014-01-07 16:02:59.602 XcodeTest[3803:80b] insertId: 1 -- probably 1
+2014-01-07 16:03:00.841 XcodeTest[3803:80b] res.rows.length: 1 -- should be 1
+2014-01-07 16:03:07.620 XcodeTest[3803:80b] Resetting plugins due to page load.
+2014-01-07 16:03:07.873 XcodeTest[3803:80b] Failed to load webpage with error: The requested URL was not found on this server.
+2014-01-07 16:03:23.332 XcodeTest[3803:80b] Resetting plugins due to page load.
+2014-01-07 16:03:23.481 XcodeTest[3803:80b] Failed to load webpage with error: The requested URL was not found on this server.
+2014-01-07 16:03:25.194 XcodeTest[3803:80b] Resetting plugins due to page load.
+2014-01-07 16:03:25.226 XcodeTest[3803:80b] Failed to load webpage with error: The requested URL was not found on this server.
