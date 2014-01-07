@@ -34,20 +34,28 @@ var app = {
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         console.log('stupid piece of crap');
+
+        //plugin here https://github.com/lite4cordova/Cordova-SQLitePlugin
+        //forum here 
          var db = window.sqlitePlugin.openDatabase("Database", "1.0", "Demo", -1);
 
         db.transaction(function(tx) {
           tx.executeSql('DROP TABLE IF EXISTS test_table');
-          tx.executeSql('CREATE TABLE IF NOT EXISTS test_table (id integer primary key, data text, data_num integer)');
+          tx.executeSql('CREATE TABLE IF NOT EXISTS test_table (id integer primary key, name text, data_num integer)');
 
-          tx.executeSql("INSERT INTO test_table (data, data_num) VALUES (?,?)", ["test", 100], function(tx, res) {
+          tx.executeSql("INSERT INTO test_table (name, data_num) VALUES (?,?)", ["Bob", 456], function(tx, res) {
           console.log("insertId: " + res.insertId + " -- probably 1"); // check #18/#38 is fixed
-          alert("insertId: " + res.insertId + " -- should be valid");
+          // alert("insertId: " + res.insertId + " -- should be valid");
 
             db.transaction(function(tx) {
-              tx.executeSql("SELECT data_num from test_table;", [], function(tx, res) {
-                console.log("res.rows.length: " + res.rows.length + " -- should be 1");
-                alert("res.rows.item(0).data_num: " + res.rows.item(0).data_num + " -- should be 100");
+              tx.executeSql("SELECT data_num, name from test_table;", [], function(tx, res) {
+                console.log("res.rows.length: " + res.rows.item(0).data_num + " -- should be 456");
+                thisis = res.rows.item(0).name;
+                alert(JSON.stringify(res.rows.item(0))); 
+                
+                document.getElementById('database').innerHTML = thisis;
+                // alert(document.getElementByID('database').innerHTML);
+                // alert("res.rows.item(0).data_num: " + res.rows.item(1).data_num + " -- should be 456");
               });
             });
 
@@ -58,7 +66,7 @@ var app = {
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
-        
+       console.log('variable' + thisis);
     }
 };
 
