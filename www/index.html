@@ -69,9 +69,9 @@
   <script id="book-template" type="text/x-handlebars-template">
     {{#each books}}
     <li>
-      <strong>{{item.title}}</strong>
-      <em>by {{item.author}}</em>
-      - ISBN {{item.isbn}}
+      <strong>{{this.title}}</strong>
+      <em>by {{this.author}}</em>
+      - ISBN {{this.isbn}}
     </li>
     {{/each}}
   </script>

@@ -11,3 +11,5 @@ $ cordova plugin add org.apache.cordova.console
 $ cordova build ios
 $ open -a Xcode platforms/ios
 ```
+
+That last command opens the Xcode project that cordova has built
