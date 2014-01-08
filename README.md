@@ -8,10 +8,6 @@
 
     $ cd sqlite
 
-    $ mkdir platforms
-
-    $ cordova platform add ios
-
     $ cordova build
 
 Open the ` platforms/ios/XcodeTest.xcodeproj ` in Xcode and build
