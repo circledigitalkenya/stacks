@@ -33,7 +33,7 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
-        console.log('stupid piece of crap');
+        
 
         //plugin here https://github.com/lite4cordova/Cordova-SQLitePlugin
         //forum here 
@@ -85,4 +85,22 @@ function  clickScan() {
               alert("Scanning failed: " + error);
           }
        );
+}
+
+function populateDB(tx){
+  tx.executeSql('DROP TABLE IF EXISTS books');
+  tx.executeSql('CREATE TABLE IF NOT EXISTS books (id integer primary key, isbn text, author text, title text)');
+
+  tx.executeSql('INSERT INTO books(isbn, title, author) VALUES("0435905554","So Long a Letter","Mariama Ba")');
+  tx.executeSql('INSERT INTO books(isbn, title, author) VALUES("0007189885","Purple Hibiscus","Chimamanda Ngozi Adichie")');
+  tx.executeSql('INSERT INTO books(isbn, title, author) VALUES("0307961206","Dust","Yvonne Adhiambo Owuor")');
+  tx.executeSql('INSERT INTO books(isbn, title, author) VALUES("0262620200","History and Class Consciousness: Studies in Marxist Dialectics","YGyorgy Lukacs")');
+
+  tx.executeSql('SELECT isbn, author,title FROM books', [], function(tx, results){
+      var template = Handlebars.compile(
+        $("#book-template").html()
+      );
+
+      $('.book-list ul').empty().html(template(results.rows));
+  }, errorCB);
 }
