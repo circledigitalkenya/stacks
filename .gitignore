@@ -1,4 +1,4 @@
 .cordova
 merges
-platforms
+platforms/ios/
 plugins
