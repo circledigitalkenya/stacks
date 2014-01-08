@@ -18,16 +18,15 @@
     under the License.
 -->
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="format-detection" content="telephone=no" />
-        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-        <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <title>Ladders</title>
-    </head>
-    <body>
-        <header class="clearfix">
+  <head>
+      <meta charset="utf-8" />
+      <meta name="format-detection" content="telephone=no" />
+      <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+      <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+      <title>Hello World</title>
+  </head>
+  <body>
+  <header class="clearfix">
     <div class="left">
       &nbsp;
     </div>
@@ -37,73 +36,53 @@
     </div>
   </header>
 
-        <div class="main-window">
-          <div class="book-list">
-            List 5 most recent titles
-            <ul>
-              <li>
-                <strong>Title</strong>
-                <em>by Author Name</em>
-              </li>
-              <li>
-                <strong>Title</strong>
-                <em>by Author Name</em>
-              </li>
-              <li>
-                <strong>Title</strong>
-                <em>by Author Name</em>
-              </li>
-              <li>
-                <strong>Title</strong>
-                <em>by Author Name</em>
-              </li>
-              <li>
-                <strong>Title</strong>
-                <em>by Author Name</em>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <input type="search" placeholder="Search you Library">
-            <input type="submit">
-          </div>
+  <div class="main-window">
+    <div class="book-list">
+      List 5 most recent titles
+      <ul>
+      </ul>
+    </div>
+    <div>
+      <input type="search" placeholder="Search you Library">
+      <input type="submit">
+    </div>
+    <div>
+      <a href="addbook.html">Add a Book</a>
+    </div>
+    <div>
+      <a href="scanbook.html">Scan a Book</a>
+    </div>
+    <div>
+      <a href="yourlibrary.html">Your Library</a>
+    </div>
+    <div>
+      <a href="book.html">Book Template</a>
+    </div>
+    <!-- <a href="test.html">Test links</a>
+    <a href="#" onclick="showAlert(); return false;">Show Alert</a> -->
+  </div>
+  <footer>
+    
+  </footer>
 
-          <div>
-            <a href="addbook.html">Add a Book</a>
-          </div>
-          <div>
-            <a href="scanbook.html">Scan a Book</a>
-          </div>
-          <div>
-            <a href="yourlibrary.html">Your Library</a>
-          </div>
-          <div>
-            <a href="book.html">Book Template</a>
-          </div>
-          <div id="database"> just to make sure</div>
-          <!-- <a href="test.html">Test links</a>
-          <a href="#" onclick="showAlert(); return false;">Show Alert</a> -->
-        </div>
-  
-        <footer></footer>
 
-        <script type="text/javascript" src="cordova.js"></script>
-        <script src="lib/jquery-1.8.2.min.js"></script>
-        <script src="lib/handlebars.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
-        <script type="text/javascript">
-            app.initialize();
-        </script>
+  <script id="book-template" type="text/x-handlebars-template">
+    {{#each books}}
+    <li>
+      <strong>{{item.title}}</strong>
+      <em>by {{item.author}}</em>
+      - ISBN {{item.isbn}}
+    </li>
+    {{/each}}
+  </script>
 
-        <!-- handlebars template -->
-        <script id="book-template" type="text/x-handlebars-template">
-          {{#each books}}
-              <li>
-                  <strong>{{this.title}}</strong>
-                  <em>by {{this.author}}</em>
-                  - ISBN {{this.isbn}}
-              </li>
-          {{/each}}
-      </script>
-    </body>
+  <script type="text/javascript" src="cordova.js"></script>>
+  <script src="lib/handlebars.js"></script>
+  <script src="js/index.js"></script>
+  <script type="text/javascript">
+    console.log('initialize the app');
+    app.initialize();
+  </script>
+
+</body>
 </html>
