@@ -24,6 +24,7 @@
       <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
       <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
       <title>Hello World</title>
+      <link rel="stylesheet" href="css/index.css">
   </head>
   <body>
   <header class="clearfix">
@@ -61,9 +62,6 @@
     <!-- <a href="test.html">Test links</a>
     <a href="#" onclick="showAlert(); return false;">Show Alert</a> -->
   </div>
-  <footer>
-    
-  </footer>
 
 
   <script id="book-template" type="text/x-handlebars-template">
@@ -76,12 +74,11 @@
     {{/each}}
   </script>
 
-  <script type="text/javascript" src="cordova.js"></script>>
+  <script type="text/javascript" src="cordova.js"></script>
   <script src="lib/handlebars.js"></script>
   <script src="lib/jquery-1.8.2.min.js"></script>
   <script src="js/index.js"></script>
   <script type="text/javascript">
-    console.log('initialize the app');
     app.initialize();
   </script>
 
