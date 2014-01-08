@@ -33,36 +33,40 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
-        
+      var db = window.sqlitePlugin.openDatabase("ladders", "1.0", "Demo", -1);
+      db.transaction(function(tx){
+        tx.executeSql('DROP TABLE IF EXISTS books');
+        tx.executeSql('CREATE TABLE IF NOT EXISTS books (id integer primary key, isbn text, author text, title text)');
 
-        //plugin here https://github.com/lite4cordova/Cordova-SQLitePlugin
-        //forum here 
-         var db = window.sqlitePlugin.openDatabase("Database", "1.0", "Demo", -1);
+        tx.executeSql('INSERT INTO books(isbn, title, author) VALUES("0435905554","So Long a Letter","Mariama Ba")');
+        tx.executeSql('INSERT INTO books(isbn, title, author) VALUES("0007189885","Purple Hibiscus","Chimamanda Ngozi Adichie")');
+        tx.executeSql('INSERT INTO books(isbn, title, author) VALUES("0307961206","Dust","Yvonne Adhiambo Owuor")');
+        tx.executeSql('INSERT INTO books(isbn, title, author) VALUES("0262620200","History and Class Consciousness: Studies in Marxist Dialectics","YGyorgy Lukacs")');
 
-        db.transaction(function(tx) {
-          tx.executeSql('DROP TABLE IF EXISTS test_table');
-          tx.executeSql('CREATE TABLE IF NOT EXISTS test_table (id integer primary key, name text, data_num integer)');
+        tx.executeSql('SELECT isbn, author,title FROM books', [], function(tx, results){
+          console.log(results.rows.length+': books found');
+          var template = Handlebars.compile(
+            $("#book-template").html()
+          );
 
-          tx.executeSql("INSERT INTO test_table (name, data_num) VALUES (?,?)", ["Bob", 456], function(tx, res) {
-          console.log("insertId: " + res.insertId + " -- probably 1"); // check #18/#38 is fixed
-          // alert("insertId: " + res.insertId + " -- should be valid");
+          var books = [];
 
-            db.transaction(function(tx) {
-              tx.executeSql("SELECT data_num, name from test_table;", [], function(tx, res) {
-                console.log("res.rows.length: " + res.rows.item(0).data_num + " -- should be 456");
-                thisis = res.rows.item(0).name;
-                alert(JSON.stringify(res.rows.item(0))); 
-                
-                document.getElementById('database').innerHTML = thisis;
-                // alert(document.getElementByID('database').innerHTML);
-                // alert("res.rows.item(0).data_num: " + res.rows.item(1).data_num + " -- should be 456");
-              });
+          // loop through the result set to create an object to pass to the template
+          var len = results.rows.length;
+          for (var i=0; i<len; i++){
+            books.push({
+              isbn : results.rows.item(i).isbn,
+              author : results.rows.item(i).author,
+              title : results.rows.item(i).title
             });
+          }
+          $('.book-list ul').empty().html(template({ books: books}));
 
-          }, function(e) {
-            console.log("ERROR: " + e.message);
-          });
-        });
+        }, errorCB);
+
+      },function(e) {
+        console.log("ERROR: " + e.message);
+      });
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
@@ -87,20 +91,12 @@ function  clickScan() {
        );
 }
 
-function populateDB(tx){
-  tx.executeSql('DROP TABLE IF EXISTS books');
-  tx.executeSql('CREATE TABLE IF NOT EXISTS books (id integer primary key, isbn text, author text, title text)');
+// tansaction error callback
+function errorCB(){
+    console.log('error processing SQL: ' +err);
+}
 
-  tx.executeSql('INSERT INTO books(isbn, title, author) VALUES("0435905554","So Long a Letter","Mariama Ba")');
-  tx.executeSql('INSERT INTO books(isbn, title, author) VALUES("0007189885","Purple Hibiscus","Chimamanda Ngozi Adichie")');
-  tx.executeSql('INSERT INTO books(isbn, title, author) VALUES("0307961206","Dust","Yvonne Adhiambo Owuor")');
-  tx.executeSql('INSERT INTO books(isbn, title, author) VALUES("0262620200","History and Class Consciousness: Studies in Marxist Dialectics","YGyorgy Lukacs")');
-
-  tx.executeSql('SELECT isbn, author,title FROM books', [], function(tx, results){
-      var template = Handlebars.compile(
-        $("#book-template").html()
-      );
-
-      $('.book-list ul').empty().html(template(results.rows));
-  }, errorCB);
+// Transaction success callback
+function successCB() {
+    console.log("success!");
 }
