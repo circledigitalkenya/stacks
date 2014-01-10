@@ -23,7 +23,7 @@ $(document).ready(function() {
             db.transaction(
               function(tx){
                 tx.executeSql(
-                  'SELECT isbn FROM books WHERE isbn ='+response.data.ASIN, [],
+                  'SELECT isbn FROM books WHERE isbn='+response.data.ASIN, [],
                   function(tx, results){
                     if( results.rows.length > 0 ) {
                       book_in_library = true;
