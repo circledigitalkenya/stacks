@@ -23,7 +23,7 @@ $(document).ready(function() {
             db.transaction(
               function(tx){
                 tx.executeSql(
-                  'SELECT isbn FROM books where isbn ='+response.data.ASIN+' LIMIT 1', [],
+                  'SELECT isbn FROM books WHERE isbn ='+response.data.ASIN, [],
                   function(tx, results){
                     if( results.rows.length > 0 ) {
                       book_in_library = true;
@@ -66,14 +66,23 @@ $(document).ready(function() {
       db.transaction(
         function(tx){
           tx.executeSql(
+            'INSERT INTO books(isbn, title, author, image_path)' +
+            ' VALUES'+
+            '('+
+              '"'+current_book.ASIN +'",'+
+              '"'+current_book.ItemAttributes.Title +'",'+
+              '"'+current_book.ItemAttributes.Author+'",'+
+              '"'+current_book.SmallImage.URL+'"'+
+            ')'
+          );
+          console.log(
             'INSERT INTO books(isbn, title, description, author, image_path)' +
             ' VALUES'+
             '('+
-              current_book.ASIN +','+
-              current_book.ItemAttributes.Title +','+
-              current_book.EditorialReviews.EditorialReview.Content+','+
-              current_book.ItemAttributes.Author+','+
-              current_book.SmallImage.URL+''+
+              '"'+current_book.ASIN +'",'+
+              '"'+current_book.ItemAttributes.Title +'",'+
+              '"'+current_book.ItemAttributes.Author+'",'+
+              '"'+current_book.SmallImage.URL+'"'+
             ')'
           );
 
@@ -87,6 +96,7 @@ $(document).ready(function() {
               // loop through the result set to create an object to pass to the template
               var books = [];
               var len = results.rows.length;
+
               for (var i=0; i<len; i++){
                 books.push({
                   isbn : results.rows.item(i).isbn,

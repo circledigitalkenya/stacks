@@ -68,7 +68,7 @@ function createtables(tx){
   tx.executeSql('DROP TABLE IF EXISTS books'); // only for debugging purposes, setup a fresh table on each app launch
   
   tx.executeSql(
-    'CREATE TABLE IF NOT EXISTS books('+
+    'CREATE TABLE IF NOT EXISTS books'+
     '('+
       'id INTEGER PRIMARY KEY AUTOINCREMENT,'+
       'isbn TEXT,'+
@@ -80,6 +80,7 @@ function createtables(tx){
     ')'
   );
 }
+
 // tansaction error callback
 function errorCB(){
     console.log('error processing SQL: ' +err);
