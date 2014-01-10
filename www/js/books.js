@@ -1,8 +1,10 @@
 var current_book;
+var db;
 
 $(document).ready(function() {
 
   $(document).bind('deviceready', function() {
+
     $('form.search_isbn').on('submit', function(){
       var isbn = $.trim($(this).find('input[name=isbn]').val());
       if( isbn.length > 0 ) {
@@ -17,7 +19,7 @@ $(document).ready(function() {
             // find out if the book is already in
             // this users library
             var book_in_library = false;
-            var db = window.sqlitePlugin.openDatabase("ladders", "1.0", "Demo", -1);
+            db = window.sqlitePlugin.openDatabase("ladders", "1.0", "Demo", -1);
             db.transaction(
               function(tx){
                 tx.executeSql(
@@ -50,7 +52,9 @@ $(document).ready(function() {
             );
             current_book = response.data;
           } else {
-            $('.book-results').empty().html('<h2>No books found</h2>');
+            $('.book-results')
+            .empty()
+            .html('<h2>No books found</h2>');
           }
         });
       }
@@ -59,9 +63,62 @@ $(document).ready(function() {
 
     // add book to library
     $('.main-window').on('click', '.addbook', function(){
-      console.log(current_book);
+      db.transaction(
+        function(tx){
+          tx.executeSql(
+            'INSERT INTO books(isbn, title, description, author, image_path)' +
+            ' VALUES'+
+            '('+
+              current_book.ASIN +','+
+              current_book.ItemAttributes.Title +','+
+              current_book.EditorialReviews.EditorialReview.Content+','+
+              current_book.ItemAttributes.Author+','+
+              current_book.SmallImage.URL+''+
+            ')'
+          );
 
-      tx.executeSql('INSERT INTO books(isbn, title, author, pubdata) VALUES("0262620200","History and Class Consciousness: Studies in Marxist Dialectics","YGyorgy Lukacs")');
+          // book was added to library successfuly!
+          // show the library
+          var libary_template = Handlebars.compile(
+            $("#book-library-template").html()
+          );
+          db.transaction(function(tx){
+            tx.executeSql('SELECT * FROM books', [], function(tx, results){
+              // loop through the result set to create an object to pass to the template
+              var books = [];
+              var len = results.rows.length;
+              for (var i=0; i<len; i++){
+                books.push({
+                  isbn : results.rows.item(i).isbn,
+                  author : results.rows.item(i).author,
+                  title : results.rows.item(i).title,
+                  image_path : results.rows.item(i).image_path
+                });
+              }
+
+              $('.main-window').empty().html(
+                libary_template({
+                  books :  books
+                })
+              );
+
+            }, function(e){ 
+              console.log("ERROR: " + e.message);
+            });
+          },
+          function(e){ 
+            console.log("ERROR: " + e.message);
+          });
+
+
+        },
+        [],
+        function(e) {
+          console.log("ERROR: " + e.message);
+        }
+      );
+
+
     });
 
   });

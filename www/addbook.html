@@ -38,7 +38,7 @@
       <div class="book">
         <img src="{{image_source}}" class="left"/>
         {{#if book_in_library}}
-          <span>book in your library</span>
+          <span>book is in your library</span>
         {{else}}
           <input type="button" class="addbook" value="+ add to library" />
         {{/if}}
@@ -47,6 +47,21 @@
         <h5>Publisher {{publisher}}, Pub  {{publication_date}}, {{pages}} Pages</h5>
         <p>{{description}}</p>
       </div>      
+    </div>
+  </script>
+
+  <script id="book-library-template" type="text/x-handlebars-template">
+    <div class="libary">
+      List all books in alphabectical order
+      <ul>
+        {{#each books}}
+          <li>
+            <img src="{{this.image_path}}" class="left"/>
+            <strong>{{this.title}} by {{this.author}}</strong>
+            <input type="button" class="removebook" value="x remove" />
+          </li>
+        {{/each}}
+      </ul>
     </div>
   </script>
 </body>

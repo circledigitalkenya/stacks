@@ -55,7 +55,7 @@ function  clickScan() {
                 "Result: " + result.text + "\n" +
                 "Format: " + result.format + "\n" +
                 "Cancelled: " + result.cancelled);
-      }, 
+      },
       function (error) {
           alert("Scanning failed: " + error);
       }
@@ -64,8 +64,21 @@ function  clickScan() {
 
 
 function createtables(tx){
-  tx.executeSql('DROP TABLE IF NOT EXISTS books');
-  tx.executeSql('CREATE TABLE IF NOT EXISTS books (id integer primary key, isbn text, author text, title text, isbn text, publisher text, publication_date text, image_source text)');
+  // @todo: remove this line in production
+  tx.executeSql('DROP TABLE IF EXISTS books'); // only for debugging purposes, setup a fresh table on each app launch
+  
+  tx.executeSql(
+    'CREATE TABLE IF NOT EXISTS books('+
+    '('+
+      'id INTEGER PRIMARY KEY AUTOINCREMENT,'+
+      'isbn TEXT,'+
+      'title TEXT,'+
+      'description TEXT,'+
+      'image_path TEXT,'+
+      'author TEXT,'+
+      'pubdata TEXT'+ //pubdata will be a json string of publication data
+    ')'
+  );
 }
 // tansaction error callback
 function errorCB(){
