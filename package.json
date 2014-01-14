@@ -1,0 +1,10 @@
+{
+  "name": "my-cordova-book-app",
+  "version": "0.1.0",
+  "devDependencies": {
+    "grunt": "~0.4.2",
+    "grunt-cli": "0.1.x",
+    "grunt-shell": "0.2.x",
+    "grunt-contrib-watch": "~0.3.1"
+  }
+}

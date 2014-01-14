@@ -1,0 +1,28 @@
+{
+  "name": "ladders",
+  "version": "0.0.1",
+  "homepage": "https://github.com/ryanhbowman/sqlite",
+  "authors": [
+    "Kamweti Muriuki <kamwetimuriuki@gmail.com>"
+  ],
+  "description": "an iphone book library app built with cordova",
+  "main": "index.html",
+  "keywords": [
+    "cordova",
+    "iphone"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.2.8",
+    "angular-route" : "~1.2.8",
+    "angular-ui-router" : "~0.2.7"
+  }
+}
