@@ -15,31 +15,42 @@ angular.module('ladders', ['ui.router','ladders.services', 'ladders.controllers'
   $stateProvider
 
     .state('home', {
-      url: "/",
+      url: "",
       templateUrl: "templates/home.html"
     })
     .state('book', {
       url: "/book",
       templateUrl: "templates/book.html"
     })
-      .state('book.add', {
-        url: "/book/add",
-        templateUrl: "templates/book.add.html"
-      })
-      .state('book.scan', {
-        url: "/book/scan",
-        templateUrl: "templates/book.scan.html"
-      })
-      .state('book.search', {
-        url: "/book/search",
-        templateUrl: "templates/book.search.html"
-      });
-
+    .state('add', {
+      url: "/book/add",
+      templateUrl: "templates/add.html",
+      controller: "BookController"
+    })
+    .state('search', {
+      url: "/book/search",
+      templateUrl: "templates/search.html",
+      controller: "BookController"
+    })
+    .state('searchresults', {
+      url: "/search/results",
+      templateUrl: "templates/search.results.html",
+      controller: "BookController"
+    });
+    .state('noresults', {
+      url: "/search/noresults",
+      templateUrl: "templates/search.no_results.html",
+      controller: "BookController"
+    });
 
 
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/home');
+  $urlRouterProvider.otherwise('');
 
+});
+
+document.addEventListener('deviceready', function(){
+  angular.bootstrap( document, ['ladders']);
 });
 
