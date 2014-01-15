@@ -34,9 +34,8 @@ angular.module('ladders', ['ui.router','ladders.services', 'ladders.controllers'
     })
     .state('searchresults', {
       url: "/search/results",
-      templateUrl: "templates/search.results.html",
-      controller: "BookController"
-    });
+      templateUrl: "templates/search.results.html"
+    })
     .state('noresults', {
       url: "/search/noresults",
       templateUrl: "templates/search.no_results.html",
