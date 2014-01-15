@@ -50,7 +50,9 @@ $(document).ready(function() {
                 book_in_library : book_in_library
               })
             );
+
             current_book = response.data;
+            
           } else {
             $('.book-results')
             .empty()

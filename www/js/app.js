@@ -18,14 +18,23 @@ angular.module('ladders', ['ui.router','ladders.services', 'ladders.controllers'
       url: "",
       templateUrl: "templates/home.html"
     })
-    .state('book', {
-      url: "/book",
-      templateUrl: "templates/book.html"
-    })
     .state('add', {
-      url: "/book/add",
+      url: "/add",
       templateUrl: "templates/add.html",
-      controller: "BookController"
+      controller: "AddBookController"
+    })
+    .state('addmanually', {
+      url: "/addmanually",
+      templateUrl: "templates/add.manually.html",
+      controller: "AddBookController"
+    })
+    .state('scan', {
+      url: "/scan",
+      templateUrl: "templates/scan.html"
+    })
+    .state('addoptions', {
+      url: "/add/options",
+      templateUrl: "templates/add.options.html"
     })
     .state('search', {
       url: "/book/search",
@@ -34,12 +43,18 @@ angular.module('ladders', ['ui.router','ladders.services', 'ladders.controllers'
     })
     .state('searchresults', {
       url: "/search/results",
-      templateUrl: "templates/search.results.html"
+      templateUrl: "templates/search.results.html",
+      controller: "SearchResults"
     })
     .state('noresults', {
       url: "/search/noresults",
       templateUrl: "templates/search.no_results.html",
       controller: "BookController"
+    })
+    .state('library', {
+      url: "/library",
+      templateUrl: "templates/library.html",
+      controller: "LibraryController"
     });
 
 
@@ -47,9 +62,50 @@ angular.module('ladders', ['ui.router','ladders.services', 'ladders.controllers'
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('');
 
+
 });
 
 document.addEventListener('deviceready', function(){
   angular.bootstrap( document, ['ladders']);
+  // angular.db = window.sqlitePlugin.openDatabase("ladders", "1.0", "Demo", -1);
+  angular.db = window.openDatabase("ladders", "1.0", "Demo", -1);
+  angular.db.transaction(createtables,errorCB); // create tables
 });
 
+function createtables(tx){
+
+  // @todo: remove this line in production
+  // tx.executeSql('DROP TABLE IF EXISTS books'); // only for debugging purposes, setup a fresh table on each app launch
+  
+  tx.executeSql(
+    'CREATE TABLE IF NOT EXISTS books'+
+    '('+
+      'id INTEGER PRIMARY KEY AUTOINCREMENT,'+
+      'isbn TEXT,'+
+      'title TEXT,'+
+      'description TEXT,'+
+      'image_path TEXT,'+
+      'author TEXT,'+
+      'publisher TEXT,'+
+      'year TEXT,'+
+      'pages TEXT'+ 
+    ')'
+  );
+
+  tx.executeSql('INSERT INTO books(isbn, title, author) VALUES("0435905554","So Long a Letter","Mariama Ba")');
+  tx.executeSql('INSERT INTO books(isbn, title, author) VALUES("0007189885","Purple Hibiscus","Chimamanda Ngozi Adichie")');
+  tx.executeSql('INSERT INTO books(isbn, title, author) VALUES("0307961206","Dust","Yvonne Adhiambo Owuor")');
+  tx.executeSql('INSERT INTO books(isbn, title, author) VALUES("0262620200","History and Class Consciousness: Studies in Marxist Dialectics","YGyorgy Lukacs")');
+
+
+}
+
+// tansaction error callback
+function errorCB(){
+  console.log('error processing SQL: ' +err);
+}
+
+// Transaction success callback
+function successCB() {
+  console.log("success!");
+}
