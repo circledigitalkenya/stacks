@@ -3,6 +3,7 @@
     <li ng-repeat="book in books">
       <strong>{{book.ItemAttributes.Title}}</strong>
       <em>by {{book.ItemAttributes.Author}}</em>
-      - ISBN {{book.ASIN}}
+
+      <input type="submit" ng-click="addBook(book.ASIN)" value="+ add library">
     </li>    
 </ul>

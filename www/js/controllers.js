@@ -53,8 +53,42 @@ angular.module('ladders.controllers', [])
 
     }
 })
-.controller('SearchResults', function($scope, BookService){
+.controller('SearchResults', function($scope,$state, BookService,database){
     $scope.books = BookService.searchresults;
+
+    $scope.addBook = function(isbn){
+      console.log(isbn);
+
+      BookService
+      .search_amazon(isbn)
+      .then(
+          function success(response, status,headers, config){
+              var  searchresults = [];
+              if( response.data.status == 'success' ) {
+                  database.query(
+                    'INSERT INTO books( title, author, publisher, year, pages)' +
+                    ' VALUES'+
+                    '('+
+                      '"'+response.data.result.Item.ItemAttributes.Title +'",'+
+                      '"'+response.data.result.Item.ItemAttributes.Author +'",'+
+                      '"'+response.data.result.Item.ItemAttributes.Publisher +'",'+
+                      '"'+response.data.result.Item.ItemAttributes.ReleaseDate +'",'+
+                      '"'+response.data.result.Item.ItemAttributes.NumberOfPages +'"'+
+                    ')'
+                  ).then(function(d){
+                    console.log('got a response');
+                    $state.go('library');
+                  })
+              } else {
+                  // no results page
+                  $state.go('noresults');
+              }
+          },
+          function error(response, status,headers, config){
+              //notify alert, could not connect to remote server
+          }
+      );
+    }
 })
 .controller('LibraryController', function($scope, database){
 
@@ -74,7 +108,7 @@ angular.module('ladders.controllers', [])
     }
     $scope.books = books;
 
-  });
+});
 
 
 
