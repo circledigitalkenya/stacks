@@ -64,7 +64,7 @@ document.addEventListener('deviceready', function(){
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('');
 
-    databaseProvider.connect('ladders');
+    databaseProvider.connect('testdb');
 
 
   });
@@ -93,11 +93,6 @@ function createtables(tx){
       'pages TEXT'+ 
     ')'
   );
-
-  tx.executeSql('INSERT INTO books(isbn, title, author) VALUES("0435905554","So Long a Letter","Mariama Ba")');
-  tx.executeSql('INSERT INTO books(isbn, title, author) VALUES("0007189885","Purple Hibiscus","Chimamanda Ngozi Adichie")');
-  tx.executeSql('INSERT INTO books(isbn, title, author) VALUES("0307961206","Dust","Yvonne Adhiambo Owuor")');
-  tx.executeSql('INSERT INTO books(isbn, title, author) VALUES("0262620200","History and Class Consciousness: Studies in Marxist Dialectics","YGyorgy Lukacs")');
 
 
 }
