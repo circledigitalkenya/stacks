@@ -7,10 +7,10 @@ document.addEventListener('deviceready', function(){
   // the 2nd parameter is an array of 'requires'
   // 'ladders.services' is found in services.js
   // 'ladders.controllers' is found in controllers.js
-  angular.module('ladders', ['ui.router','ladders.services', 'ladders.controllers', 'ladders.services'])
+  angular.module('ladders', ['ui.router','ladders.services', 'ladders.controllers', 'ladders.providers'])
 
 
-  .config(function($stateProvider, $urlRouterProvider, DatabaseProvider) {
+  .config(function($stateProvider, $urlRouterProvider, databaseProvider) {
 
     // Use AngularUI Router which uses the concept of states
     // Learn more here: https://github.com/angular-ui/ui-router
@@ -64,15 +64,13 @@ document.addEventListener('deviceready', function(){
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('');
 
-    DataProvider.connect('ladders');
+    databaseProvider.connect('ladders');
 
 
   });
   
   // bootstrap the angular applicaiton
   angular.bootstrap( document, ['ladders']);
-
-  DatabaseProvider.db.transaction(createtables,errorCB); // create tables
 
 });
 

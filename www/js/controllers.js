@@ -1,6 +1,6 @@
 angular.module('ladders.controllers', [])
 
-.controller('AddBookController', function($scope,$state, BookService){
+.controller('AddBookController', function($scope,$state, BookService, DataService){
 
     $scope.searchAmazon = function(){
 
@@ -34,6 +34,8 @@ angular.module('ladders.controllers', [])
     }
 
     $scope.submitBook = function(){
+        DataService.seed();
+        
         angular.db.transaction(
             function(tx){
               tx.executeSql(
