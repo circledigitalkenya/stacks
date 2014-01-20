@@ -39,7 +39,7 @@ angular.module('ladders.services', [])
               'isbn TEXT,'+
               'title TEXT,'+
               'description TEXT,'+
-              'image_path TEXT,'+
+              'image TEXT,'+
               'author TEXT,'+
               'publisher TEXT,'+
               'year TEXT,'+

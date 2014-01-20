@@ -4,29 +4,22 @@ angular.module('ladders.controllers', [])
 
     $scope.searchAmazon = function(){
         if( this.q ) {
-            BookService
-            .search_amazon(this.q)
-            .then(
-                function success(response, status,headers, config){
-                    var  searchresults = [];
-                    if( response.data.status == 'success' ) {
-                        if( response.data.result.TotalResults == 1 ) {
-                            searchresults.push(response.data.result.Item);
-                        } else {
-                            searchresults = response.data.result.Item;
-                        }
-                        BookService.setResults(searchresults);
 
-                        $location.path('/search/results');
-                    } else {
-                        // no results page
-                        $location.path('/search/noresults');
-                    }
-                },
-                function error(response, status,headers, config){
-                    //notify alert, could not connect to remote server
+          BookService
+          .search_amazon(this.q)
+          .then(
+              function success(response, status,headers, config){
+                if( response.data.status == 'success' && response.data.result.length > 0 ) {
+                  BookService.setResults(response.data.result);
+                  $location.path('/search/results');
+                } else {
+                  $location.path('/search/noresults');  // no results page
                 }
-            );
+              },
+              function error(response, status,headers, config){
+                  //notify alert, could not connect to remote server
+              }
+          );
 
         }
     }
@@ -49,9 +42,10 @@ angular.module('ladders.controllers', [])
 
     }
 })
-.controller('SearchResults', function($scope,$location, BookService,database){
+.controller('SearchResults', function($scope,$location, BookService, database ){
     $scope.books = BookService.searchresults;
-
+    console.log($scope.books);
+    
     $scope.addBook = function(isbn){
 
       BookService
@@ -61,22 +55,24 @@ angular.module('ladders.controllers', [])
               var  searchresults = [];
               if( response.data.status == 'success' ) {
                   database.query(
-                    'INSERT INTO books( title, author, publisher, year, pages)' +
+                    'INSERT INTO books( isbn, title, author, description, publisher, year, image, pages)' +
                     ' VALUES'+
                     '('+
-                      '"'+data.result.Item.ItemAttributes.Title +'",'+
-                      '"'+response.data.result.Item.ItemAttributes.Author +'",'+
-                      '"'+response.data.result.Item.ItemAttributes.Publisher +'",'+
-                      '"'+response.data.result.Item.ItemAttributes.ReleaseDate +'",'+
-                      '"'+response.data.result.Item.ItemAttributes.NumberOfPages +'"'+
+                      '"'+response.data.result[0].isbn +'",'+
+                      '"'+response.data.result[0].title +'",'+
+                      '"'+response.data.result[0].author +'",'+
+                      '"'+response.data.result[0].description +'",'+
+                      '"'+response.data.result[0].publisher +'",'+
+                      '"'+response.data.result[0].pubdate +'",'+
+                      '"'+response.data.result[0].image +'",'+
+                      '"'+response.data.result[0].pages +'"'+
                     ')'
                   ).then(function(d){
-                    console.log('got a response');
                     $location.path('/library');
                   })
               } else {
-                  // no results page
-                  $location.path('/noresults');
+                // no results page
+                $location.path('/noresults');
               }
           },
           function error(response, status,headers, config){
@@ -98,7 +94,7 @@ angular.module('ladders.controllers', [])
             isbn : d[i].isbn,
             author : d[i].author,
             title : d[i].title,
-            image_path : d[i].image_path
+            image : d[i].image
           });
         }
         $scope.books = books;

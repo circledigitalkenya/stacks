@@ -1,9 +1,10 @@
 <h3>Search results</h3>
 <ul>
-    <li ng-repeat="book in books">
-      <strong>{{book.ItemAttributes.Title}}</strong>
-      <em>by {{book.ItemAttributes.Author}}</em>
-
-      <input type="submit" ng-click="addBook(book.ASIN)" value="+ add library">
-    </li>    
+  <li ng-repeat="book in books">
+    <img src="{{book.image}}" alt="">
+    <strong>{{book.title}}</strong>
+    <em>by {{book.author}}</em>
+    <em>ISBN {{book.isbn}}</em>
+    <input type="submit" ng-click="addBook(book.isbn)" value="+ add library">
+  </li>    
 </ul>
