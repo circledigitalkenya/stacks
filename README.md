@@ -33,17 +33,20 @@ $ bower install
 
 ### Setting up the development environment
 
-From the root folder,
+Make sure you have grunt installed, then run
 
 ```bash
+$ npm install 
 $ grunt
 ```
 
-Then on a new terminal window
+On a new terminal window
 
 ```bash
 $ cordova serve ios
 ```
+
+This launches the address (http://localhost:8000/ios/www/) with the application loaded for preview. 
 
 ### Building the application on Xcode
 
