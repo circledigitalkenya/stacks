@@ -44,8 +44,7 @@ angular.module('ladders.controllers', [])
 })
 .controller('SearchResults', function($scope,$location, BookService, database ){
     $scope.books = BookService.searchresults;
-    console.log($scope.books);
-    
+
     $scope.addBook = function(isbn){
 
       BookService
