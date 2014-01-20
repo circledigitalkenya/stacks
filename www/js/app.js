@@ -1,79 +1,75 @@
+// angular.module is a global place for creating, registering and retrieving Angular modules
+// 'ladders' is the name of this angular module example (also set in a <body> attribute in index.html)
+// the 2nd parameter is an array of 'requires'
+// 'ladders.services' is found in services.js
+// 'ladders.controllers' is found in controllers.js
+
 
 
 document.addEventListener('deviceready', function(){
 
-  // angular.module is a global place for creating, registering and retrieving Angular modules
-  // 'ladders' is the name of this angular module example (also set in a <body> attribute in index.html)
-  // the 2nd parameter is an array of 'requires'
-  // 'ladders.services' is found in services.js
-  // 'ladders.controllers' is found in controllers.js
-  angular.module('ladders', ['ui.router','ladders.services', 'ladders.controllers', 'ladders.providers'])
-
-
-  .config(function($stateProvider, $urlRouterProvider, databaseProvider) {
+  angular.module('ladders', [
+      'ngRoute',
+      'ladders.services',
+      'ladders.controllers'
+    ]
+  )
+  .config(function($routeProvider, databaseProvider) {
 
     // Use AngularUI Router which uses the concept of states
     // Learn more here: https://github.com/angular-ui/ui-router
     // Set up the various states which the app can be in.
     // Each state's controller can be found in controllers.js
-    $stateProvider
+    $routeProvider
 
-      .state('home', {
-        url: "",
-        templateUrl: "templates/home.html"
+      .when('/home', {
+        templateUrl: 'templates/home.html'
       })
-      .state('add', {
-        url: "/add",
+      .when("/add",{
         templateUrl: "templates/add.html",
         controller: "AddBookController"
       })
-      .state('addmanually', {
-        url: "/addmanually",
+      .when("/addmanually",{
         templateUrl: "templates/add.manually.html",
         controller: "AddBookController"
       })
-      .state('scan', {
-        url: "/scan",
+      .when("/scan",{
         templateUrl: "templates/scan.html"
       })
-      .state('addoptions', {
-        url: "/add/options",
+      .when("/add/options",{
         templateUrl: "templates/add.options.html"
       })
-      .state('search', {
-        url: "/book/search",
+      .when("/book/search",{
         templateUrl: "templates/search.html",
         controller: "BookController"
       })
-      .state('searchresults', {
-        url: "/search/results",
+      .when("/search/results",{
         templateUrl: "templates/search.results.html",
         controller: "SearchResults"
       })
-      .state('noresults', {
-        url: "/search/noresults",
+      .when("/search/noresults",{
         templateUrl: "templates/search.no_results.html",
         controller: "BookController"
       })
-      .state('library', {
-        url: "/library",
+      .when("/library",{
         templateUrl: "templates/library.html",
         controller: "LibraryController"
+      })
+      .otherwise({
+        redirectTo: '/home'
       });
 
-    // if none of the above states are matched, use this as the fallback
-    $urlRouterProvider.otherwise('');
-
-    databaseProvider.connect('testdb');
+      databaseProvider.connect('ladders');
 
 
   });
-  
-  // bootstrap the angular applicaiton
-  angular.bootstrap( document, ['ladders']);
 
+  angular.bootstrap(document, ['ladders']);
 });
 
+
+
+  
 function createtables(tx){
 
   // @todo: remove this line in production
@@ -94,7 +90,6 @@ function createtables(tx){
     ')'
   );
 
-
 }
 
 // tansaction error callback
@@ -106,3 +101,5 @@ function errorCB(){
 function successCB() {
   console.log("success!");
 }
+
+

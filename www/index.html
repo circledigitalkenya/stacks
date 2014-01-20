@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-      <meta charset="utf-8" />
-      <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
-      <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
       <title>Hello World</title>
 
       <!-- your app's css -->
@@ -12,31 +12,24 @@
   </head>
   <body>
 
-    <header class="clearfix">
-      <div class="left">
-        &nbsp;
-      </div>
-      <div class="right">
-        &nbsp;
-      </div>
-    </header>
-    
-    <div ui-view></div>
+    <!-- 
+      The views will be rendered in the <nav-view> directive below
+      Templates are in the /templates folder (but you could also
+      have templates inline in this html file if you'd like).
+    -->
+    <div ng-view></div>
 
-    <footer></footer>
+
+
 
     <!-- angular and components -->
     <script src="bower_components/angular/angular.min.js"></script>
     <script src="bower_components/angular-route/angular-route.min.js"></script>
-    <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
 
     <!-- cordova script -->
     <script src="cordova.js"></script>
-
-    <script src="js/app.js"></script>
     <script src="js/services.js"></script>
-    <script src="js/providers.js"></script>
     <script src="js/controllers.js"></script>
-
-</body>
+    <script src="js/app.js"></script>
+  </body>
 </html>

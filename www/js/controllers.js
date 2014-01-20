@@ -1,11 +1,9 @@
 angular.module('ladders.controllers', [])
 
-.controller('AddBookController', function($scope,$state, BookService, database){
+.controller('AddBookController', function($scope, $location, BookService, database){
 
     $scope.searchAmazon = function(){
-
         if( this.q ) {
-
             BookService
             .search_amazon(this.q)
             .then(
@@ -19,10 +17,10 @@ angular.module('ladders.controllers', [])
                         }
                         BookService.setResults(searchresults);
 
-                        $state.go('searchresults');
+                        $location.path('/search/results');
                     } else {
                         // no results page
-                        $state.go('noresults');
+                        $location.path('/search/noresults');
                     }
                 },
                 function error(response, status,headers, config){
@@ -34,7 +32,6 @@ angular.module('ladders.controllers', [])
     }
 
     $scope.submitBook = function(){
-
       database.query(
         'INSERT INTO books( title, author, publisher, year, pages)' +
         ' VALUES'+
@@ -46,18 +43,16 @@ angular.module('ladders.controllers', [])
           '"'+this.pages +'"'+
         ')'
       ).then(function(d){
-        console.log('got a response');
-        $state.go('library');
+        $location.path('/library');
       })
 
 
     }
 })
-.controller('SearchResults', function($scope,$state, BookService,database){
+.controller('SearchResults', function($scope,$location, BookService,database){
     $scope.books = BookService.searchresults;
 
     $scope.addBook = function(isbn){
-      console.log(isbn);
 
       BookService
       .search_amazon(isbn)
@@ -69,7 +64,7 @@ angular.module('ladders.controllers', [])
                     'INSERT INTO books( title, author, publisher, year, pages)' +
                     ' VALUES'+
                     '('+
-                      '"'+response.data.result.Item.ItemAttributes.Title +'",'+
+                      '"'+  .data.result.Item.ItemAttributes.Title +'",'+
                       '"'+response.data.result.Item.ItemAttributes.Author +'",'+
                       '"'+response.data.result.Item.ItemAttributes.Publisher +'",'+
                       '"'+response.data.result.Item.ItemAttributes.ReleaseDate +'",'+
@@ -77,11 +72,11 @@ angular.module('ladders.controllers', [])
                     ')'
                   ).then(function(d){
                     console.log('got a response');
-                    $state.go('library');
+                    $location.path('/library');
                   })
               } else {
                   // no results page
-                  $state.go('noresults');
+                  $location.path('/noresults');
               }
           },
           function error(response, status,headers, config){
@@ -90,25 +85,25 @@ angular.module('ladders.controllers', [])
       );
     }
 })
-.controller('LibraryController', function($scope, database){
+.controller('LibraryController', function($scope, $location, database){
 
     // loop through the result set to create an object to pass to the template
     var books = database.query('SELECT * FROM books').then(function(d){
 
-    var len = d.length;
-    var books = [];
+        var len = d.length;
+        var books = [];
 
-    for (var i=0; i<len; i++){
-      books.push({
-        isbn : d[i].isbn,
-        author : d[i].author,
-        title : d[i].title,
-        image_path : d[i].image_path
-      });
-    }
-    $scope.books = books;
+        for (var i=0; i<len; i++){
+          books.push({
+            isbn : d[i].isbn,
+            author : d[i].author,
+            title : d[i].title,
+            image_path : d[i].image_path
+          });
+        }
+        $scope.books = books;
 
-});
+    });
 
 
 
