@@ -64,7 +64,7 @@ angular.module('ladders.controllers', [])
                     'INSERT INTO books( title, author, publisher, year, pages)' +
                     ' VALUES'+
                     '('+
-                      '"'+  .data.result.Item.ItemAttributes.Title +'",'+
+                      '"'+data.result.Item.ItemAttributes.Title +'",'+
                       '"'+response.data.result.Item.ItemAttributes.Author +'",'+
                       '"'+response.data.result.Item.ItemAttributes.Publisher +'",'+
                       '"'+response.data.result.Item.ItemAttributes.ReleaseDate +'",'+
