@@ -1,13 +1,23 @@
 angular.module('ladders.services', [])
 
 .factory('BookService', function($http){
+    var books = [];
+
     return {
-        search_amazon : function(q){
-            return $http.get('http://localhost/amazon/?q='+q);
-        },
-        setResults : function(results){
-            this.searchresults = results
+      search_amazon : function(q){
+          return $http.get('http://localhost/amazon/?q='+q);
+      },
+      setResults : function(results){
+          this.books = results
+      },
+
+      findByISBN : function(isbn) {
+        for(var i = 0; i < this.books.length; i++){
+          if( this.books[i].isbn == isbn ) {
+            return this.books[i];
+          }
         }
+      }
     }
 })
 

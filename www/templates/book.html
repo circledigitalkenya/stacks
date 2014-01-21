@@ -1,3 +1,11 @@
-<h2>Parent book view</h2>
+<div>
+    <img src="{{book.image}}" alt="">
+    <div>
+        <strong>{{book.title}}</strong>
+    </div>
+    <div>by {{book.author}}</div>
+    <div>ISBN {{book.isbn}}</div>
 
-<div ui-view></div>
+    <a href="" ng-click="addToLibrary()">+ Add to library</a>
+</div>
+

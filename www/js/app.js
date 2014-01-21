@@ -39,6 +39,10 @@ document.addEventListener('deviceready', function(){
       .when("/add/options",{
         templateUrl: "templates/add.options.html"
       })
+      .when("/book/",{
+        templateUrl: "templates/book.html",
+        controller: "BookController"
+      })
       .when("/book/search",{
         templateUrl: "templates/search.html",
         controller: "BookController"
