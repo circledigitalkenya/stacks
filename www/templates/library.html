@@ -1,9 +1,11 @@
 <h3>Books in your library</h3>
 <ul>
   <li ng-repeat="book in books">
-    <img src="{{book.image}}" alt="">
+    <img ng-src="{{book.image}}" alt="">
     <strong>{{book.title}}</strong>
     <em>by {{book.author}}</em>
     <em>ISBN {{book.isbn}}</em>
+
+    <a href="" ng-click="removeFromLibrary(book.isbn)" style="color: red;">x remove</a>
   </li>    
 </ul>

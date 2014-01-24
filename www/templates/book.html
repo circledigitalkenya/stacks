@@ -1,11 +1,16 @@
 <div>
-    <img src="{{book.image}}" alt="">
+    <img ng-src="{{book.image}}" alt="">
     <div>
         <strong>{{book.title}}</strong>
     </div>
     <div>by {{book.author}}</div>
     <div>ISBN {{book.isbn}}</div>
-
-    <a href="" ng-click="addToLibrary()">+ Add to library</a>
+    
+    <span ng-show="book.exists_in_library">
+        √ exists in library
+    </span>
+    <a href=""  ng-click="addToLibrary()" ng-show="book.exists_in_library ? false : true">
+        + Add to library
+    </a>
 </div>
 
