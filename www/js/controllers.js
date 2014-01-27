@@ -38,8 +38,6 @@ angular.module('ladders.controllers', [])
       ).then(function(d){
         $location.path('/library');
       })
-
-
     }
 })
 .controller('SearchResults', function($scope,$location, BookService ){
@@ -88,9 +86,10 @@ angular.module('ladders.controllers', [])
     $scope.book.exists_in_library = false;
 
     database
-    .query('SELECT isbn FROM books where isbn="'+$scope.book.isbn+'"')
+    .query('SELECT id,isbn FROM books where isbn = "'+$scope.book.isbn+'" LIMIT 0, 1')
     .then(function(data){
       if( data.length ) {
+        $scope.book.id = data[0].id;
         $scope.book.exists_in_library = true;
       }
     })
@@ -99,7 +98,7 @@ angular.module('ladders.controllers', [])
   $scope.addToLibrary = function(){
     database
       .query(
-        'INSERT INTO books( isbn, title, author, description, publisher, year, image, pages)' +
+        'INSERT INTO books( isbn, title, author, description, publisher, year, image, pages, price)' +
         ' VALUES'+
         '('+
           '"'+$scope.book.isbn +'",'+
@@ -109,7 +108,8 @@ angular.module('ladders.controllers', [])
           '"'+$scope.book.publisher +'",'+
           '"'+$scope.book.pubdate +'",'+
           '"'+$scope.book.image +'",'+
-          '"'+$scope.book.pages +'"'+
+          '"'+$scope.book.pages +'",'+
+          '"'+$scope.book.price +'"'+
         ')'
       )
       .then(function(d){
@@ -120,5 +120,12 @@ angular.module('ladders.controllers', [])
       })   
   }
 
+  $scope.removeFromLibrary = function(id){
+    database
+    .query('DELETE FROM books WHERE id="'+id+'"')
+    .then(function(d){
+      $location.path('/library'); // successfuly deleted book
+    })
+  }
 
 });

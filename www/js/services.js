@@ -40,7 +40,7 @@ angular.module('ladders.services', [])
         this.db.transaction(function(tx){
 
           // @todo: remove this line in production
-          // tx.executeSql('DROP TABLE IF EXISTS books'); // only for debugging purposes, setup a fresh table on each app launch
+          tx.executeSql('DROP TABLE IF EXISTS books'); // only for debugging purposes, setup a fresh table on each app launch
           
           tx.executeSql(
             'CREATE TABLE IF NOT EXISTS books'+
@@ -53,7 +53,8 @@ angular.module('ladders.services', [])
               'author TEXT,'+
               'publisher TEXT,'+
               'year TEXT,'+
-              'pages TEXT'+ 
+              'pages TEXT,'+
+              'price TEXT'+
             ')'
           );
 
