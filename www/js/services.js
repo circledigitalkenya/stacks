@@ -18,8 +18,6 @@ angular.module('ladders.services', [])
           }
         }
       }
-
-      
     }
 })
 
@@ -93,7 +91,7 @@ angular.module('ladders.services', [])
               transaction.executeSql(query,[], function(transaction, result) {
                   var resultObj = {},
                       responses = [];
-                  if (result != null && result.rows != null) {
+                  if (result !== null && result.rows !== null) {
                       for (var i = 0; i < result.rows.length; i++) {
                           resultObj = result.rows.item(i);
                           responses.push(resultObj);

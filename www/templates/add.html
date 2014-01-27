@@ -1,9 +1,25 @@
-<h3>Enter it manually</h3>
-<p>Books pre-1970 don't have ISBN numbers so you can search for them in our database or add in the data by hand</p>
+<header class="clearfix main-header">
+    <div class="left">
+      <a href="index.html"><span class="circle-icon">&lt;</span></a>
+    </div>
+    <div class="center">
+      <img src="img/logo-trans-small.png" width="70px" alt="">
+    </div>
+    <div class="right">
+    </div>
+</header>
 
-<form ng-submit="searchAmazon()">
-    <input type="text" ng-model="q" placeholder="Search ISBN, title or author" style="border: solid 1px #ccc;"> 
-    <input type="submit" value="Go &rarr;">
-</form>
+<div class="main-window">
+    
+    <h3>Enter it manually</h3>
+    <p>Books pre-1970 don't have ISBN numbers so you can search for them in our database or add in the data by hand</p>
 
-<a href="#/addmanually">Can't find it, type it in here</a>
+    <form ng-submit="searchAmazon()" class="clearfix search-container">
+        <input type="search" ng-model="q" placeholder="Search ISBN, title or author" style="border: solid 1px #ccc;"> 
+        <input type="submit" value="Go &rarr;" class="orange">
+    </form>
+    
+    <div class="button-group">
+      <a href="#/addmanually" class="button green">Can't find it? Type it in here</a>
+    </div>
+</div>

@@ -4,8 +4,6 @@
 // 'ladders.services' is found in services.js
 // 'ladders.controllers' is found in controllers.js
 
-
-
 document.addEventListener('deviceready', function(){
 
   angular.module('ladders', [

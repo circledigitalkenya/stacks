@@ -1,24 +1,39 @@
-<h2>Manual entry</h2>
-<form ng-submit="submitBook()">
-    <label for="">
-        Title
-        <input type="text" ng-model="title">
-    </label>
-    <label for="">
-        Author
-        <input type="text" ng-model="author">
-    </label>
-    <label for="">
-        Publisher
-        <input type="text" ng-model="publisher">
-    </label>
-    <label for="">
-        Year
-        <input type="text" ng-model="year">
-    </label>
-    <label for="">
-        # of Pages
-        <input type="text" ng-model="pages">
-    </label>
-    <input type="submit" value="Add book">
-</form>
+<header class="clearfix main-header">
+    <div class="left">
+      <a href="index.html"><span class="circle-icon">&lt;</span></a>
+    </div>
+    <div class="center">
+      <img src="img/logo-trans-small.png" width="70px" alt="">
+    </div>
+    <div class="right"></div>
+</header>
+<div class="main-window">
+    <h2>Manual entry</h2>
+    <form action="" ng-submit="submitBook()">
+      <div class="item">
+        <label for="title">Title</label>
+        <input type="text" id="title" ng-model="title">
+      </div>
+      <div class="item">
+        <label for="author">Author</label>
+        <input type="text" id="author" ng-model="author">
+      </div>
+      <div class="item">
+        <label for="pub">Publisher</label>
+        <input type="text" id="pub" ng-model="publisher">
+      </div>
+      <div class="item clearfix">
+        <div class="half column">
+          <label for="year">Year</label>
+          <input type="text" id="year" ng-model="year">
+        </div>
+        <div class="half column">
+          <label for="pages"># of Pages</label>
+          <input type="number" id="pages" number="" ng-model="year">
+        </div>
+      </div>
+      <div class="item">
+        <input type="submit" class="orange">
+      </div>
+    </form>
+</div>

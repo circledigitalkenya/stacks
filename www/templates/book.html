@@ -6,9 +6,7 @@
     <div>by {{book.author}}</div>
     <div>ISBN {{book.isbn}}</div>
     
-    <span ng-show="book.exists_in_library">
-        √ exists in library
-    </span>
+    <span ng-show="book.exists_in_library">√ exists in library</span>
     <a href=""  ng-click="addToLibrary()" ng-show="book.exists_in_library ? false : true">
         + Add to library
     </a>

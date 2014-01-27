@@ -2,32 +2,33 @@ angular.module('ladders.controllers', [])
 
 .controller('AddBookController', function($scope, $location, BookService, database){
     $scope.searchAmazon = function(){
-        if( this.q ) {
+      if( this.q ) {
 
-          BookService
-          .search_amazon(this.q)
-          .then(
-              function success(response, status,headers, config){
-                if( response.data.status == 'success' && response.data.result.length > 0 ) {
-                  BookService.setResults(response.data.result);
-                  $location.path('/search/results');
-                } else {
-                  $location.path('/search/noresults');  // no results page
-                }
-              },
-              function error(response, status,headers, config){
-                //notify alert, could not connect to remote server
+        BookService
+        .search_amazon(this.q)
+        .then(
+            function success(response, status,headers, config){
+              if( response.data.status == 'success' && response.data.result.length > 0 ) {
+                BookService.setResults(response.data.result); //cachec the results
+                $location.path('/search/results');
+              } else {
+                $location.path('/search/noresults');  // no results page
               }
-          );
+            },
+            function error(response, status,headers, config){
+              //notify alert, could not connect to remote server
+            }
+        );
 
-        }
+      }
     }
 
     $scope.submitBook = function(){
       database.query(
-        'INSERT INTO books( title, author, publisher, year, pages)' +
+        'INSERT INTO books( isbn, title, author, publisher, year, pages)'+
         ' VALUES'+
         '('+
+          '"'+this.isbn +'",'+
           '"'+this.title +'",'+
           '"'+this.author +'",'+
           '"'+this.publisher +'",'+
@@ -57,6 +58,7 @@ angular.module('ladders.controllers', [])
 
                 for (var i=0; i<len; i++){
                   books.push({
+                    id : d[i].id,
                     isbn : d[i].isbn,
                     author : d[i].author,
                     title : d[i].title,
@@ -69,9 +71,9 @@ angular.module('ladders.controllers', [])
 
     $scope.getAllbooks();
 
-    $scope.removeFromLibrary = function(isbn){
+    $scope.removeFromLibrary = function(id){
       database
-      .query('DELETE FROM books WHERE isbn="'+isbn+'"')
+      .query('DELETE FROM books WHERE id="'+id+'"')
       .then(function(d){
         // successfuly deleted book
         $scope.getAllbooks();
@@ -92,8 +94,6 @@ angular.module('ladders.controllers', [])
         $scope.book.exists_in_library = true;
       }
     })
-
-
   }
 
   $scope.addToLibrary = function(){
