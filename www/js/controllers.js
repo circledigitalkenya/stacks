@@ -44,7 +44,20 @@ angular.module('ladders.controllers', [])
       cordova.plugins.barcodeScanner.scan(
         function (result) {
           if( result.cancelled === 0 && result.format === 'EAN_13') {
-            $scope.searchAmazon(result.text);
+
+            // search the book from our library
+            $scope
+            .searchISBNLocally(result.text)
+            .then(function(book){
+              if( book ) {
+                // if its a single book, show the book view
+                $location.path('/book?isbn=book.isbn');
+              } else {
+                // go to the scan/noresults page
+                $location.path('/scan/noresults')
+              }
+            });
+
           } else {
             $location.path('')
           }
@@ -56,9 +69,19 @@ angular.module('ladders.controllers', [])
     }
 
 
-    $scope.searchLocal = function(){
-
+    $scope.searchISBNLocally = function(isbn){
+      return database
+              .query('SELECT id,isbn FROM books where isbn = "'+isbn+'" LIMIT 0, 1')
+              .then(function(data){
+                if( data.length ) {
+                  return data[0]; //first index is the result
+                } else {
+                  return false;
+                }
+              });
     }
+
+
 })
 .controller('SearchResults', function($scope,$location, BookService ){
   $scope.books = BookService.books;
@@ -100,7 +123,7 @@ angular.module('ladders.controllers', [])
 })
 .controller('BookController', function($scope, $location, $route, BookService, database){
   // is there a book set for viewing
-  if($route.current.params.isbn ) {
+  if( $route.current.params.isbn ) {
     $scope.book = BookService.findByISBN($route.current.params.isbn);
     // find out if the book is already in users library
     $scope.book.exists_in_library = false;

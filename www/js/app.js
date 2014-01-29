@@ -24,7 +24,8 @@ document.addEventListener('deviceready', function(){
         templateUrl: 'templates/home.html'
       })
       .when("/build",{
-        templateUrl: "templates/build_library.html"
+        templateUrl: "templates/build_library.html",
+        controller : "AddBookController"
       })
       .when("/add",{
         templateUrl: "templates/add.html",
