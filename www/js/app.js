@@ -23,6 +23,9 @@ document.addEventListener('deviceready', function(){
       .when('/home', {
         templateUrl: 'templates/home.html'
       })
+      .when("/build",{
+        templateUrl: "templates/build_library.html"
+      })
       .when("/add",{
         templateUrl: "templates/add.html",
         controller: "AddBookController"
@@ -35,8 +38,9 @@ document.addEventListener('deviceready', function(){
         templateUrl: "templates/scan.html",
         controller: "AddBookController"
       })
-      .when("/add/options",{
-        templateUrl: "templates/add.options.html"
+      .when("/scan/noresults",{
+        templateUrl: "templates/scan.no_results.html",
+        controller: "AddBookController"
       })
       .when("/book/",{
         templateUrl: "templates/book.html",

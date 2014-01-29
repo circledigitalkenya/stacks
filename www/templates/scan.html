@@ -10,14 +10,11 @@
 </header>
 
 <div class="main-window">
-    <a href="" ng-click="scanBook()"style="display:block; padding: 5px; color: grey">Scan a book</a>
+    <a href="" ng-click="scanBook()" style="display:block; padding: 5px; color: grey">Scan a book</a>
     <h3>OR</h3>
     <form ng-submit="searchLocal()" class="clearfix search-container">
         <input type="search" ng-model="q" placeholder="Search ISBN, title or author" style="border: solid 1px #ccc;"> 
         <input type="submit" value="Go &rarr;" class="orange">
     </form>
-    
-    <div class="button-group">
-      <a href="#/addmanually" class="button green">Can't find it? Type it in here</a>
-    </div>
+
 </div>

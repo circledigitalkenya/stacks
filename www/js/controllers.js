@@ -45,6 +45,8 @@ angular.module('ladders.controllers', [])
         function (result) {
           if( result.cancelled === 0 && result.format === 'EAN_13') {
             $scope.searchAmazon(result.text);
+          } else {
+            $location.path('')
           }
         }, 
         function (error) {
