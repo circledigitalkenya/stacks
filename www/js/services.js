@@ -5,7 +5,7 @@ angular.module('ladders.services', [])
 
     return {
       search_amazon : function(q){
-          return $http.get('http://localhost/amazon/?q='+q);
+          return $http.get('http://circle.co.ke/amazon/?q='+q);
       },
       setResults : function(results){
           this.books = results

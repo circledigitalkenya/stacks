@@ -1,26 +1,26 @@
 angular.module('ladders.controllers', [])
 
 .controller('AddBookController', function($scope, $location, BookService, database){
-    $scope.searchAmazon = function(){
-      if( this.q ) {
+    $scope.searchAmazon = function(q){
+      var query = this.q || q;
 
-        BookService
-        .search_amazon(this.q)
-        .then(
-            function success(response, status,headers, config){
-              if( response.data.status == 'success' && response.data.result.length > 0 ) {
-                BookService.setResults(response.data.result); //cachec the results
-                $location.path('/search/results');
-              } else {
-                $location.path('/search/noresults');  // no results page
-              }
-            },
-            function error(response, status,headers, config){
-              //notify alert, could not connect to remote server
+      BookService
+      .search_amazon(query)
+      .then(
+          function success(response, status,headers, config){
+            if( response.data.status == 'success' && response.data.result.length > 0 ) {
+              BookService.setResults(response.data.result); //cachec the results
+              $location.path('/search/results');
+            } else {
+              $location.path('/search/noresults');  // no results page
             }
-        );
+          },
+          function error(response, status,headers, config){
+            //notify alert, could not connect to remote server
+          }
+      );
 
-      }
+
     }
 
     $scope.submitBook = function(){
@@ -38,6 +38,24 @@ angular.module('ladders.controllers', [])
       ).then(function(d){
         $location.path('/library');
       })
+    }
+
+    $scope.scanBook = function(){
+      cordova.plugins.barcodeScanner.scan(
+        function (result) {
+          if( result.cancelled === 0 && result.format === 'EAN_13') {
+            $scope.searchAmazon(result.text);
+          }
+        }, 
+        function (error) {
+            console.log("Scanning failed: " + error);
+        }
+      );
+    }
+
+
+    $scope.searchLocal = function(){
+
     }
 })
 .controller('SearchResults', function($scope,$location, BookService ){

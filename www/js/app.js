@@ -32,7 +32,8 @@ document.addEventListener('deviceready', function(){
         controller: "AddBookController"
       })
       .when("/scan",{
-        templateUrl: "templates/scan.html"
+        templateUrl: "templates/scan.html",
+        controller: "AddBookController"
       })
       .when("/add/options",{
         templateUrl: "templates/add.options.html"
