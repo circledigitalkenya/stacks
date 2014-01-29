@@ -113,7 +113,7 @@ angular.module('ladders.controllers', [])
         ')'
       )
       .then(function(d){
-        $location.path('/library');
+        $location.path('/bookadded');
       })
       .catch(function(e){
         console.log(e)

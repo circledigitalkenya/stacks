@@ -45,6 +45,9 @@ document.addEventListener('deviceready', function(){
         templateUrl: "templates/search.html",
         controller: "BookController"
       })
+      .when("/bookadded",{
+        templateUrl: "templates/book.added.html"
+      })
       .when("/search/results",{
         templateUrl: "templates/search.results.html",
         controller: "SearchResults"
