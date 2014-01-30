@@ -1,8 +1,10 @@
 Stacks
 ==========================
 
-Stacks is an book application built with [apache cordoova](http://cordova.apache.org/docs/en/3.3.0) that is currently being developed 
-for iOS but can run on almost all of cordova's supported mobile platforms
+Stacks is an book store application built with [apache cordoova](http://cordova.apache.org/docs/en/3.3.0).
+
+Development and testing at the moment targets the iOS platform but the application can be easily adapted 
+to any of cordova's supported platforms.
 
 
 # Dependencies
@@ -15,8 +17,8 @@ for iOS but can run on almost all of cordova's supported mobile platforms
 ## Installation
 
 ```bash
-$ git clone https://github.com/ryanhbowman/sqlite
-$ cd sqlite
+$ git clone https://github.com/circledigitalkenya/stacks
+$ cd stacks
 $ cordova platform add ios
 $ cordova plugin add https://github.com/wildabeast/BarcodeScanner
 $ cordova plugin add https://github.com/lite4cordova/Cordova-SQLitePlugin
