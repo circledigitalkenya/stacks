@@ -197,6 +197,7 @@ angular.module('ladders.controllers', [])
     // is there a book set for viewing
     if ($route.current.params.isbn) {
       $scope.book = BookService.findByISBN($route.current.params.isbn);
+      $scope.book.pubyear = new Date($scope.book.pubdate).getFullYear(); // extract the pub year for display only
 
       // find out if the book is already in users library
       $scope.book.exists_in_library = false;
