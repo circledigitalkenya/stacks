@@ -1,15 +1,15 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
-// 'ladders' is the name of this angular module example (also set in a <body> attribute in index.html)
+// 'stacks' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-// 'ladders.services' is found in services.js
-// 'ladders.controllers' is found in controllers.js
+// 'stacks.services' is found in services.js
+// 'stacks.controllers' is found in controllers.js
 
 document.addEventListener('deviceready', function(){
 
-  angular.module('ladders', [
+  angular.module('stacks', [
       'ngRoute',
-      'ladders.services',
-      'ladders.controllers'
+      'stacks.services',
+      'stacks.controllers'
     ]
   )
   .config(function($routeProvider, databaseProvider) {
@@ -35,12 +35,12 @@ document.addEventListener('deviceready', function(){
         templateUrl: "templates/add.manually.html",
         controller: "AddBookController"
       })
-      .when("/scan",{
-        templateUrl: "templates/scan.html",
+      .when("/lookup",{
+        templateUrl: "templates/lookup.html",
         controller: "AddBookController"
       })
-      .when("/scan/noresults",{
-        templateUrl: "templates/scan.no_results.html",
+      .when("/lookup/noresults",{
+        templateUrl: "templates/lookup.no_results.html",
         controller: "AddBookController"
       })
       .when("/book/",{
@@ -70,47 +70,12 @@ document.addEventListener('deviceready', function(){
         redirectTo: '/home'
       });
 
-      databaseProvider.connect('ladders');
+      // connect to the database
+      databaseProvider.connect('stacks');
 
 
   });
 
-  angular.bootstrap(document, ['ladders']);
+  angular.bootstrap(document, ['stacks']);
 });
-
-
-
-  
-function createtables(tx){
-
-  // @todo: remove this line in production
-  tx.executeSql('DROP TABLE IF EXISTS books'); // only for debugging purposes, setup a fresh table on each app launch
-  
-  tx.executeSql(
-    'CREATE TABLE IF NOT EXISTS books'+
-    '('+
-      'id INTEGER PRIMARY KEY AUTOINCREMENT,'+
-      'isbn TEXT,'+
-      'title TEXT,'+
-      'description TEXT,'+
-      'image_path TEXT,'+
-      'author TEXT,'+
-      'publisher TEXT,'+
-      'year TEXT,'+
-      'pages TEXT'+ 
-    ')'
-  );
-
-}
-
-// tansaction error callback
-function errorCB(){
-  console.log('error processing SQL: ' +err);
-}
-
-// Transaction success callback
-function successCB() {
-  console.log("success!");
-}
-
 

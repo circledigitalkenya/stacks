@@ -1,4 +1,4 @@
-angular.module('ladders.services', [])
+angular.module('stacks.services', [])
 
 .factory('BookService', function($http) {
   var books = [];
@@ -151,9 +151,9 @@ angular.module('ladders.services', [])
 
       // @todo: remove this line in production
       tx.executeSql("DROP TABLE IF EXISTS books"); // only for debugging purposes, setup a fresh table on each app launch
-      
+
       tx.executeSql(
-        "CREATE TABLE IF NOT EXISTS books"+
+        "CREATE TABLE IF NOT EXISTS books("+
           "id INTEGER PRIMARY KEY AUTOINCREMENT,"+
           "isbn TEXT,"+
           "title TEXT,"+
@@ -166,7 +166,6 @@ angular.module('ladders.services', [])
           "price TEXT"+
         ")"
       );
-
     });
 
   };
@@ -181,7 +180,6 @@ angular.module('ladders.services', [])
   this.$get = ['$q',
     function($q) {
       return {
-
         // much of this is borrowed from
         // http://stackoverflow.com/questions/20736214/trying-to-get-an-async-db-request-to-work-in-angular-cannot-call-method-then-o
         query: function(query) {

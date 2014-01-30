@@ -1,4 +1,4 @@
-angular.module('ladders.controllers', [])
+angular.module('stacks.controllers', [])
 
   .controller('AddBookController', function($scope, $q, $location, BookService, database) {
     $scope.searchAmazon = function(q) {
@@ -27,9 +27,9 @@ angular.module('ladders.controllers', [])
         "INSERT INTO books( isbn, title, author, publisher, year, pages) " +
         "VALUES (" +
           "'"+this.isbn +"',"+
-          "'"+this.title.replace(/["']/g, "''") +"',"+
-          "'"+this.author.replace(/["']/g, "''") +"',"+
-          "'"+this.publisher.replace(/["']/g, "''") +"',"+
+          "'"+this.title.replace(/[']/g, "''") +"',"+
+          "'"+this.author.replace(/[']/g, "''") +"',"+
+          "'"+this.publisher.replace(/[']/g, "''") +"',"+
           "'"+this.year +"',"+
           "'"+this.pages+"'"+
         ")"
@@ -218,9 +218,9 @@ angular.module('ladders.controllers', [])
           "INSERT INTO books( isbn, title, author, description, publisher, year, image, pages, price) "+
           "VALUES (" +
             "'"+$scope.book.isbn+"',"+ 
-            "'"+$scope.book.title.replace(/["']/g, "''")+"',"+ 
-            "'"+$scope.book.author.replace(/["']/g, "''")+"',"+ 
-            "'"+$scope.book.description.replace(/["']/g, "''")+"',"+ 
+            "'"+$scope.book.title.replace(/[']/g, "''")+"',"+ 
+            "'"+$scope.book.author.replace(/[']/g, "''")+"',"+ 
+            "'"+$scope.book.description.replace(/[']/g, "''")+"',"+ 
             "'"+$scope.book.publisher+"',"+ 
             "'"+$scope.book.pubdate+"',"+ 
             "'"+$scope.book.image+"',"+ 
