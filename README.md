@@ -1,5 +1,8 @@
-Starter Cordova Application
+Stacks
 ==========================
+
+Stacks is an book application built with [apache cordoova](http://cordova.apache.org/docs/en/3.3.0) that is currently being developed 
+for iOS but can run on almost all of cordova's supported mobile platforms
 
 
 # Dependencies
@@ -26,7 +29,7 @@ This will install the ios platform cordova plugins.
 ### Installing bower components
 
 ```bash
-$ cd wwww
+$ cd www
 $ bower install
 ```
 
