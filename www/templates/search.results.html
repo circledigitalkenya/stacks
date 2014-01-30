@@ -1,11 +1,24 @@
-<h3>Search results</h3>
-<ul>
-  <li ng-repeat="book in books">
-     <a href="#/book?isbn={{book.isbn}}">
-        <img ng-src="{{book.image}}" alt="">
-        <strong>{{book.title}}</strong>
-        <em>by {{book.author}}</em>
-        <em>ISBN {{book.isbn}}</em>
-     </a>
-  </li>    
-</ul>
+<header class="clearfix main-header">
+    <div class="left">
+      <a href="index.html"><span class="circle-icon">&lt;</span></a>
+    </div>
+    <div class="center">
+      <img src="img/logo-trans-small.png" width="70px" alt="">
+    </div>
+    <div class="right"></div>
+</header>
+
+<div class="main-window">
+    <h3>Search Results</h3>
+    <ul class="list">
+      <li ng-repeat="book in books">
+        <a href="#/book?isbn={{book.isbn}}" class="clearfix">
+          <img ng-src="{{book.image}}" alt="">
+          <div>
+            <h4>{{book.title}}</h4>
+            <p class="light">by {{book.author}}</p>
+          </div>
+        </a>
+      </li>
+    </ul>
+</div>
