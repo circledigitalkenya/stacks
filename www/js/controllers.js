@@ -27,9 +27,9 @@ angular.module('ladders.controllers', [])
         "INSERT INTO books( isbn, title, author, publisher, year, pages) " +
         "VALUES (" +
           "'"+this.isbn +"',"+
-          "'"+this.title +"',"+
-          "'"+this.author +"',"+
-          "'"+this.publisher +"',"+
+          "'"+this.title.replace(/["']/g, "''") +"',"+
+          "'"+this.author.replace(/["']/g, "''") +"',"+
+          "'"+this.publisher.replace(/["']/g, "''") +"',"+
           "'"+this.year +"',"+
           "'"+this.pages+"'"+
         ")"
@@ -218,9 +218,9 @@ angular.module('ladders.controllers', [])
           "INSERT INTO books( isbn, title, author, description, publisher, year, image, pages, price) "+
           "VALUES (" +
             "'"+$scope.book.isbn+"',"+ 
-            "'"+$scope.book.title+"',"+ 
-            "'"+$scope.book.author+"',"+ 
-            "'"+$scope.book.description+"',"+ 
+            "'"+$scope.book.title.replace(/["']/g, "''")+"',"+ 
+            "'"+$scope.book.author.replace(/["']/g, "''")+"',"+ 
+            "'"+$scope.book.description.replace(/["']/g, "''")+"',"+ 
             "'"+$scope.book.publisher+"',"+ 
             "'"+$scope.book.pubdate+"',"+ 
             "'"+$scope.book.image+"',"+ 
