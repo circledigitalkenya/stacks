@@ -24,16 +24,15 @@ angular.module('ladders.controllers', [])
 
     $scope.submitBook = function() {
       database.query(
-        'INSERT INTO books( isbn, title, author, publisher, year, pages)' +
-        ' VALUES' +
-        '(' +
-        '"' + this.isbn + '",' +
-        '"' + this.title + '",' +
-        '"' + this.author + '",' +
-        '"' + this.publisher + '",' +
-        '"' + this.year + '",' +
-        '"' + this.pages + '"' +
-        ')'
+        "INSERT INTO books( isbn, title, author, publisher, year, pages) " +
+        "VALUES (" +
+          "'"+this.isbn +"',"+
+          "'"+this.title +"',"+
+          "'"+this.author +"',"+
+          "'"+this.publisher +"',"+
+          "'"+this.year +"',"+
+          "'"+this.pages+"'"+
+        ")"
       ).then(function(d) {
         $location.path('/library');
       })
@@ -124,7 +123,7 @@ angular.module('ladders.controllers', [])
     $scope.search_ISBN_Locally = function(isbn) {
 
       return database
-        .query('SELECT id,isbn FROM books where isbn = "' + isbn + '" LIMIT 0, 1')
+        .query("SELECT id,isbn FROM books where isbn = '"+isbn+"' LIMIT 0, 1")
         .then(function(data) {
           if (data.length) {
             BookService.setResults(data); //cache the results in the service
@@ -193,7 +192,7 @@ angular.module('ladders.controllers', [])
   })
 
   .controller('BookController', function($scope, $location, $route, BookService, database) {
-    console.log('the isbn passed over to route is: ' + $route.current.params.isbn);
+    // console.log('the isbn passed over to route is: ' + $route.current.params.isbn);
 
     // is there a book set for viewing
     if ($route.current.params.isbn) {
@@ -203,7 +202,7 @@ angular.module('ladders.controllers', [])
       $scope.book.exists_in_library = false;
 
       database
-        .query('SELECT id,isbn FROM books where isbn = "' + $scope.book.isbn + '" LIMIT 0, 1')
+        .query("SELECT id,isbn FROM books where isbn = '"+$scope.book.isbn+"' LIMIT 0, 1")
         .then(function(data) {
           if (data.length) {
             $scope.book.id = data[0].id;
@@ -215,32 +214,27 @@ angular.module('ladders.controllers', [])
     $scope.addToLibrary = function() {
       database
         .query(
-          'INSERT INTO books( isbn, title, author, description, publisher, year, image, pages, price)' +
-          ' VALUES' +
-          '(' +
-          '"' + $scope.book.isbn + '",' +
-          '"' + $scope.book.title + '",' +
-          '"' + $scope.book.author + '",' +
-          '"' + $scope.book.description + '",' +
-          '"' + $scope.book.publisher + '",' +
-          '"' + $scope.book.pubdate + '",' +
-          '"' + $scope.book.image + '",' +
-          '"' + $scope.book.pages + '",' +
-          '"' + $scope.book.price + '"' +
-          ')'
-      )
+          "INSERT INTO books( isbn, title, author, description, publisher, year, image, pages, price) "+
+          "VALUES (" +
+            "'"+$scope.book.isbn+"',"+ 
+            "'"+$scope.book.title+"',"+ 
+            "'"+$scope.book.author+"',"+ 
+            "'"+$scope.book.description+"',"+ 
+            "'"+$scope.book.publisher+"',"+ 
+            "'"+$scope.book.pubdate+"',"+ 
+            "'"+$scope.book.image+"',"+ 
+            "'"+$scope.book.pages+"',"+ 
+            "'"+$scope.book.price+"'"+
+          ")"
+        )
         .then(function(d) {
           $location.path('/bookadded');
         })
-        .
-      catch (function(e) {
-        console.log(e)
-      })
     }
 
     $scope.removeFromLibrary = function(id) {
       database
-        .query('DELETE FROM books WHERE id="' + id + '"')
+        .query("DELETE FROM books WHERE id='"+id+"'")
         .then(function(d) {
           $location.path('/library'); // successfuly deleted book
         })
