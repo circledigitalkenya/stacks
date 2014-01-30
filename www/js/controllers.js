@@ -1,6 +1,6 @@
 angular.module('ladders.controllers', [])
 
-.controller('AddBookController', function($scope, $location, BookService, database){
+.controller('AddBookController', function($scope, $q, $location, BookService, database){
     $scope.searchAmazon = function(q){
       var query = this.q || q;
 
@@ -74,8 +74,11 @@ angular.module('ladders.controllers', [])
 
       promise = asyncscan(); //get the scan promise
       promise.then(function(ean){
+
         // convert the raw EAN to ISBN
         var isbn = BookService.EAN_to_ISBN(ean);
+        console.log('ean after conversion to isbn becomes: '+ isbn);
+
         if( isbn ) {
           if( amazon_search ) {
             // search the book from amazon
@@ -111,6 +114,8 @@ angular.module('ladders.controllers', [])
                 }
               }); 
           }
+        } else {
+          $location.path('/scan/noresults')
         }
       })
 
