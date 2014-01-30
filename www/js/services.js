@@ -13,11 +13,112 @@ angular.module('ladders.services', [])
 
       findByISBN : function(isbn) {
         for(var i = 0; i < this.books.length; i++){
+          console.log('book isbn is: '+this.books[i].isbn);
           if( this.books[i].isbn == isbn ) {
             return this.books[i];
           }
         }
+      },
+
+      /**
+       * Converts an EAN_10 or EAN_13 barcode value 
+       * to ISBN
+       *
+       * example: this EAN_13 value 9780596527679 will be 
+       * converted to isbn 0596527675
+       * @return {String|Bool} an isbn if successful, false if not succesful
+       */
+      EAN_to_ISBN : function(isbn){
+
+          var isbn10exp = /^\d{9}[0-9X]$/;
+          var isbn13exp = /^\d{13}$/;
+          var isbnlen = isbn.length;
+          var total = 0;
+
+          if (isbnlen == 0) {   
+              return false; // no isbn was found
+          }
+
+          if (!(isbn10exp.test(isbn)) && !(isbn13exp.test(isbn))) {
+              // console.log("This ISBN is invalid." + "\n" +"It contains invalid characters.");
+              return false;
+          }
+
+          // Validate & convert a 10-digit ISBN
+          if (isbnlen == 10) {
+
+              // Test for 10-digit ISBNs:
+              // Formulated number must be divisible by 11
+              // 0234567899 is a valid number
+              for (var x=0; x<9; x++) { 
+                  total = total+(isbn.charAt(x)*(10-x)); 
+              }
+
+              // check digit
+              z = isbn.charAt(9);
+              if (z == "X") { z = 10; }
+
+              // validate ISBN
+              if ((total+z*1) % 11 != 0) {   // modulo function gives remainder
+                  z = (11 - (total % 11)) % 11;
+                  if (z == 10) { z = "X"; }
+                  // console.log("This 10-digit ISBN is invalid." + "\n" + "The check digit should be " + z + ".");
+                  return false;
+              }
+              else {
+                  // convert the 10-digit ISBN to a 13-digit ISBN
+                  isbn = "978"+isbn.substring(0,9);
+                  total = 0;
+                  for (var x=0; x<12; x++) {
+                      if ((x % 2) == 0) { y = 1; }
+                      else { y = 3; }
+                      total = total+(isbn.charAt(x)*y);
+                  }       
+                  z = (10 - (total % 10)) % 10;
+              }       
+          }
+
+          // Validate & convert a 13-digit ISBN
+          else { 
+              // Test for 13-digit ISBNs
+              // 9780234567890 is a valid number
+              for (var x=0; x<12; x++) {
+                  if ((x % 2) == 0) { y = 1; }
+                  else { y = 3; }
+                  total = total+(isbn.charAt(x)*y);
+              }
+
+              // check digit
+              z = isbn.charAt(12);
+
+              // validate ISBN        
+              if ((10 - (total % 10)) % 10 != z) {   // modulo function gives remainder
+                  z = (10 - (total % 10)) % 10; 
+                  // console.log("This 13-digit ISBN is invalid." + "\n" + "The check digit should be " + z + ".");
+                  return false;
+              }
+              else {
+                  // convert the 13-digit ISBN to a 10-digit ISBN
+                  if ((isbn.substring(0,3) != "978")) {
+                      // console.log("This 13-digit ISBN does not begin with \"978\"" + "\n" + "It cannot be converted to a 10-digit ISBN.");
+                      return false;
+                  }
+                  else {
+                      isbn = isbn.substring(3,12);
+                      total = 0;
+                      for (var y=0; y<9; y++) {
+                          total = total+(isbn.charAt(y)*(10-y));
+                      }
+                      z = (11 - (total % 11)) % 11;
+                      if (z == 10) { z = "X"; } 
+                  }
+              }
+          }
+
+          return isbn + z;  
       }
+
+
     }
 })
 

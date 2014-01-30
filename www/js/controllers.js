@@ -46,62 +46,80 @@ angular.module('ladders.controllers', [])
      *                            if this is false we search for the isbn in users library
      */
     $scope.scanBook = function(amazon_search){
+      $location.path('/home');
 
       amazon_search = amazon_search || true;
 
-      cordova.plugins.barcodeScanner.scan(
-        function (result) {
-          if( result.cancelled === 0 && result.format === 'EAN_13') {
-            
-
-            if( amazon_search ) {
-              // search the book from amazon
-              $scope
-                .search_ISBN_From_Amazon(result.text)
-                .then(function(response){
-                  if( response ) {
-                    $location
-                      .path('/book')
-                      .search({
-                        isbn : result.text
-                      });
-                  } else {
-                    $location.path('/scan/noresults')
-                  }
-                }); 
-
-            } else {
-              // search the book from users library
-              $scope
-                .search_ISBN_Locally(result.text)
-                .then(function(response){
-                  if( response ) {
-                    // if its a single book, show the book view
-                    $location
-                      .path('/book')
-                      .search({
-                        isbn : result.text
-                      });
-
-                  } else {
-                    // go to the scan/noresults page
-                    $location.path('/scan/noresults')
-                  }
-                }); 
-
+      // the barcode scan is async, so we wrap it in an
+      // angular promise then get the result,
+      // without doing this $location.path won't work as it runs
+      // before the scan is complete
+      var asyncscan = function(){
+        var deferred = $q.defer();
+        cordova.plugins.barcodeScanner.scan(
+          function (result) {
+            if( result.cancelled === 0 ) {
+              if(result.text.length > 0 ) {
+                deferred.resolve(result.text)
+              }
             }
-          } else {
-            $location.path('')
+          }, 
+          function (error) {
+            deferred.reject("Scanning failed: " + error);
           }
-        }, 
-        function (error) {
-          console.log("Scanning failed: " + error);
+        );
+
+        return deferred.promise;
+      }
+
+      promise = asyncscan(); //get the scan promise
+      promise.then(function(ean){
+        // convert the raw EAN to ISBN
+        var isbn = BookService.EAN_to_ISBN(ean);
+        if( isbn ) {
+          if( amazon_search ) {
+            // search the book from amazon
+            $scope
+              .search_ISBN_From_Amazon(isbn)
+              .then(function(response){
+                if( response ) {
+                  $location
+                    .path('/book')
+                    .search({
+                      isbn : isbn
+                    });
+                } else {
+                  $location.path('/scan/noresults')
+                }
+              }); 
+          } else {
+            // search the book from users library
+            $scope
+              .search_ISBN_Locally(isbn)
+              .then(function(response){
+                if( response ) {
+                  // if its a single book, show the book view
+                  $location
+                    .path('/book')
+                    .search({
+                      isbn : isbn
+                    });
+
+                } else {
+                  // go to the scan/noresults page
+                  $location.path('/scan/noresults')
+                }
+              }); 
+          }
         }
-      );
+      })
+
+
     }
 
 
     $scope.search_ISBN_Locally = function(isbn){
+
       return database
               .query('SELECT id,isbn FROM books where isbn = "'+isbn+'" LIMIT 0, 1')
               .then(function(data){
@@ -171,9 +189,12 @@ angular.module('ladders.controllers', [])
     }
 })
 .controller('BookController', function($scope, $location, $route, BookService, database){
+  console.log('the isbn passed over to route is: '+ $route.current.params.isbn);
+
   // is there a book set for viewing
   if( $route.current.params.isbn ) {
     $scope.book = BookService.findByISBN($route.current.params.isbn);
+
     // find out if the book is already in users library
     $scope.book.exists_in_library = false;
 

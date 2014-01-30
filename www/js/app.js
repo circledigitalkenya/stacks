@@ -40,8 +40,7 @@ document.addEventListener('deviceready', function(){
         controller: "AddBookController"
       })
       .when("/scan/noresults",{
-        templateUrl: "templates/scan.no_results.html",
-        controller: "AddBookController"
+        templateUrl: "templates/scan.no_results.html"
       })
       .when("/book/",{
         templateUrl: "templates/book.html",
