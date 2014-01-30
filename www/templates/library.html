@@ -7,16 +7,20 @@
     </div>
     <div class="right"></div>
 </header>
-<div class="main-window">
-    <h2>Books in your library</h2>
-    <ul>
-      <li ng-repeat="book in books">
-        <img ng-src="{{book.image}}" alt="">
-        <strong>{{book.title}}</strong>
-        <em>by {{book.author}}</em>
-        <em>ISBN {{book.isbn}}</em>
 
-        <a href="" ng-click="removeFromLibrary(book.id)" style="color: red;">x remove</a>
-      </li>    
-    </ul>
+<div class="main-window">
+  <h2>Books in your library</h2>
+  <form class="clearfix search-container">
+      <input type="search" ng-model="search" placeholder="Search ISBN, title or author" style="border: solid 1px #ccc;" class="ng-pristine ng-valid"> 
+  </form>
+  <ul>
+    <li ng-repeat="book in books | filter:search">
+      <img ng-src="{{book.image}}" alt="">
+      <strong>{{book.title}}</strong>
+      <em>by {{book.author}}</em>
+      <em>ISBN {{book.isbn}}</em>
+
+      <a href="" ng-click="removeFromLibrary(book.id)" style="color: red;">x remove</a>
+    </li>    
+  </ul>
 </div>
