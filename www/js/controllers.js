@@ -46,8 +46,6 @@ angular.module('ladders.controllers', [])
      *                            if this is false we search for the isbn in users library
      */
     $scope.scanBook = function(amazon_search) {
-      $location.path('/home');
-
       amazon_search = amazon_search || true;
 
       // the barcode scan is async, so we wrap it in an
