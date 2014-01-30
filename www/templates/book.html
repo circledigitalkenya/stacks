@@ -1,31 +1,38 @@
-<div>
-    <img ng-src="{{book.image}}" alt="">
-    <div>
-        <strong>{{book.title}}</strong>
-    </div>
-    <div>by {{book.author}}</div>
-    <div>ISBN {{book.isbn}}</div>
+<header class="clearfix main-header">
+  <div class="left">
+    <a href="index.html"><span class="circle-icon">&lt;</span></a>
+  </div>
+  <div class="center">
+    <img src="img/logo-trans-small.png" width="70px" alt="">
+  </div>
+  <div class="right"></div>
+</header>
 
-    <div ng-if="book.exists_in_library">
-        <a href=""  ng-click="removeFromLibrary(book.id)">
-            Remove from library
-        </a>
-        <br/><br/>
-        <a href=""  ng-click="loannBook()">
-            Loan this book
-        </a>
-    </div>
+<div class="main-window">
+  <img ng-src="{{book.image}}" alt="">
+  <div class="item">
+    <h1>{{book.title}}</h1>
+    <h3 class="light">by {{book.author}}</h3>
+    <h3 class="light">{{book.publisher}}, {{book.pubdate}}</h3>
+  </div>
 
-    <div ng-if="book.exists_in_library ? false : true">
-        <a href=""  ng-click="addToLibrary()">
-            + Add to library
-        </a>
-        <br/><br/>
-        <a href=""  ng-click="addToLibrary()">
-            Buy this book ( {{book.price}} )
-        </a>
-    </div>
+  <div class="button-group" ng-if="book.exists_in_library ? false : true">
+    <a class="button gray" href=""  ng-click="addToLibrary()">
+        + Add to library
+    </a>
+    <br/><br/>
+    <a class="button gray">
+        Buy this book ( {{book.price}} )
+    </a>
+  </div>
 
-
+  <div class="button-group" ng-if="book.exists_in_library">
+    <a class="button gray" ng-click="removeFromLibrary(book.id)">
+        Remove from library
+    </a>
+    <br/><br/>
+    <a class="button gray" ng-click="loanBook()">
+        Loan this book
+    </a>
+  </div>
 </div>
-
