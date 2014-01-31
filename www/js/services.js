@@ -1,22 +1,22 @@
 angular.module('stacks.services', [])
 
 .factory('BookService', function($http) {
-  var _self = this;
-  
-  _self.books = [];
 
   return {
+
+    books : [],
+
     search_amazon: function(q) {
       return $http.get('http://circle.co.ke/amazon/?q=' + q);
     },
     setResults: function(results) {
-      _self.books = results
+      this.books = results
     },
 
     findByISBN: function(isbn) {
-      for (var i = 0; i < _self.books.length; i++) {
-        if (_self.books[i].isbn == isbn) {
-          return _self.books[i];
+      for (var i = 0; i < this.books.length; i++) {
+        if (this.books[i].isbn == isbn) {
+          return this.books[i];
         }
       }
     },

@@ -229,7 +229,7 @@ angular.module('stacks.controllers', [])
     $scope.addToLibrary = function() {
       database
         .query(
-          "INSERT INTO books( isbn, title, author, description, publisher, year, image, pages, price) "+
+          "INSERT INTO books( isbn, title, author, description, publisher, pubdate, image, pages, price) "+
           "VALUES (" +
             "'"+$scope.book.isbn+"',"+ 
             "'"+$scope.book.title.replace(/[']/g, "''")+"',"+ 
