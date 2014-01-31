@@ -68,8 +68,22 @@ document.addEventListener('deviceready', function(){
     // style the application
     StatusBar.styleLightContent();
 
-  });
+  })
+
+  .run(function($rootScope){
+
+    $rootScope.connection_available = true;
+
+
+    var states = {};
+    states[Connection.NONE] = 'No network connection';
+    if( states[navigator.connection.type] == 'No network connection' ){
+      $rootScope.connection_available = false;
+    }
+
+  })
 
   angular.bootstrap(document, ['stacks']);
+
 });
 

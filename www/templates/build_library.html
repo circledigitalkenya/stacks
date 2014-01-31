@@ -9,9 +9,16 @@
 </header>
 <div class="main-window">
     <div class="button-group">
-      <a ng-click="scanBook()" class="button green">
+
+  
+      <a ng-show="connection_available" ng-click="scanBook()" class="button green">
         Scan ISBN <img ng-show="working" src="img/ajax-loader.gif" alt="" />
       </a>
+
+      <a ng-show="connection_available ? false : true" class="button green disabled">
+        Scan ISBN HEY WE ARE OFFLINE!
+      </a>
+
       <a href="#/add" class="button green">No ISBN? Enter it manually</a>
     </div>
 </div>

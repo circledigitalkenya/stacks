@@ -1,6 +1,6 @@
 angular.module('stacks.controllers', [])
 
-  .controller('AddBookController', function($scope, $q, $location, BookService, database) {
+  .controller('AddBookController', function($scope, $rootScope, $q, $location, BookService, database) {
 
     $scope.working = false; // just toggling the loading indicator
 
