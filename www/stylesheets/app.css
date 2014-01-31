@@ -139,6 +139,14 @@ body {
 /* line 24, ../sass/modules/_general.sass */
 .main-window {
   padding: 1em;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  position: absolute;
+  top: 93px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+
 }
 
 /* line 27, ../sass/modules/_general.sass */
