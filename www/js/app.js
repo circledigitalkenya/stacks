@@ -8,6 +8,7 @@ document.addEventListener('deviceready', function(){
 
   angular.module('stacks', [
       'ngRoute',
+      'ngTouch',
       'stacks.services',
       'stacks.controllers'
     ]
