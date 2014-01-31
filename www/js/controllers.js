@@ -2,9 +2,11 @@ angular.module('stacks.controllers', [])
 
   .controller('AddBookController', function($scope, $q, $location, BookService, database) {
 
+    $scope.working = false; // just toggling the loading indicator
+
     $scope.searchAmazon = function(q) {
       $scope.working = true;
-      
+
       var query = this.q || q;
       
       BookService
@@ -72,14 +74,16 @@ angular.module('stacks.controllers', [])
       }
 
       promise = asyncscan(); //get the scan promise
-      promise.then(function(ean) {
 
+      promise.then(function(ean) {
         // convert the raw EAN to ISBN
         var isbn = BookService.EAN_to_ISBN(ean);
         console.log('ean after conversion to isbn becomes: ' + isbn);
 
         if (isbn) {
           if (amazon_search) {
+            $scope.working = true;
+            
             // search the book from amazon
             $scope
               .search_ISBN_From_Amazon(isbn)

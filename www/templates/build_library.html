@@ -9,7 +9,9 @@
 </header>
 <div class="main-window">
     <div class="button-group">
-      <a ng-click="scanBook()" class="button green">Scan ISBN</a>
+      <a ng-click="scanBook()" class="button green">
+        Scan ISBN <img ng-show="working" src="img/ajax-loader.gif" alt="" />
+      </a>
       <a href="#/add" class="button green">No ISBN? Enter it manually</a>
     </div>
 </div>
