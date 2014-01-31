@@ -199,7 +199,8 @@ angular.module('stacks.controllers', [])
   .controller('BookController', function($scope, $location, $route, BookService, database) {
     // console.log('the isbn passed over to route is: ' + $route.current.params.isbn);
 
-    // is there a book set for viewing
+    // for the search results view which sends
+    // the isbn as the unique identifier
     if ($route.current.params.isbn) {
 
       // find the book in cache
@@ -229,6 +230,21 @@ angular.module('stacks.controllers', [])
           })
       }
 
+    } 
+
+    // for the library view which sends the id as
+    // the unique identifier
+    if ($route.current.params.id) {
+      // cache miss, find the book in our database
+      database
+        .query("SELECT * FROM books where id = '"+$route.current.params.id+"' LIMIT 0, 1")
+        .then(function(data) {
+          if (data.length) {
+            $scope.book = data[0];
+            $scope.book.exists_in_library = true;
+            $scope.book.pubyear = new Date($scope.book.pubdate).getFullYear(); // extract the pub year for display only
+          }
+        })
     }
 
     $scope.addToLibrary = function() {
