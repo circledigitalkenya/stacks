@@ -1,21 +1,22 @@
 angular.module('stacks.services', [])
 
 .factory('BookService', function($http) {
-  var books = [];
+  var _self = this;
+  
+  _self.books = [];
 
   return {
     search_amazon: function(q) {
       return $http.get('http://circle.co.ke/amazon/?q=' + q);
     },
     setResults: function(results) {
-      this.books = results
+      _self.books = results
     },
 
     findByISBN: function(isbn) {
-      for (var i = 0; i < this.books.length; i++) {
-        console.log('book isbn is: ' + this.books[i].isbn);
-        if (this.books[i].isbn == isbn) {
-          return this.books[i];
+      for (var i = 0; i < _self.books.length; i++) {
+        if (_self.books[i].isbn == isbn) {
+          return _self.books[i];
         }
       }
     },
@@ -161,7 +162,7 @@ angular.module('stacks.services', [])
           "image TEXT,"+
           "author TEXT,"+
           "publisher TEXT,"+
-          "year TEXT,"+
+          "pubdate TEXT,"+
           "pages TEXT,"+
           "price TEXT"+
         ")"

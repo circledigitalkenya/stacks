@@ -1,6 +1,7 @@
 angular.module('stacks.controllers', [])
 
   .controller('AddBookController', function($scope, $q, $location, BookService, database) {
+
     $scope.searchAmazon = function(q) {
       var query = this.q || q;
 
@@ -196,20 +197,34 @@ angular.module('stacks.controllers', [])
 
     // is there a book set for viewing
     if ($route.current.params.isbn) {
+
+      // find the book in cache
       $scope.book = BookService.findByISBN($route.current.params.isbn);
-      $scope.book.pubyear = new Date($scope.book.pubdate).getFullYear(); // extract the pub year for display only
 
-      // find out if the book is already in users library
-      $scope.book.exists_in_library = false;
+      if( $scope.book ) {
+        // cache hit, find if this book already exists in our database
+        database
+          .query("SELECT id,isbn FROM books where isbn = '"+$route.current.params.isbn+"' LIMIT 0, 1")
+          .then(function(data) {
+            if (data.length) {
+              $scope.book.id = data[0].id;
+              $scope.book.exists_in_library = true;
+              $scope.book.pubyear = new Date($scope.book.pubdate).getFullYear(); // extract the pub year for display only
+            }
+          })
+      } else {
+        // cache miss, find the book in our database
+        database
+          .query("SELECT * FROM books where isbn = '"+$route.current.params.isbn+"' LIMIT 0, 1")
+          .then(function(data) {
+            if (data.length) {
+              $scope.book = data[0];
+              $scope.book.exists_in_library = true;
+              $scope.book.pubyear = new Date($scope.book.pubdate).getFullYear(); // extract the pub year for display only
+            }
+          })
+      }
 
-      database
-        .query("SELECT id,isbn FROM books where isbn = '"+$scope.book.isbn+"' LIMIT 0, 1")
-        .then(function(data) {
-          if (data.length) {
-            $scope.book.id = data[0].id;
-            $scope.book.exists_in_library = true;
-          }
-        })
     }
 
     $scope.addToLibrary = function() {

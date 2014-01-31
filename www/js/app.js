@@ -35,14 +35,6 @@ document.addEventListener('deviceready', function(){
         templateUrl: "templates/add.manually.html",
         controller: "AddBookController"
       })
-      .when("/lookup",{
-        templateUrl: "templates/lookup.html",
-        controller: "AddBookController"
-      })
-      .when("/lookup/noresults",{
-        templateUrl: "templates/lookup.no_results.html",
-        controller: "AddBookController"
-      })
       .when("/book/",{
         templateUrl: "templates/book.html",
         controller: "BookController"
