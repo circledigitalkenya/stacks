@@ -19,7 +19,6 @@ document.addEventListener('deviceready', function(){
     // Set up the various states which the app can be in.
     // Each state's controller can be found in controllers.js
     $routeProvider
-
       .when('/home', {
         templateUrl: 'templates/home.html'
       })
@@ -62,9 +61,11 @@ document.addEventListener('deviceready', function(){
         redirectTo: '/home'
       });
 
-      // connect to the database
-      databaseProvider.connect('stacks');
+    // connect to the database
+    databaseProvider.connect('stacks');
 
+    // style the application
+    StatusBar.styleLightContent();
 
   });
 

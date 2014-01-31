@@ -22,6 +22,7 @@ $ cd stacks
 $ cordova platform add ios
 $ cordova plugin add https://github.com/wildabeast/BarcodeScanner
 $ cordova plugin add https://github.com/lite4cordova/Cordova-SQLitePlugin
+$ cordova plugin add org.apache.cordova.statusbar
 $ cordova plugin add org.apache.cordova.console
 ```
 
@@ -51,7 +52,7 @@ On a new terminal window
 $ cordova serve ios
 ```
 
-This launches the address (http://localhost:8000/ios/www/) with the application loaded for preview. 
+This launches the address [http://localhost:8000/ios/www/]() with the application loaded for preview. 
 
 ### Building the application on Xcode
 
