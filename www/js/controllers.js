@@ -25,9 +25,8 @@ angular.module('stacks.controllers', [])
 
     $scope.submitBook = function() {
       database.query(
-        "INSERT INTO books( isbn, title, author, publisher, year, pages) " +
+        "INSERT INTO books(title, author, publisher, pubdate, pages) " +
         "VALUES (" +
-          "'"+this.isbn +"',"+
           "'"+this.title.replace(/[']/g, "''") +"',"+
           "'"+this.author.replace(/[']/g, "''") +"',"+
           "'"+this.publisher.replace(/[']/g, "''") +"',"+
