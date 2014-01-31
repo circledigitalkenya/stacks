@@ -428,3 +428,8 @@ a.button.green {
 .search-container.full-width input[type=search] {
   width: 100%;
 }
+
+* {
+ -webkit-touch-callout: none;
+ -webkit-user-select: none;
+}
