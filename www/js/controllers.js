@@ -3,8 +3,10 @@ angular.module('stacks.controllers', [])
   .controller('AddBookController', function($scope, $q, $location, BookService, database) {
 
     $scope.searchAmazon = function(q) {
+      $scope.working = true;
+      
       var query = this.q || q;
-
+      
       BookService
         .search_amazon(query)
         .then(
@@ -115,7 +117,6 @@ angular.module('stacks.controllers', [])
           $location.path('/scan/noresults')
         }
       })
-
 
     }
 

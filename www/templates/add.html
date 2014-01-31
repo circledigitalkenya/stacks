@@ -18,7 +18,8 @@
         <input type="search" ng-model="q" placeholder="Search ISBN, title or author" style="border: solid 1px #ccc;"> 
         <input type="submit" value="Go &rarr;" class="orange">
     </form>
-    
+    <img ng-show="working" src="img/ajax-loader.gif" alt="" />
+
     <div class="button-group">
       <a href="#/addmanually" class="button green">Can't find it? Type it in here</a>
     </div>

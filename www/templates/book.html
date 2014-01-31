@@ -18,21 +18,21 @@
 
   <div class="button-group" ng-if="book.exists_in_library ? false : true">
     <a class="button gray" href=""  ng-click="addToLibrary()">
-        + Add to library
+      + Add to library
     </a>
     <br/><br/>
     <a class="button gray">
-        Buy this book ( {{book.price}} )
+      Buy this book ( {{book.price}} )
     </a>
   </div>
 
   <div class="button-group" ng-if="book.exists_in_library">
     <a class="button gray" ng-click="removeFromLibrary(book.id)">
-        Remove from library
+      Remove from library
     </a>
     <br/><br/>
     <a class="button gray" ng-click="loanBook()">
-        Loan this book
+      Loan this book
     </a>
   </div>
 </div>
