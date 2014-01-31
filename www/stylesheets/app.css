@@ -314,6 +314,7 @@ p {
 /* line 26, ../sass/modules/_typography.sass */
 p.light {
   color: #999999;
+  margin-top: 0;
 }
 
 /* line 28, ../sass/modules/_typography.sass */
@@ -414,4 +415,8 @@ a.button.green {
   display: block;
   width: 145px;
   margin: 0 auto;
+}
+
+.search-container.full-width input[type=search] {
+  width: 100%;
 }
