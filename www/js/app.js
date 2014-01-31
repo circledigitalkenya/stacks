@@ -72,14 +72,8 @@ document.addEventListener('deviceready', function(){
 
   .run(function($rootScope){
 
-    $rootScope.connection_available = true;
-
-
-    var states = {};
-    states[Connection.NONE] = 'No network connection';
-    if( states[navigator.connection.type] == 'No network connection' ){
-      $rootScope.connection_available = false;
-    }
+    // set the conenction status to global scope
+    $rootScope.connection_available = (navigator.connection.type == Connection.NONE) ? false : true;
 
   })
 
