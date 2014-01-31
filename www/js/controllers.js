@@ -34,7 +34,7 @@ angular.module('stacks.controllers', [])
           "'"+this.pages+"'"+
         ")"
       ).then(function(d) {
-        $location.path('/library');
+        $location.path('/bookadded');
       })
     }
 
