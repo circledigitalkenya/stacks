@@ -70,12 +70,12 @@ document.addEventListener('deviceready', function(){
 
   })
 
-  .run(function($rootScope){
+  // .run(function($rootScope){
 
-    // set the conenction status to global scope
-    $rootScope.connection_available = (navigator.connection.type == Connection.NONE) ? false : true;
+  //   // set the conenction status to global scope
+  //   $rootScope.connection_available = (navigator.connection.type == Connection.NONE) ? false : true;
 
-  })
+  // })
 
   angular.bootstrap(document, ['stacks']);
 
