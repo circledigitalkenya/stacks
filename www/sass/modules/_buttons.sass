@@ -1,0 +1,27 @@
+a.button
+  border-radius: $b-radius
+  width: 100%
+  display: inline-block
+  color: white
+  padding: 1em
+  text-align: center
+  &.green
+    background: $green
+
+.button:hover 
+  background-color: $orange
+
+.button-group
+  margin-top: 1em
+  .button
+    margin-top: 1em
+    &:first-of-type
+      margin-top: 0
+
+.orange
+  background: $orange
+  color: white
+
+.gray
+  background: $light-gray
+  color: $black !important

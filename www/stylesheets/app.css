@@ -139,14 +139,6 @@ body {
 /* line 24, ../sass/modules/_general.sass */
 .main-window {
   padding: 1em;
-  overflow: auto;
-  -webkit-overflow-scrolling: touch;
-  position: absolute;
-  top: 73px;
-  bottom: 0px;
-  left: 0px;
-  right: 0px;
-
 }
 
 /* line 27, ../sass/modules/_general.sass */
@@ -182,6 +174,17 @@ a, a:active, a:link {
 /* line 50, ../sass/modules/_general.sass */
 .item {
   margin-top: 1em;
+}
+
+/* line 53, ../sass/modules/_general.sass */
+.search-container.full-width input[type=search] {
+  width: 100%;
+}
+
+/* line 56, ../sass/modules/_general.sass */
+h1, h2, h3, h4, h5, h6, p, label, a, li, ul {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
 }
 
 /* line 1, ../sass/modules/_form.sass */
@@ -322,7 +325,6 @@ p {
 /* line 26, ../sass/modules/_typography.sass */
 p.light {
   color: #999999;
-  margin-top: 0;
 }
 
 /* line 28, ../sass/modules/_typography.sass */
@@ -423,13 +425,4 @@ a.button.green {
   display: block;
   width: 145px;
   margin: 0 auto;
-}
-
-.search-container.full-width input[type=search] {
-  width: 100%;
-}
-
-h1,h2,h3,h4,h5,h6,p,label,a,li,ul {
- -webkit-touch-callout: none;
- -webkit-user-select: none;
 }
