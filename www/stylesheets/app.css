@@ -426,3 +426,13 @@ a.button.green {
   width: 145px;
   margin: 0 auto;
 }
+
+/* line 1, ../sass/modules/_bottom-button.sass */
+.bottom-button {
+  background: red;
+}
+
+/* line 4, ../sass/modules/_bottom-button.sass */
+.wrap {
+  background: blue;
+}
