@@ -84,7 +84,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 
 /* line 1, ../sass/modules/_startup.sass */
 .startup {
-  background: url("../img/bg.jpg");
+  background: #537c56;
   height: 100%;
 }
 /* line 4, ../sass/modules/_startup.sass */
@@ -211,15 +211,18 @@ label {
   border-right: none;
   float: left;
 }
-/* line 20, ../sass/modules/_form.sass */
+/* line 21, ../sass/modules/_form.sass */
 .search-container input[type=submit] {
   width: 20%;
   border-radius: 0 3px 3px 0;
   border: 1px #af5841 solid;
   float: left;
+  -webkit-appearance: none;
+  text-align: center;
+  padding: 0.81rem 0;
 }
 
-/* line 25, ../sass/modules/_form.sass */
+/* line 29, ../sass/modules/_form.sass */
 form {
   margin-top: 1em;
 }
@@ -249,19 +252,20 @@ ul.list img {
   width: 49%;
   margin-right: 2%;
   height: 141px;
-  background: rgba(255, 255, 255, 0.3);
+  border: 1px solid white;
   color: white;
   padding: 0.5em;
+  margin-top: 2rem;
 }
-/* line 15, ../sass/modules/_quatro.sass */
+/* line 17, ../sass/modules/_quatro.sass */
 .quatro a:hover, .quatro a:active, .quatro a:focus {
   background: #537c56;
 }
-/* line 18, ../sass/modules/_quatro.sass */
+/* line 20, ../sass/modules/_quatro.sass */
 .quatro a:nth-of-type(2n) {
   margin-right: 0;
 }
-/* line 21, ../sass/modules/_quatro.sass */
+/* line 23, ../sass/modules/_quatro.sass */
 .quatro a:nth-of-type(n+3) {
   margin-top: 2%;
 }
@@ -325,9 +329,10 @@ p {
 /* line 26, ../sass/modules/_typography.sass */
 p.light {
   color: #999999;
+  margin-top: 0;
 }
 
-/* line 28, ../sass/modules/_typography.sass */
+/* line 29, ../sass/modules/_typography.sass */
 .light {
   font-family: "InconsolataReg", helvetica neue, helvetica, sans-serif;
   font-weight: 200;
@@ -336,7 +341,7 @@ p.light {
 
 /* line 1, ../sass/modules/_header.sass */
 .main-header {
-  background: url("../img/bg.jpg");
+  background: #537c56;
   padding: 2em 0.5em 0.75em;
   color: white;
 }
@@ -429,10 +434,51 @@ a.button.green {
 
 /* line 1, ../sass/modules/_bottom-button.sass */
 .bottom-button {
-  background: red;
+  width: 100px;
+  height: 50px;
+  border-radius: 100px 100px 0 0;
+  background: #537c56;
+  border-left: 1px solid white;
+  border-right: 1px solid white;
+  border-top: 1px solid white;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  position: absolute;
+  bottom: 0;
+  margin-left: -50px;
+  left: 50%;
+  z-index: 1;
+  color: white;
+  font-size: 2rem;
+  font-weight: 800;
+  padding: 10px 0 0 0px;
+  text-align: center;
+  line-height: 1.1rem;
+}
+/* line 22, ../sass/modules/_bottom-button.sass */
+.bottom-button span {
+  display: block;
+  font-weight: 200;
+  font-size: 12px;
 }
 
-/* line 4, ../sass/modules/_bottom-button.sass */
-.wrap {
-  background: blue;
+/* line 28, ../sass/modules/_bottom-button.sass */
+#thingy, #thingy2 {
+  -webkit-transition: all 0.1s ease-in;
+  transform: translate3d(0, 0, 0);
+  position: absolute;
+  bottom: 0;
+  margin-left: -50px;
+  left: 50%;
+  color: white;
+}
+
+/* line 38, ../sass/modules/_bottom-button.sass */
+#thingy.wrap {
+  -webkit-transform: translate3d(-60px, -70px, 0);
+}
+
+/* line 40, ../sass/modules/_bottom-button.sass */
+#thingy2.wrap {
+  -webkit-transform: translate3d(60px, -70px, 0);
 }

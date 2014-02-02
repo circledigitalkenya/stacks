@@ -9,9 +9,10 @@
         <a href="#/library/">View your library</a>
       </div>
     </article>
-    <div ng-controller="ryantest" class="bottom-button">
-        <button ng-click="moveit()">Move this</button>
-        <div id="thingy">what is happening?</div>
-      </div>
+    <section ng-controller="ryantest">
+      <div class="bottom-button" ng-click="moveit()"> +<span>Add a Book</span> </div>
+      <a id="thingy" ng-click="scanBook()">Scan a book</a>
+      <a id="thingy2" href="#/add">Add by hand</a>
+    </section>
   </div>
 </div>

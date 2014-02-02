@@ -1,5 +1,41 @@
 .bottom-button
-  background: red
+  width: 100px
+  height: 50px
+  border-radius: 100px 100px 0 0
+  background: $green
+  border-left: 1px solid white
+  border-right: 1px solid white
+  border-top: 1px solid white
+  -webkit-transform: translate3d(0,0,0)
+  transform: translate3d(0,0,0)
+  position: absolute
+  bottom: 0
+  margin-left: -50px
+  left: 50%
+  z-index: 1
+  color: white
+  font-size: 2rem
+  font-weight: 800
+  padding: 10px 0 0 0px
+  text-align: center
+  line-height: 1.1rem
+  span
+    display: block
+    font-weight: 200
+    font-size: 12px
+  // -webkit-transition: transform 1s ease-in
 
-.wrap
-  background: blue
+#thingy, #thingy2
+  -webkit-transition: all .1s ease-in
+  transform: translate3d(0,0,0)
+  position: absolute
+  bottom: 0
+  margin-left: -50px
+  left: 50%
+  color: white
+
+
+#thingy.wrap
+  -webkit-transform: translate3d(-60px,-70px,0)
+#thingy2.wrap
+  -webkit-transform: translate3d(60px,-70px,0)

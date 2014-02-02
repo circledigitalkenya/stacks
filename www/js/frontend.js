@@ -4,5 +4,6 @@ function ryantest($scope) {
       // var target = angular.element(document.getElementById('thingy'));
 
       $('#thingy').toggleClass('wrap');
+      $('#thingy2').toggleClass('wrap');
   };
 };
