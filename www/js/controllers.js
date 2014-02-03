@@ -208,7 +208,7 @@ angular.module('stacks.controllers', [])
       
       if( $scope.book ) {
         // cache hit, find if this book already exists in our database
-        $scope.book.yearpublished = $scope.book.pubdate.slice(0,4);
+        $scope.book.yearpublished = new Date($scope.book.pubdate).getFullYear();
         database
           .query("SELECT id,isbn FROM books where isbn = '"+$route.current.params.isbn+"' LIMIT 0, 1")
           .then(function(data) {
@@ -225,7 +225,7 @@ angular.module('stacks.controllers', [])
             if (data.length) {
               $scope.book = data[0];
               $scope.book.exists_in_library = true;
-              $scope.book.yearpublished = $scope.book.pubdate.slice(0,4);
+              $scope.book.yearpublished = new Date($scope.book.pubdate).getFullYear();
             }
           })
       }
@@ -242,7 +242,7 @@ angular.module('stacks.controllers', [])
           if (data.length) {
             $scope.book = data[0];
             $scope.book.exists_in_library = true;
-            $scope.book.yearpublished = $scope.book.pubdate.slice(0,4); // extract the pub year for display only
+            $scope.book.yearpublished = new Date($scope.book.pubdate).getFullYear(); // extract the pub year for display only
           }
         })
     }
