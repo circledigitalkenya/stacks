@@ -9,6 +9,7 @@ document.addEventListener('deviceready', function(){
   angular.module('stacks', [
       'ngRoute',
       'ngTouch',
+      'ngAnimate',
       'stacks.services',
       'stacks.controllers'
     ]
@@ -69,11 +70,17 @@ document.addEventListener('deviceready', function(){
     StatusBar.styleLightContent();
 
   })
-
   .run(function($rootScope){
-
+    
     // set the conenction status to global scope
-    $rootScope.connection_available = (navigator.connection.type == Connection.NONE) ? false : true;
+    // the connection plugin is bringing problems 
+    // while debugging on the browser,
+    // setting connection_available to true
+    if( navigator.connection ) {
+      $rootScope.connection_available = (navigator.connection.type == Connection.NONE) ? false : true;
+    } else {
+      $rootScope.connection_available = true;
+    }
 
   })
 
