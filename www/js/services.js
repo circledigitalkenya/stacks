@@ -163,6 +163,7 @@ angular.module('stacks.services', [])
           "author TEXT,"+
           "publisher TEXT,"+
           "pubdate TEXT,"+
+          "pubyear TEXT,"+
           "pages TEXT,"+
           "price TEXT"+
         ")"

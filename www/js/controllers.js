@@ -34,7 +34,7 @@ angular.module('stacks.controllers', [])
           "'"+this.title.replace(/[']/g, "''") +"',"+
           "'"+this.author.replace(/[']/g, "''") +"',"+
           "'"+this.publisher.replace(/[']/g, "''") +"',"+
-          "'"+this.year +"',"+
+          "date('"+this.year +"'),"+
           "'"+this.pages+"'"+
         ")"
       ).then(function(d) {
@@ -205,16 +205,16 @@ angular.module('stacks.controllers', [])
 
       // find the book in cache
       $scope.book = BookService.findByISBN($route.current.params.isbn);
-
+      
       if( $scope.book ) {
         // cache hit, find if this book already exists in our database
+        $scope.book.yearpublished = $scope.book.pubdate.slice(0,4);
         database
           .query("SELECT id,isbn FROM books where isbn = '"+$route.current.params.isbn+"' LIMIT 0, 1")
           .then(function(data) {
             if (data.length) {
               $scope.book.id = data[0].id;
               $scope.book.exists_in_library = true;
-              $scope.book.pubyear = new Date($scope.book.pubdate).getFullYear(); // extract the pub year for display only
             }
           })
       } else {
@@ -225,7 +225,7 @@ angular.module('stacks.controllers', [])
             if (data.length) {
               $scope.book = data[0];
               $scope.book.exists_in_library = true;
-              $scope.book.pubyear = new Date($scope.book.pubdate).getFullYear(); // extract the pub year for display only
+              $scope.book.yearpublished = $scope.book.pubdate.slice(0,4);
             }
           })
       }
@@ -242,7 +242,7 @@ angular.module('stacks.controllers', [])
           if (data.length) {
             $scope.book = data[0];
             $scope.book.exists_in_library = true;
-            $scope.book.pubyear = new Date($scope.book.pubdate).getFullYear(); // extract the pub year for display only
+            $scope.book.yearpublished = $scope.book.pubdate.slice(0,4); // extract the pub year for display only
           }
         })
     }
@@ -257,7 +257,7 @@ angular.module('stacks.controllers', [])
             "'"+$scope.book.author.replace(/[']/g, "''")+"',"+ 
             "'"+$scope.book.description.replace(/[']/g, "''")+"',"+ 
             "'"+$scope.book.publisher+"',"+ 
-            "'"+$scope.book.pubdate+"',"+ 
+            "date('"+$scope.book.pubdate+"'),"+ 
             "'"+$scope.book.image+"',"+ 
             "'"+$scope.book.pages+"',"+ 
             "'"+$scope.book.price+"'"+
