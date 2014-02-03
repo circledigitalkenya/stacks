@@ -8,8 +8,11 @@ a.button
   &.green
     background: $green
 
-.button:hover 
-  background-color: $orange
+.button:hover
+  background-color: inherit
+
+.button:focus 
+  background-color: darken($green,10%)
 
 .button-group
   margin-top: 1em
