@@ -28,7 +28,7 @@
     </a>
     <br/><br/>
     <a class="button gray">
-      Buy this book ( {{book.price}} )
+      Buy this book <i ng-if="book.price.length > 0">( {{book.price}} )</i>
     </a>
   </div>
 
