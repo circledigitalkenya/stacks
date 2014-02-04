@@ -11,7 +11,8 @@ document.addEventListener('deviceready', function(){
       'ngTouch',
       'ngAnimate',
       'stacks.services',
-      'stacks.controllers'
+      'stacks.controllers',
+      'stacks.directives'
     ]
   )
   .config(function($routeProvider, databaseProvider) {
