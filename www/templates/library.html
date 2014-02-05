@@ -1,5 +1,3 @@
-<nav stacks-nav></nav>
-
 <div class="main-window">
   <h2>Books in your library</h2>
   <form class="clearfix search-container full-width">
@@ -7,7 +5,7 @@
   </form>
   <ul class="list">
     <li ng-repeat="book in lbooks = ( books | filter:search )">
-      <a href="#/book?id={{book.id}}" class="clearfix">
+      <a href="#/tab/book/{{book.id}}" class="clearfix">
         <img ng-src="{{book.image}}" alt="">
         <div>
           <h4>{{book.title}}</h4>

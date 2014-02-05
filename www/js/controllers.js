@@ -1,6 +1,6 @@
 angular.module('stacks.controllers', [])
 
-  .controller('AddBookController', function($scope, $rootScope, $q, $location, BookService, database) {
+  .controller('AddBookController', function($scope, $state, $rootScope, $q, $location, BookService, database) {
 
     $scope.working = false; // just toggling the loading indicator
 
@@ -15,9 +15,9 @@ angular.module('stacks.controllers', [])
           function success(response, status, headers, config) {
             if (response.data.status == 'success' && response.data.result.length > 0) {
               BookService.setResults(response.data.result); //cache the results
-              $location.path('/search/results');
+              $state.go('tab.searchresults');
             } else {
-              $location.path('/search/noresults'); // no results page
+              $state.go('tab.noresults'); // no results page
             }
           },
           function error(response, status, headers, config) {
@@ -38,7 +38,7 @@ angular.module('stacks.controllers', [])
           "'"+this.pages+"'"+
         ")"
       ).then(function(d) {
-        $location.path('/bookadded');
+        $state.go('tab.bookadded');
       })
     }
 
@@ -53,7 +53,7 @@ angular.module('stacks.controllers', [])
 
       // the barcode scan is async, so we wrap it in an
       // angular promise then get the result,
-      // without doing this $location.path won't work as it runs
+      // without doing this $state.go won't work as it runs
       // before the scan is complete
       var asyncscan = function() {
         var deferred = $q.defer();
@@ -89,13 +89,13 @@ angular.module('stacks.controllers', [])
               .search_ISBN_From_Amazon(isbn)
               .then(function(response) {
                 if (response) {
-                  $location
-                    .path('/book')
-                    .search({
+                  $state
+                    .go('tab.book')
+                    .data({
                       isbn: isbn
                     });
                 } else {
-                  $location.path('/scan/noresults')
+                  $state.go('tab.scannoresults')
                 }
               });
           } else {
@@ -105,20 +105,20 @@ angular.module('stacks.controllers', [])
               .then(function(response) {
                 if (response) {
                   // if its a single book, show the book view
-                  $location
-                    .path('/book')
-                    .search({
+                  $state
+                    .go('tab.book')
+                    .data({
                       isbn: isbn
                     });
 
                 } else {
                   // go to the scan/noresults page
-                  $location.path('/scan/noresults')
+                  $state.go('tab.scannoresults')
                 }
               });
           }
         } else {
-          $location.path('/scan/noresults')
+          $state.go('tab.scannoresults')
         }
       })
 
@@ -157,11 +157,11 @@ angular.module('stacks.controllers', [])
     }
   })
 
-  .controller('SearchResults', function($scope, $location, BookService) {
+  .controller('SearchResults', function($scope, $state, $location, BookService) {
     $scope.books = BookService.books;
   })
 
-  .controller('LibraryController', function($scope, $location, database) {
+  .controller('LibraryController', function($scope, $state, $location, database) {
 
     $scope.getAllbooks = function() {
       // loop through the result set to create an object to pass to the template
@@ -196,56 +196,41 @@ angular.module('stacks.controllers', [])
     }
   })
 
-  .controller('BookController', function($scope, $location, $route, BookService, database) {
-    // console.log('the isbn passed over to route is: ' + $route.current.params.isbn);
+  .controller('BookController', function($scope, $state, $location, $stateParams, BookService, database) {
 
-    // for the search results view which sends
-    // the isbn as the unique identifier
-    if ($route.current.params.isbn) {
+    if ($stateParams.id) {
 
       // find the book in cache
-      $scope.book = BookService.findByISBN($route.current.params.isbn);
+      $scope.book = BookService.findByISBN($stateParams.id);
       
       if( $scope.book ) {
         // cache hit, find if this book already exists in our database
         $scope.book.yearpublished = new Date($scope.book.pubdate).getFullYear();
+
         database
-          .query("SELECT id,isbn FROM books where isbn = '"+$route.current.params.isbn+"' LIMIT 0, 1")
+          .query("SELECT * FROM books where id = '"+$stateParams.id+"' OR isbn = '"+$stateParams.id+"' LIMIT 0, 1")
           .then(function(data) {
             if (data.length) {
               $scope.book.id = data[0].id;
               $scope.book.exists_in_library = true;
             }
           })
+
       } else {
         // cache miss, find the book in our database
         database
-          .query("SELECT * FROM books where isbn = '"+$route.current.params.isbn+"' LIMIT 0, 1")
+          .query("SELECT * FROM books where id = '"+$stateParams.id+"' OR isbn = '"+$stateParams.id+"' LIMIT 0, 1")
           .then(function(data) {
             if (data.length) {
               $scope.book = data[0];
               $scope.book.exists_in_library = true;
-              $scope.book.yearpublished = new Date($scope.book.pubdate).getFullYear();
+              $scope.book.yearpublished = new Date($scope.book.pubdate).getFullYear(); // extract the pub year for display only
             }
           })
       }
 
     } 
 
-    // for the library view which sends the id as
-    // the unique identifier
-    if ($route.current.params.id) {
-      // cache miss, find the book in our database
-      database
-        .query("SELECT * FROM books where id = '"+$route.current.params.id+"' LIMIT 0, 1")
-        .then(function(data) {
-          if (data.length) {
-            $scope.book = data[0];
-            $scope.book.exists_in_library = true;
-            $scope.book.yearpublished = new Date($scope.book.pubdate).getFullYear(); // extract the pub year for display only
-          }
-        })
-    }
 
     $scope.addToLibrary = function() {
       database
@@ -264,7 +249,7 @@ angular.module('stacks.controllers', [])
           ")"
         )
         .then(function(d) {
-          $location.path('/bookadded');
+          $state.go('tab.bookadded');
         })
     }
 
@@ -272,7 +257,7 @@ angular.module('stacks.controllers', [])
       database
         .query("DELETE FROM books WHERE id='"+id+"'")
         .then(function(d) {
-          $location.path('/library'); // successfuly deleted book
+          $state.go('tab.library'); // successfuly deleted book
         })
     }
 

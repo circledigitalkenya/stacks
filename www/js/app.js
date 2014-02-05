@@ -7,7 +7,7 @@
 document.addEventListener('deviceready', function(){
 
   angular.module('stacks', [
-      'ngRoute',
+      'ui.router',
       'ngTouch',
       'ngAnimate',
       'stacks.services',
@@ -15,54 +15,71 @@ document.addEventListener('deviceready', function(){
       'stacks.directives'
     ]
   )
-  .config(function($routeProvider, databaseProvider) {
+  .config(function($urlRouterProvider, $stateProvider, databaseProvider) {
 
     // Use AngularUI Router which uses the concept of states
     // Learn more here: https://github.com/angular-ui/ui-router
     // Set up the various states which the app can be in.
     // Each state's controller can be found in controllers.js
-    $routeProvider
-      .when('/home', {
-        templateUrl: 'templates/home.html'
+    $urlRouterProvider.otherwise("/state1");
+
+    $stateProvider
+      .state('home', {
+        url: "/home",
+        templateUrl: "templates/home.html"
       })
-      .when("/build",{
-        templateUrl: "templates/build_library.html",
-        controller : "AddBookController"
+      .state('tab', {
+        url: "/tab",
+        templateUrl: "templates/tabs.html"
       })
-      .when("/add",{
+      .state('tab.build', {
+        url: "/build",
+        templateUrl: "templates/build_library.html"
+      })
+      .state('tab.add', {
+        url: "/add",
         templateUrl: "templates/add.html",
         controller: "AddBookController"
       })
-      .when("/addmanually",{
+      .state('tab.addmanually',{
+        url:"/addmanually",
         templateUrl: "templates/add.manually.html",
         controller: "AddBookController"
       })
-      .when("/book/",{
+      .state('tab.book',{
+        url:"/book/:id",
         templateUrl: "templates/book.html",
         controller: "BookController"
       })
-      .when("/book/search",{
+      .state('tab.search',{
+        url:"/search",
         templateUrl: "templates/search.html",
         controller: "BookController"
       })
-      .when("/bookadded",{
+      .state('tab.bookadded',{
+        url:"/bookadded",
         templateUrl: "templates/book.added.html"
       })
-      .when("/search/results",{
+      .state('tab.searchresults',{
+        url:"/searchresults",
         templateUrl: "templates/search.results.html",
         controller: "SearchResults"
       })
-      .when("/search/noresults",{
+      .state('tab.no_results',{
+        url:"/noresults",
         templateUrl: "templates/search.no_results.html",
         controller: "BookController"
       })
-      .when("/library",{
+      .state('tab.library',{
+        url:"/library",
         templateUrl: "templates/library.html",
         controller: "LibraryController"
-      })
-      .otherwise({
-        redirectTo: '/home'
       });
+
+
+    // if none of the above states are matched, use this as the fallback
+    $urlRouterProvider.otherwise('/home');
+
 
     // connect to the database
     databaseProvider.connect('stacks');

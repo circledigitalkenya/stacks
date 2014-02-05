@@ -1,10 +1,8 @@
-<nav stacks-nav></nav>
-
 <div class="main-window">
     <h3>Search Results</h3>
     <ul class="list">
       <li ng-repeat="book in books">
-        <a href="#/book?isbn={{book.isbn}}" class="clearfix">
+        <a href="#/tab/book/{{book.isbn}}" class="clearfix">
           <img ng-src="{{book.image}}" alt="">
           <div>
             <h4>{{book.title}}</h4>
