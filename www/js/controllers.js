@@ -1,21 +1,9 @@
 angular.module('stacks.controllers', [])
   .controller('MainController', function($scope, $window, $state, $rootScope, $q, $location, BookService, database) {
-
-    var oldLocation = '';
-    $scope.$on('$stateChangeStart', function(e, toState, toParams, fromState, fromParams) {
-
-      var isDownwards = true;
-      if (toState) {
-        var newLocation = toState.url;
-        if (oldLocation !== newLocation && oldLocation.indexOf(newLocation) !== -1) {
-          isDownwards = false;
-        }
-        oldLocation = newLocation;
-      }
-
-      $scope.isDownwards = isDownwards;
-    });
-
+    // back button
+    $rootScope.back = function(){
+      $window.history.back();
+    }
   })
   .controller('AddBookController', function($scope, $state, $rootScope, $q, $location, BookService, database) {
 
@@ -203,14 +191,6 @@ angular.module('stacks.controllers', [])
 
     $scope.getAllbooks();
 
-    $scope.removeFromLibrary = function(id) {
-      database
-        .query('DELETE FROM books WHERE id="' + id + '"')
-        .then(function(d) {
-          // successfuly deleted book
-          $scope.getAllbooks();
-        })
-    }
   })
 
   .controller('BookController', function($scope, $state, $location, $stateParams, BookService, database) {
@@ -278,4 +258,51 @@ angular.module('stacks.controllers', [])
         })
     }
 
+    $scope.loanBook = function(id){
+
+      // we already requested contact permissions from our config.xml
+      // but here we just want to inform the user on why we need access
+      // to contacts, if user clicks cancel,nothing happens
+      // show this dialog only once
+      if( ! $rootScope.allowed_to_access_contacts ) {
+        // do dialog, and list all contacts
+        navigator.notification.confirm(
+          'We use your contacts just so you don\'t have to type in names.',
+          function(buttonindex){
+            if( buttonindex === 1){
+              $rootScope.allowed_to_access_contacts = true;
+              BookService.current_book = id; // copy the current book id to service since services persist data across the app
+              $state.go('tab.contactlist');
+            }
+          },
+          'Allow app to access contacts',
+          ['Allow','Cancel']
+        );        
+      } else {
+        $state.go('tab.contactlist');
+      }
+    }
+
+
+  })
+  .controller('LoanController', function($scope, $state, $location, BookService, ContactService){
+
+    ContactService
+      .findAll()
+      .then(function(contacts){
+        var nice_contacts = [];
+        for (var i = 0; i < contacts.length; i++) {
+          nice_contacts.push({
+            id : contacts[i].id,
+            name : contacts[i].displayName
+          })
+        }
+        
+        $scope.contacts = nice_contacts;
+        console.log($scope.contacts.length + ' contacts found');
+
+
+      }, function(e){
+        console.log('Error: Failed to get the contacts!')
+      });
   });

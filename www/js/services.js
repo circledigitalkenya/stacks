@@ -2,6 +2,8 @@ angular.module('stacks.services', [])
 
 .factory('BookService', function($http) {
 
+  var current_book;
+
   return {
 
     books : [],
@@ -128,7 +130,28 @@ angular.module('stacks.services', [])
       return isbn + z;
     }
 
+  }
+})
+.factory('ContactService', function($q) {
 
+  var current_book;
+
+  return {
+
+    // fetch all contacts
+    // returns a promise since contacts.find is async
+    findAll : function(){
+
+      var deferred = $q.defer();
+
+      // find all contacts
+      var options = new ContactFindOptions();
+      options.filter = "";
+      var filter = ["displayName", "addresses"];
+      navigator.contacts.find(filter, deferred.resolve, deferred.reject, options);
+
+      return deferred.promise;
+    }
   }
 })
 

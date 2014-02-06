@@ -26,6 +26,7 @@ $ cordova plugin add org.apache.cordova.statusbar
 $ cordova plugin add org.apache.cordova.dialogs
 $ cordova plugin add org.apache.cordova.network-information
 $ cordova plugin add org.apache.cordova.console
+$ cordova plugin add org.apache.cordova.contacts
 ```
 
 This will install the ios platform cordova plugins.

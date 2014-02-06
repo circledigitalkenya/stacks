@@ -93,6 +93,12 @@ document.addEventListener('deviceready', function(){
         templateUrl: "templates/library.html",
         controller: "LibraryController",
         resolve: resolve
+      })
+      .state('tab.contactlist',{
+        url:"/contactlist",
+        templateUrl: "templates/contact_list.html",
+        controller: "LoanController",
+        resolve: resolve
       });
 
 
@@ -119,6 +125,9 @@ document.addEventListener('deviceready', function(){
       $rootScope.connection_available = true;
     }
 
+    $rootScope.allowed_to_access_contacts = false;
+
+    
   })
 
   angular.bootstrap(document, ['stacks']);
