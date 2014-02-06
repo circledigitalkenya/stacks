@@ -488,34 +488,47 @@ a.button.green {
   -webkit-transform: translate3d(60px, -70px, 0);
 }
 
-/**
- * styles are borrowed from https://github.com/driftyco/ionic/blob/master/scss/_animations.scss
- * 
- */
-/* line 6, ../sass/modules/_animations.scss */
-.slide-left-right-ios7 > .ng-enter.ng-enter-active {
-  /* NEW content ACTIVELY sliding IN from the RIGHT */
-  -webkit-transform: translate3d(0, 0, 0);
-  -moz-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0);
+/* line 32, ../sass/modules/_animations.scss */
+.slide {
+  position: relative;
 }
 
-/* line 13, ../sass/modules/_animations.scss */
-.slide-left-right-ios7 > .ng-leave.ng-leave-active {
-  -webkit-transform: translate3d(-15%, 0, 0);
-  -moz-transform: translate3d(-15%, 0, 0);
-  transform: translate3d(-15%, 0, 0);
+/* line 36, ../sass/modules/_animations.scss */
+.slide.ng-leave, .slide.ng-enter {
+  -webkit-transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s;
+  -moz-transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s;
+  -ms-transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s;
+  -o-transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s;
+  transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s;
+  position: absolute;
+  left: 0;
+  right: 0;
 }
 
-/* line 20, ../sass/modules/_animations.scss */
-.slide-left-right-ios7 > .ng-enter,
-.slide-left-right-ios7 > .ng-leave {
-  -webkit-transition: all ease-in-out 250ms;
-  -moz-transition: all ease-in-out 250ms;
-  transition: all ease-in-out 250ms;
+/* line 49, ../sass/modules/_animations.scss */
+.slide.left.ng-enter,
+.slide.right.ng-leave.ng-leave-active {
+  left: 100%;
+  opacity: 0;
 }
 
-/* line 27, ../sass/modules/_animations.scss */
+/* line 57, ../sass/modules/_animations.scss */
+.slide.left.ng-enter.ng-enter-active,
+.slide.left.ng-leave,
+.slide.right.ng-enter.ng-enter-active,
+.slide.right.ng-leave {
+  left: 0;
+  opacity: 1;
+}
+
+/* line 63, ../sass/modules/_animations.scss */
+.slide.left.ng-leave.ng-leave-active,
+.slide.right.ng-enter {
+  left: -100%;
+  opacity: 0;
+}
+
+/* line 68, ../sass/modules/_animations.scss */
 .tab {
   position: absolute;
   z-index: 1;
@@ -524,4 +537,5 @@ a.button.green {
   bottom: 0;
   left: 0;
   background: #fff;
+  width: 100%;
 }

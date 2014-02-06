@@ -17,6 +17,14 @@ document.addEventListener('deviceready', function(){
   )
   .config(function($urlRouterProvider, $stateProvider, databaseProvider) {
 
+    var resolve = {  
+      delay: function($q, $timeout) {  
+        var delay = $q.defer();  
+        $timeout(delay.resolve, 0, false);  
+        return delay.promise;  
+      }  
+    };
+
     // Use AngularUI Router which uses the concept of states
     // Learn more here: https://github.com/angular-ui/ui-router
     // Set up the various states which the app can be in.
@@ -26,54 +34,65 @@ document.addEventListener('deviceready', function(){
     $stateProvider
       .state('home', {
         url: "/home",
-        templateUrl: "templates/home.html"
+        templateUrl: "templates/home.html",
+        resolve: resolve
       })
       .state('tab', {
         url: "/tab",
-        templateUrl: "templates/tabs.html"
+        templateUrl: "templates/tabs.html",
+        resolve: resolve
       })
       .state('tab.build', {
         url: "/build",
-        templateUrl: "templates/build_library.html"
+        templateUrl: "templates/build_library.html",
+        resolve: resolve
       })
       .state('tab.add', {
         url: "/add",
         templateUrl: "templates/add.html",
-        controller: "AddBookController"
+        controller: "AddBookController",
+        resolve: resolve
       })
       .state('tab.addmanually',{
         url:"/addmanually",
         templateUrl: "templates/add.manually.html",
-        controller: "AddBookController"
+        controller: "AddBookController",
+        resolve: resolve
       })
       .state('tab.book',{
         url:"/book/:id",
         templateUrl: "templates/book.html",
-        controller: "BookController"
+        controller: "BookController",
+        resolve: resolve
       })
       .state('tab.search',{
         url:"/search",
         templateUrl: "templates/search.html",
-        controller: "BookController"
+        controller: "BookController",
+        resolve: resolve
       })
       .state('tab.bookadded',{
         url:"/bookadded",
-        templateUrl: "templates/book.added.html"
+        templateUrl: "templates/book.added.html",
+        resolve: resolve
       })
       .state('tab.searchresults',{
         url:"/searchresults",
         templateUrl: "templates/search.results.html",
-        controller: "SearchResults"
+        controller: "SearchResults",
+        resolve: resolve
       })
       .state('tab.no_results',{
         url:"/noresults",
         templateUrl: "templates/search.no_results.html",
-        controller: "BookController"
+        controller: "BookController",
+        resolve: resolve
       })
       .state('tab.library',{
         url:"/library",
         templateUrl: "templates/library.html",
-        controller: "LibraryController"
+        controller: "LibraryController",
+        resolve: resolve
       });
 
 

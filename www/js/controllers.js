@@ -1,5 +1,22 @@
 angular.module('stacks.controllers', [])
+  .controller('MainController', function($scope, $window, $state, $rootScope, $q, $location, BookService, database) {
 
+    var oldLocation = '';
+    $scope.$on('$stateChangeStart', function(e, toState, toParams, fromState, fromParams) {
+
+      var isDownwards = true;
+      if (toState) {
+        var newLocation = toState.url;
+        if (oldLocation !== newLocation && oldLocation.indexOf(newLocation) !== -1) {
+          isDownwards = false;
+        }
+        oldLocation = newLocation;
+      }
+
+      $scope.isDownwards = isDownwards;
+    });
+
+  })
   .controller('AddBookController', function($scope, $state, $rootScope, $q, $location, BookService, database) {
 
     $scope.working = false; // just toggling the loading indicator
