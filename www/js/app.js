@@ -90,6 +90,23 @@ document.addEventListener('deviceready', function(){
         templateUrl: "templates/contact_list.html",
         controller: "LoanController"
       })
+      .state('tab.loans', {
+        url: "/loans",
+        templateUrl: "templates/loans.html",
+        controller: function($scope, $rootScope, database){
+          database
+          .query("SELECT * FROM books WHERE loaned_date IS NOT NULL")
+          .then(function(d){
+            var len = d.length, books = [];
+            for (var i = 0; i < len; i++) {
+              var _loan_date = new Date(d[i].loaned_date);
+              d[i].nice_loaned_date = _loan_date.getDay() +' '+ $rootScope.monthnames[_loan_date.getMonth()] +' '+_loan_date.getFullYear(); 
+              books.push(d[i]);
+            }
+            $scope.books = books;
+          });
+        }
+      })
       .state('tab.bookloaned',{
         url:"/bookloaned/:name",
         templateUrl: "templates/book.loaned.html",
