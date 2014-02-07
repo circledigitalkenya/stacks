@@ -1,13 +1,13 @@
 <div class="main-window">
     <h2>Manual entry</h2>
-    <form action="" ng-submit="submitBook()">
+    <form novalidate ng-submit="submitBook()" class="addbookform">
       <div class="item">
         <label for="title">Title</label>
-        <input type="text" id="title" ng-model="title">
+        <input type="text" id="title" ng-model="title" required />
       </div>
       <div class="item">
         <label for="author">Author</label>
-        <input type="text" id="author" ng-model="author">
+        <input type="text" id="author" ng-model="author" required />
       </div>
       <div class="item">
         <label for="pub">Publisher</label>

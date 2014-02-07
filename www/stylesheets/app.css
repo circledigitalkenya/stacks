@@ -539,3 +539,12 @@ a.button.green {
   background: #fff;
   width: 100%;
 }
+
+/* line 23, ../sass/app.sass */
+.addbookform input.ng-invalid.ng-dirty {
+  background-color: #fa787e;
+}
+/* line 26, ../sass/app.sass */
+.addbookform input.ng-valid.ng-dirty {
+  background-color: #78fa89;
+}
