@@ -35,70 +35,67 @@ document.addEventListener('deviceready', function(){
       .state('home', {
         url: "/home",
         templateUrl: "templates/home.html",
-        resolve: resolve
+        
       })
       .state('tab', {
         url: "/tab",
         templateUrl: "templates/tabs.html",
-        resolve: resolve
+        
       })
       .state('tab.build', {
         url: "/build",
-        templateUrl: "templates/build_library.html",
-        resolve: resolve
+        templateUrl: "templates/build_library.html"
       })
       .state('tab.add', {
         url: "/add",
         templateUrl: "templates/add.html",
-        controller: "AddBookController",
-        resolve: resolve
+        controller: "AddBookController"
       })
       .state('tab.addmanually',{
         url:"/addmanually",
         templateUrl: "templates/add.manually.html",
-        controller: "AddBookController",
-        resolve: resolve
+        controller: "AddBookController"
       })
       .state('tab.book',{
         url:"/book/:id",
         templateUrl: "templates/book.html",
-        controller: "BookController",
-        resolve: resolve
+        controller: "BookController"
       })
       .state('tab.search',{
         url:"/search",
         templateUrl: "templates/search.html",
-        controller: "BookController",
-        resolve: resolve
+        controller: "BookController"
       })
       .state('tab.bookadded',{
         url:"/bookadded",
-        templateUrl: "templates/book.added.html",
-        resolve: resolve
+        templateUrl: "templates/book.added.html"
       })
       .state('tab.searchresults',{
         url:"/searchresults",
         templateUrl: "templates/search.results.html",
-        controller: "SearchResults",
-        resolve: resolve
+        controller: "SearchResults"
       })
       .state('tab.no_results',{
         url:"/noresults",
         templateUrl: "templates/search.no_results.html",
-        controller: "BookController",
-        resolve: resolve
+        controller: "BookController"
       })
       .state('tab.library',{
         url:"/library",
         templateUrl: "templates/library.html",
-        controller: "LibraryController",
-        resolve: resolve
+        controller: "LibraryController"
       })
       .state('tab.contactlist',{
         url:"/contactlist",
         templateUrl: "templates/contact_list.html",
-        controller: "LoanController",
-        resolve: resolve
+        controller: "LoanController"
+      })
+      .state('tab.bookloaned',{
+        url:"/bookloaned/:name",
+        templateUrl: "templates/book.loaned.html",
+        controller: function($scope,$stateParams){
+          $scope.name = $stateParams.name
+        }
       });
 
 

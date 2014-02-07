@@ -1,7 +1,9 @@
 <h4>Select a friend you'd like to loan the book to</h4>
 <ul>
   <li ng-repeat="contact in contacts">
-    <span>ID: {{contact.id}}</span>
-    <a href="">{{contact.name}}</a>
+    <a href="" ng-click="loanToContact(contact.id, contact.name)">
+      <span>ID: {{contact.id}}</span>
+      {{contact.name}}
+    </a>
   </li>
 </ul>

@@ -193,41 +193,50 @@ angular.module('stacks.controllers', [])
 
   })
 
-  .controller('BookController', function($scope, $state, $location, $stateParams, BookService, database) {
+  .controller('BookController', function($scope, $rootScope, $state, $location, $stateParams, BookService, database) {
+    var monthnames = [ "January", "February", "March", "April", "May", "June","July", "August", "September", "October", "November", "December" ];
 
+    // param id can be either the ISBN or book id
     if ($stateParams.id) {
 
       // find the book in cache
       $scope.book = BookService.findByISBN($stateParams.id);
       
       if( $scope.book ) {
-        // cache hit, find if this book already exists in our database
-        $scope.book.yearpublished = new Date($scope.book.pubdate).getFullYear();
-
+        // cache hit, find out if this book already exists in our database
         database
           .query("SELECT * FROM books where id = '"+$stateParams.id+"' OR isbn = '"+$stateParams.id+"' LIMIT 0, 1")
           .then(function(data) {
             if (data.length) {
               $scope.book.id = data[0].id;
               $scope.book.exists_in_library = true;
+              $scope.book.yearpublished = new Date($scope.book.pubdate).getFullYear();
+              if( $scope.book.loaned_date.length > 0) {
+                var _loan_date = new Date($scope.book.loaned_date);
+                $scope.book.nice_loaned_date = _loan_date.getDay() +' '+ monthnames[_loan_date.getMonth()] +' '+_loan_date.getFullYear(); 
+              }
             }
           })
 
       } else {
         // cache miss, find the book in our database
         database
-          .query("SELECT * FROM books where id = '"+$stateParams.id+"' OR isbn = '"+$stateParams.id+"' LIMIT 0, 1")
+          .query("SELECT * FROM books WHERE id = '"+$stateParams.id+"' OR isbn = '"+$stateParams.id+"' LIMIT 0, 1")
           .then(function(data) {
             if (data.length) {
               $scope.book = data[0];
               $scope.book.exists_in_library = true;
               $scope.book.yearpublished = new Date($scope.book.pubdate).getFullYear(); // extract the pub year for display only
+              console.log($scope.book);
+              if( $scope.book.loaned_date.length > 0) {
+                var _loan_date = new Date($scope.book.loaned_date);
+                $scope.book.nice_loaned_date = _loan_date.getDay() +' '+ monthnames[_loan_date.getMonth()] +' '+_loan_date.getFullYear(); 
+              }
             }
           })
       }
 
     } 
-
 
     $scope.addToLibrary = function() {
       database
@@ -258,8 +267,8 @@ angular.module('stacks.controllers', [])
         })
     }
 
-    $scope.loanBook = function(id){
-
+    $scope.loanBook = function(bookid){
+      
       // we already requested contact permissions from our config.xml
       // but here we just want to inform the user on why we need access
       // to contacts, if user clicks cancel,nothing happens
@@ -271,7 +280,7 @@ angular.module('stacks.controllers', [])
           function(buttonindex){
             if( buttonindex === 1){
               $rootScope.allowed_to_access_contacts = true;
-              BookService.current_book = id; // copy the current book id to service since services persist data across the app
+              BookService.current_book_id = bookid; // copy the current book id to service since services persist data across the app
               $state.go('tab.contactlist');
             }
           },
@@ -285,7 +294,7 @@ angular.module('stacks.controllers', [])
 
 
   })
-  .controller('LoanController', function($scope, $state, $location, BookService, ContactService){
+  .controller('LoanController', function($scope, $state, $location, BookService, ContactService, database){
 
     ContactService
       .findAll()
@@ -297,12 +306,32 @@ angular.module('stacks.controllers', [])
             name : contacts[i].displayName
           })
         }
-        
         $scope.contacts = nice_contacts;
-        console.log($scope.contacts.length + ' contacts found');
-
 
       }, function(e){
         console.log('Error: Failed to get the contacts!')
       });
+
+    $scope.loanToContact = function(contactid, contactname){
+
+      database
+        .query(
+          "UPDATE books SET "+ 
+          "loaned_to_contact_id = '"+contactid+"',"+
+          "loaned_to_contact_name = '"+contactname+"' "+
+          "loaned_date = date('now')"+
+          "WHERE id='"+BookService.current_book_id+"'"
+        )
+        .then(function(){
+          $state
+            .go('tab.bookloaned')
+            .data({
+              name : contactname
+            });
+        }, function(){
+          //query failed
+        })
+    }
+
+
   });
