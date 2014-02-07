@@ -124,6 +124,8 @@ document.addEventListener('deviceready', function(){
 
     $rootScope.allowed_to_access_contacts = false;
 
+    $rootScope.monthnames = [ "January", "February", "March", "April", "May", "June","July", "August", "September", "October", "November", "December" ];
+
     
   })
 

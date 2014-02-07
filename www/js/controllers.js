@@ -166,7 +166,7 @@ angular.module('stacks.controllers', [])
     $scope.books = BookService.books;
   })
 
-  .controller('LibraryController', function($scope, $state, $location, database) {
+  .controller('LibraryController', function($scope, $state, $rootScope, $location, database) {
 
     $scope.getAllbooks = function() {
       // loop through the result set to create an object to pass to the template
@@ -177,14 +177,11 @@ angular.module('stacks.controllers', [])
           var books = [];
 
           for (var i = 0; i < len; i++) {
-            books.push({
-              id: d[i].id,
-              isbn: d[i].isbn,
-              author: d[i].author,
-              title: d[i].title,
-              image: d[i].image
-            });
+            var _loan_date = new Date(d[i].loaned_date);
+            d[i].nice_loaned_date = _loan_date.getDay() +' '+ $rootScope.monthnames[_loan_date.getMonth()] +' '+_loan_date.getFullYear(); 
+            books.push(d[i]);
           }
+
           $scope.books = books
         });
     }
@@ -194,7 +191,6 @@ angular.module('stacks.controllers', [])
   })
 
   .controller('BookController', function($scope, $rootScope, $state, $location, $stateParams, BookService, database) {
-    var monthnames = [ "January", "February", "March", "April", "May", "June","July", "August", "September", "October", "November", "December" ];
 
     // param id can be either the ISBN or book id
     if ($stateParams.id) {
@@ -213,7 +209,7 @@ angular.module('stacks.controllers', [])
               $scope.book.yearpublished = new Date($scope.book.pubdate).getFullYear();
               if( $scope.book.loaned_date.length > 0) {
                 var _loan_date = new Date($scope.book.loaned_date);
-                $scope.book.nice_loaned_date = _loan_date.getDay() +' '+ monthnames[_loan_date.getMonth()] +' '+_loan_date.getFullYear(); 
+                $scope.book.nice_loaned_date = _loan_date.getDay() +' '+ $rootScope.monthnames[_loan_date.getMonth()] +' '+_loan_date.getFullYear(); 
               }
             }
           })
@@ -227,10 +223,9 @@ angular.module('stacks.controllers', [])
               $scope.book = data[0];
               $scope.book.exists_in_library = true;
               $scope.book.yearpublished = new Date($scope.book.pubdate).getFullYear(); // extract the pub year for display only
-              console.log($scope.book);
               if( $scope.book.loaned_date.length > 0) {
                 var _loan_date = new Date($scope.book.loaned_date);
-                $scope.book.nice_loaned_date = _loan_date.getDay() +' '+ monthnames[_loan_date.getMonth()] +' '+_loan_date.getFullYear(); 
+                $scope.book.nice_loaned_date = _loan_date.getDay() +' '+ $rootScope.monthnames[_loan_date.getMonth()] +' '+_loan_date.getFullYear(); 
               }
             }
           })
