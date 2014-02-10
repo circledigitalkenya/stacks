@@ -14,25 +14,15 @@ to any of cordova's supported platforms.
 [Grunt](http://gruntjs.com) ( only for development )
 
 
-## Installation
+## Installing
 
-```bash
+````bash
 $ git clone https://github.com/circledigitalkenya/stacks
 $ cd stacks
-$ cordova platform add ios
-$ cordova plugin add https://github.com/wildabeast/BarcodeScanner
-$ cordova plugin add https://github.com/lite4cordova/Cordova-SQLitePlugin
-$ cordova plugin add org.apache.cordova.statusbar
-$ cordova plugin add org.apache.cordova.dialogs
-$ cordova plugin add org.apache.cordova.network-information
-$ cordova plugin add org.apache.cordova.console
-$ cordova plugin add org.apache.cordova.contacts
-```
+$ bash install.sh
+````
 
-This will install the ios platform cordova plugins.
-
-
-### Installing bower components
+### Adding Bower components
 
 ```bash
 $ cd www
@@ -40,25 +30,38 @@ $ bower install
 ```
 
 
-### Setting up the development environment
-
-Make sure you have grunt installed, then run
-
-```bash
-$ npm install 
-$ grunt
-```
-
-On a new terminal window
+### Previewing the application on a web browser
 
 ```bash
 $ cordova serve ios
 ```
 
-This launches the address [http://localhost:8000/ios/www/]() with the application loaded for preview. 
+Navigate to [http://localhost:8000/ios/www/]() where the application is served for preview
+
+### Previewing the application on an emualtor
+
+```bash
+$ cordova emulate ios
+```
 
 ### Building the application on Xcode
+
+You can alternatively build the application on Xcode and view it on an emualator or actual device, `.app` file is located
+in the `platforms/ios` directory.
 
 ```bash
 $ open -a Xcode platforms/ios
 ```
+
+### Setting up a dev environment
+
+Navigate to the root `stacks` folder and then run
+
+```bash
+$ npm install 
+$ grunt
+```
+Grunt watches for changes and prepares the project for build. 
+You should have `cordova serve ios` running in a new terminal window. 
+You can now make changes to the application and reload the web browser for preview
+
