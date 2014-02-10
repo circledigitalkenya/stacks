@@ -1,40 +1,37 @@
-<div class="main-window">
-  
-  <img ng-src="{{book.image}}" alt="">
-  <div class="item">
-    <h1>{{book.title}}</h1>
-    <h3 class="light">by {{book.author}}</h3>
-    <h3 class="light">
-      <span ng-if="book.publisher.length > 0">
-        {{book.publisher}}, 
-      </span>
-      {{book.yearpublished}}
-    </h3>
-  </div>
-
-  <div class="button-group" ng-if="book.exists_in_library ? false : true">
-    <a class="button gray" href=""  ng-click="addToLibrary()">
-      + Add to library
-    </a>
-    <br/><br/>
-    <a class="button gray">
-      Buy this book <i ng-if="book.price.length > 0">( {{book.price}} )</i>
-    </a>
-  </div>
-
-  <div class="button-group" ng-if="book.exists_in_library">
-    <a class="button gray" ng-click="removeFromLibrary(book.id)">
-      Remove from library
-    </a>
-    <br/><br/>
-    <span ng-if="book.loaned_to_contact_id.length == 0">
-      <a class="button gray" ng-click="loanBook(book.id)">
-        Loan this book
-      </a>      
+<img ng-src="{{book.image}}" alt="">
+<div class="item">
+  <h1>{{book.title}}</h1>
+  <h3 class="light">by {{book.author}}</h3>
+  <h3 class="light">
+    <span ng-if="book.publisher.length > 0">
+      {{book.publisher}}, 
     </span>
-  
-    <span ng-if="book.loaned_to_contact_id.length > 0">
-      Book loaned to {{book.loaned_to_contact_name}} since {{book.nice_loaned_date}}
-    </span>
-  </div>
+    {{book.yearpublished}}
+  </h3>
+</div>
+
+<div class="button-group" ng-if="book.exists_in_library ? false : true">
+  <a class="button gray" href=""  ng-click="addToLibrary()">
+    + Add to library
+  </a>
+  <br/><br/>
+  <a class="button gray">
+    Buy this book <i ng-if="book.price.length > 0">( {{book.price}} )</i>
+  </a>
+</div>
+
+<div class="button-group" ng-if="book.exists_in_library">
+  <a class="button gray" ng-click="removeFromLibrary(book.id)">
+    Remove from library
+  </a>
+  <br/><br/>
+  <span ng-if="book.loaned_to_contact_id.length == 0">
+    <a class="button gray" ng-click="loanBook(book.id)">
+      Loan this book
+    </a>      
+  </span>
+
+  <span ng-if="book.loaned_to_contact_id.length > 0">
+    Book loaned to {{book.loaned_to_contact_name}} since {{book.nice_loaned_date}}
+  </span>
 </div>

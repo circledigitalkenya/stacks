@@ -1,6 +1,4 @@
 .tab 
-  position: absolute
-  top: 85px
   background: #fff
   width: 100%
 
@@ -8,15 +6,17 @@
 .slide-left.ng-leave,
 .slide-right.ng-enter,
 .slide-right.ng-leave
-  position: absolute
-  top: 85px
-  right: 0 
-  bottom: 0 
-  left: 0
+  // position: absolute
+  // top: inherit
+  // right: 0 
+  // bottom: 0 
+  // left: 0
   background: inherit
-  @include transition(.2s ease-in-out)
+  @include transition(ease-in-out 250ms)
 
 .slide-left.ng-enter.ng-enter-active
+  position: absolute
+  width: 100%
   @include transform(translateX(0))
 
 .slide-left.ng-leave 
@@ -33,6 +33,7 @@
 .slide-right.ng-enter.ng-enter-active, 
 .slide-right.ng-leave
   position: absolute
+  width: 100%
   @include transform(translateX(0))
 
 .slide-right.ng-leave.ng-leave-active

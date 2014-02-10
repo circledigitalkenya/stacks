@@ -139,15 +139,22 @@ body {
 /* line 24, ../sass/modules/_general.sass */
 .main-window {
   padding: 1em;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  position: absolute;
+  top: 84px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
 }
 
-/* line 27, ../sass/modules/_general.sass */
+/* line 34, ../sass/modules/_general.sass */
 .clearfix:before, .clearfix:after {
   content: " ";
   display: table;
 }
 
-/* line 31, ../sass/modules/_general.sass */
+/* line 38, ../sass/modules/_general.sass */
 .clearfix:after {
   clear: both;
 }
@@ -155,33 +162,33 @@ body {
 /* For IE 6/7 only
  * Include this rule to trigger hasLayout and contain floats.
  */
-/* line 39, ../sass/modules/_general.sass */
+/* line 46, ../sass/modules/_general.sass */
 .clearfix {
   *zoom: 1;
 }
 
-/* line 43, ../sass/modules/_general.sass */
+/* line 50, ../sass/modules/_general.sass */
 a, a:active, a:link {
   text-decoration: none;
   color: inherit;
 }
 
-/* line 47, ../sass/modules/_general.sass */
+/* line 54, ../sass/modules/_general.sass */
 *, header, a, div, section, li, ul {
   box-sizing: border-box;
 }
 
-/* line 50, ../sass/modules/_general.sass */
+/* line 57, ../sass/modules/_general.sass */
 .item {
   margin-top: 1em;
 }
 
-/* line 53, ../sass/modules/_general.sass */
+/* line 60, ../sass/modules/_general.sass */
 .search-container.full-width input[type=search] {
   width: 100%;
 }
 
-/* line 56, ../sass/modules/_general.sass */
+/* line 63, ../sass/modules/_general.sass */
 h1, h2, h3, h4, h5, h6, p, label, a, li, ul {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -490,31 +497,26 @@ a.button.green {
 
 /* line 1, ../sass/modules/_animations.sass */
 .tab {
-  position: absolute;
-  top: 85px;
   background: white;
   width: 100%;
 }
 
-/* line 7, ../sass/modules/_animations.sass */
+/* line 5, ../sass/modules/_animations.sass */
 .slide-left.ng-enter,
 .slide-left.ng-leave,
 .slide-right.ng-enter,
 .slide-right.ng-leave {
-  position: absolute;
-  top: 85px;
-  right: 0;
-  bottom: 0;
-  left: 0;
   background: inherit;
-  -webkit-transition: 0.2s ease-in-out;
-  -moz-transition: 0.2s ease-in-out;
-  -o-transition: 0.2s ease-in-out;
-  transition: 0.2s ease-in-out;
+  -webkit-transition: ease-in-out 250ms;
+  -moz-transition: ease-in-out 250ms;
+  -o-transition: ease-in-out 250ms;
+  transition: ease-in-out 250ms;
 }
 
-/* line 19, ../sass/modules/_animations.sass */
+/* line 17, ../sass/modules/_animations.sass */
 .slide-left.ng-enter.ng-enter-active {
+  position: absolute;
+  width: 100%;
   -webkit-transform: translateX(0);
   -moz-transform: translateX(0);
   -ms-transform: translateX(0);
@@ -554,6 +556,7 @@ a.button.green {
 .slide-right.ng-enter.ng-enter-active,
 .slide-right.ng-leave {
   position: absolute;
+  width: 100%;
   -webkit-transform: translateX(0);
   -moz-transform: translateX(0);
   -ms-transform: translateX(0);
@@ -561,7 +564,7 @@ a.button.green {
   transform: translateX(0);
 }
 
-/* line 38, ../sass/modules/_animations.sass */
+/* line 39, ../sass/modules/_animations.sass */
 .slide-right.ng-leave.ng-leave-active {
   -webkit-transform: translateX(100%);
   -moz-transform: translateX(100%);

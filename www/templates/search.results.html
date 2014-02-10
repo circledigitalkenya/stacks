@@ -1,14 +1,12 @@
-<div class="main-window">
-    <h3>Search Results</h3>
-    <ul class="list">
-      <li ng-repeat="book in books">
-        <a href="#/tab/book/{{book.isbn}}" class="clearfix">
-          <img ng-src="{{book.image}}" alt="">
-          <div>
-            <h4>{{book.title}}</h4>
-            <p class="light">by {{book.author}}</p>
-          </div>
-        </a>
-      </li>
-    </ul>
-</div>
+<h3>Search Results</h3>
+<ul class="list">
+  <li ng-repeat="book in books">
+    <a href="#/tab/book/{{book.isbn}}" class="clearfix">
+      <img ng-src="{{book.image}}" alt="">
+      <div>
+        <h4>{{book.title}}</h4>
+        <p class="light">by {{book.author}}</p>
+      </div>
+    </a>
+  </li>
+</ul>

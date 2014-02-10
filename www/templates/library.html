@@ -1,21 +1,19 @@
-<div class="main-window">
-  <h2>Books in your library</h2>
-  <form class="clearfix search-container full-width">
-      <input type="search" ng-model="search" placeholder="Search ISBN, title or author" style="border: solid 1px #ccc;" class="ng-pristine ng-valid"> 
-  </form>
-  <ul class="list">
-    <li ng-repeat="book in lbooks = ( books | filter:search )">
-      <a href="#/tab/book/{{book.id}}" class="clearfix">
-        <img ng-src="{{book.image}}" alt="">
-        <div>
-          <h4>{{book.title}}</h4>
-          <p class="light">by {{book.author}}</p>
-          <span class="light" ng-if="book.loaned_to_contact_id.length > 0">
-            With {{book.loaned_to_contact_name}} since {{book.nice_loaned_date}}
-          </span>
-        </div>
-      </a>
-    </li>
-    <li ng-show="lbooks.length == 0">Nothing found for search: '{{search}}'</li>
-  </ul>
-</div>
+<h2>Books in your library</h2>
+<form class="clearfix search-container full-width">
+    <input type="search" ng-model="search" placeholder="Search ISBN, title or author" style="border: solid 1px #ccc;" class="ng-pristine ng-valid"> 
+</form>
+<ul class="list">
+  <li ng-repeat="book in lbooks = ( books | filter:search )">
+    <a href="#/tab/book/{{book.id}}" class="clearfix">
+      <img ng-src="{{book.image}}" alt="">
+      <div>
+        <h4>{{book.title}}</h4>
+        <p class="light">by {{book.author}}</p>
+        <span class="light" ng-if="book.loaned_to_contact_id.length > 0">
+          With {{book.loaned_to_contact_name}} since {{book.nice_loaned_date}}
+        </span>
+      </div>
+    </a>
+  </li>
+  <li ng-show="lbooks.length == 0">Nothing found for search: '{{search}}'</li>
+</ul>
