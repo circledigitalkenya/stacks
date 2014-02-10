@@ -502,6 +502,7 @@ a.button.green {
 .slide-right.ng-enter,
 .slide-right.ng-leave {
   position: absolute;
+  top: 85px;
   right: 0;
   bottom: 0;
   left: 0;
@@ -512,7 +513,7 @@ a.button.green {
   transition: 0.2s ease-in-out;
 }
 
-/* line 18, ../sass/modules/_animations.sass */
+/* line 19, ../sass/modules/_animations.sass */
 .slide-left.ng-enter.ng-enter-active {
   -webkit-transform: translateX(0);
   -moz-transform: translateX(0);
@@ -521,7 +522,7 @@ a.button.green {
   transform: translateX(0);
 }
 
-/* line 21, ../sass/modules/_animations.sass */
+/* line 22, ../sass/modules/_animations.sass */
 .slide-left.ng-leave {
   z-index: 100;
   -webkit-transform: translateX(0);
@@ -531,7 +532,7 @@ a.button.green {
   transform: translateX(0);
 }
 
-/* line 25, ../sass/modules/_animations.sass */
+/* line 26, ../sass/modules/_animations.sass */
 .slide-left.ng-leave.ng-leave-active {
   -webkit-transform: translateX(-100%);
   -moz-transform: translateX(-100%);
@@ -540,7 +541,7 @@ a.button.green {
   transform: translateX(-100%);
 }
 
-/* line 29, ../sass/modules/_animations.sass */
+/* line 30, ../sass/modules/_animations.sass */
 .slide-right.ng-enter {
   -webkit-transform: translateX(-100%);
   -moz-transform: translateX(-100%);
@@ -549,7 +550,7 @@ a.button.green {
   transform: translateX(-100%);
 }
 
-/* line 32, ../sass/modules/_animations.sass */
+/* line 33, ../sass/modules/_animations.sass */
 .slide-right.ng-enter.ng-enter-active,
 .slide-right.ng-leave {
   position: absolute;
@@ -560,7 +561,7 @@ a.button.green {
   transform: translateX(0);
 }
 
-/* line 37, ../sass/modules/_animations.sass */
+/* line 38, ../sass/modules/_animations.sass */
 .slide-right.ng-leave.ng-leave-active {
   -webkit-transform: translateX(100%);
   -moz-transform: translateX(100%);
