@@ -1,0 +1,38 @@
+.tab 
+  position: absolute
+  top: 85px
+  background: #fff
+  width: 100%
+
+.slide-left.ng-enter,
+.slide-left.ng-leave,
+.slide-right.ng-enter,
+.slide-right.ng-leave
+  position: absolute
+  right: 0 
+  bottom: 0 
+  left: 0
+  background: inherit
+  @include transition(.2s ease-in-out)
+
+.slide-left.ng-enter.ng-enter-active
+  @include transform(translateX(0))
+
+.slide-left.ng-leave 
+  z-index: 100
+  @include transform(translateX(0))
+
+.slide-left.ng-leave.ng-leave-active
+  @include transform(translateX(-100%))
+
+
+.slide-right.ng-enter
+  @include transform(translateX(-100%))
+
+.slide-right.ng-enter.ng-enter-active, 
+.slide-right.ng-leave
+  position: absolute
+  @include transform(translateX(0))
+
+.slide-right.ng-leave.ng-leave-active
+  @include transform(translateX(100%))

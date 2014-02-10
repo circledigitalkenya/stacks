@@ -488,64 +488,93 @@ a.button.green {
   -webkit-transform: translate3d(60px, -70px, 0);
 }
 
-/* line 32, ../sass/modules/_animations.scss */
-.slide {
-  position: relative;
-}
-
-/* line 36, ../sass/modules/_animations.scss */
-.slide.ng-leave, .slide.ng-enter {
-  -webkit-transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s;
-  -moz-transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s;
-  -ms-transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s;
-  -o-transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s;
-  transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s;
-  position: absolute;
-  left: 0;
-  right: 0;
-}
-
-/* line 49, ../sass/modules/_animations.scss */
-.slide.left.ng-enter,
-.slide.right.ng-leave.ng-leave-active {
-  left: 100%;
-  opacity: 0;
-}
-
-/* line 57, ../sass/modules/_animations.scss */
-.slide.left.ng-enter.ng-enter-active,
-.slide.left.ng-leave,
-.slide.right.ng-enter.ng-enter-active,
-.slide.right.ng-leave {
-  left: 0;
-  opacity: 1;
-}
-
-/* line 63, ../sass/modules/_animations.scss */
-.slide.left.ng-leave.ng-leave-active,
-.slide.right.ng-enter {
-  left: -100%;
-  opacity: 0;
-}
-
-/* line 68, ../sass/modules/_animations.scss */
+/* line 1, ../sass/modules/_animations.sass */
 .tab {
   position: absolute;
-  z-index: 1;
   top: 85px;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background: #fff;
+  background: white;
   width: 100%;
 }
 
-/* line 23, ../sass/app.sass */
+/* line 7, ../sass/modules/_animations.sass */
+.slide-left.ng-enter,
+.slide-left.ng-leave,
+.slide-right.ng-enter,
+.slide-right.ng-leave {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: inherit;
+  -webkit-transition: 0.2s ease-in-out;
+  -moz-transition: 0.2s ease-in-out;
+  -o-transition: 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
+}
+
+/* line 18, ../sass/modules/_animations.sass */
+.slide-left.ng-enter.ng-enter-active {
+  -webkit-transform: translateX(0);
+  -moz-transform: translateX(0);
+  -ms-transform: translateX(0);
+  -o-transform: translateX(0);
+  transform: translateX(0);
+}
+
+/* line 21, ../sass/modules/_animations.sass */
+.slide-left.ng-leave {
+  z-index: 100;
+  -webkit-transform: translateX(0);
+  -moz-transform: translateX(0);
+  -ms-transform: translateX(0);
+  -o-transform: translateX(0);
+  transform: translateX(0);
+}
+
+/* line 25, ../sass/modules/_animations.sass */
+.slide-left.ng-leave.ng-leave-active {
+  -webkit-transform: translateX(-100%);
+  -moz-transform: translateX(-100%);
+  -ms-transform: translateX(-100%);
+  -o-transform: translateX(-100%);
+  transform: translateX(-100%);
+}
+
+/* line 29, ../sass/modules/_animations.sass */
+.slide-right.ng-enter {
+  -webkit-transform: translateX(-100%);
+  -moz-transform: translateX(-100%);
+  -ms-transform: translateX(-100%);
+  -o-transform: translateX(-100%);
+  transform: translateX(-100%);
+}
+
+/* line 32, ../sass/modules/_animations.sass */
+.slide-right.ng-enter.ng-enter-active,
+.slide-right.ng-leave {
+  position: absolute;
+  -webkit-transform: translateX(0);
+  -moz-transform: translateX(0);
+  -ms-transform: translateX(0);
+  -o-transform: translateX(0);
+  transform: translateX(0);
+}
+
+/* line 37, ../sass/modules/_animations.sass */
+.slide-right.ng-leave.ng-leave-active {
+  -webkit-transform: translateX(100%);
+  -moz-transform: translateX(100%);
+  -ms-transform: translateX(100%);
+  -o-transform: translateX(100%);
+  transform: translateX(100%);
+}
+
+/* line 25, ../sass/app.sass */
 .addbookform input.ng-invalid.ng-dirty {
   border-color: #a94442;
   background-color: #f2dfde;
 }
-/* line 27, ../sass/app.sass */
+/* line 29, ../sass/app.sass */
 .addbookform input.ng-valid.ng-dirty {
   border-color: #3c763d;
   background-color: #bbdcbc;
