@@ -252,7 +252,7 @@ angular.module('stacks.controllers', [])
             "'"+$scope.book.description.replace(/[']/g, "''")+"',"+ 
             "'"+$scope.book.publisher+"',"+ 
             "date('"+$scope.book.pubdate+"'),"+ 
-            "date('%Y','"+$scope.book.pubdate+"'),"+ 
+            "strftime('%Y','"+$scope.book.pubdate+"'),"+ 
             "'"+$scope.book.image+"',"+ 
             "'"+$scope.book.pages+"',"+ 
             "'"+$scope.book.price+"'"+
