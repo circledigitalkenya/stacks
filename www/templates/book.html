@@ -25,7 +25,7 @@
     Remove from library
   </a>
   <br/><br/>
-  <span ng-if="book.loaned_to_contact_id.length == 0">
+  <span ng-if="!book.loaned_to_contact_id">
     <a class="button gray" ng-click="loanBook(book.id)">
       Loan this book
     </a>      
