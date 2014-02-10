@@ -508,20 +508,20 @@ a.button.green {
 .slide-right.ng-leave {
   position: absolute;
   background: inherit;
-  -webkit-transition: all ease-in-out;
-  -webkit-transition-delay: 250ms;
-  -moz-transition: all ease-in-out 250ms;
-  -o-transition: all ease-in-out 250ms;
-  transition: all ease-in-out 250ms;
+  -webkit-transition: ease-in-out 250ms;
+  -moz-transition: ease-in-out 250ms;
+  -o-transition: ease-in-out 250ms;
+  transition: ease-in-out 250ms;
 }
 
 /* line 13, ../sass/modules/_animations.sass */
 .slide-left.ng-enter {
+  z-index: 101;
   position: absolute;
   width: 100%;
 }
 
-/* line 17, ../sass/modules/_animations.sass */
+/* line 18, ../sass/modules/_animations.sass */
 .slide-left.ng-enter.ng-enter-active {
   position: absolute;
   width: 100%;
@@ -532,7 +532,7 @@ a.button.green {
   transform: translateX(0);
 }
 
-/* line 22, ../sass/modules/_animations.sass */
+/* line 23, ../sass/modules/_animations.sass */
 .slide-left.ng-leave {
   z-index: 100;
   -webkit-transform: translateX(0);
@@ -542,7 +542,7 @@ a.button.green {
   transform: translateX(0);
 }
 
-/* line 26, ../sass/modules/_animations.sass */
+/* line 27, ../sass/modules/_animations.sass */
 .slide-left.ng-leave.ng-leave-active {
   opacity: 0;
   -webkit-transform: translateX(-100%);
@@ -552,7 +552,7 @@ a.button.green {
   transform: translateX(-100%);
 }
 
-/* line 31, ../sass/modules/_animations.sass */
+/* line 32, ../sass/modules/_animations.sass */
 .slide-right.ng-enter {
   -webkit-transform: translateX(-100%);
   -moz-transform: translateX(-100%);
@@ -561,7 +561,7 @@ a.button.green {
   transform: translateX(-100%);
 }
 
-/* line 34, ../sass/modules/_animations.sass */
+/* line 35, ../sass/modules/_animations.sass */
 .slide-right.ng-enter.ng-enter-active,
 .slide-right.ng-leave {
   position: absolute;
@@ -573,7 +573,7 @@ a.button.green {
   transform: translateX(0);
 }
 
-/* line 40, ../sass/modules/_animations.sass */
+/* line 41, ../sass/modules/_animations.sass */
 .slide-right.ng-leave.ng-leave-active {
   -webkit-transform: translateX(100%);
   -moz-transform: translateX(100%);

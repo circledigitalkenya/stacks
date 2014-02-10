@@ -8,9 +8,10 @@
 .slide-right.ng-leave
   position: absolute
   background: inherit
-  @include transition(all ease-in-out 250ms)
+  @include transition(ease-in-out 250ms)
 
 .slide-left.ng-enter
+  z-index: 101
   position: absolute
   width: 100%
 
