@@ -33,14 +33,22 @@ angular.module('stacks.controllers', [])
     }
 
     $scope.submitBook = function() {
+      var book = {
+        title : this.title || '',
+        author : this.author || '',
+        publisher : this.publisher || '',
+        year : this.year || '',
+        pages : this.pages || '',
+      };
+
       database.query(
         "INSERT INTO books(title, author, publisher, pubdate, pages) " +
         "VALUES (" +
-          "'"+this.title.replace(/[']/g, "''") +"',"+
-          "'"+this.author.replace(/[']/g, "''") +"',"+
-          "'"+this.publisher.replace(/[']/g, "''") +"',"+
-          "date('"+this.year +"'),"+
-          "'"+this.pages+"'"+
+          "'"+book.title.replace(/[']/g, "''") +"',"+
+          "'"+book.author.replace(/[']/g, "''") +"',"+
+          "'"+book.publisher.replace(/[']/g, "''") +"',"+
+          "date('"+book.year +"'),"+
+          "'"+book.pages+"'"+
         ")"
       ).then(function(d) {
         $state.go('tab.bookadded');

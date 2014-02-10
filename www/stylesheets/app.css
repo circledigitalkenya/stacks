@@ -542,9 +542,11 @@ a.button.green {
 
 /* line 23, ../sass/app.sass */
 .addbookform input.ng-invalid.ng-dirty {
-  background-color: #fa787e;
+  border-color: #a94442;
+  background-color: #f2dfde;
 }
-/* line 26, ../sass/app.sass */
+/* line 27, ../sass/app.sass */
 .addbookform input.ng-valid.ng-dirty {
-  background-color: #78fa89;
+  border-color: #3c763d;
+  background-color: #bbdcbc;
 }
