@@ -15,11 +15,11 @@
   <div class="item clearfix">
     <div class="half column">
       <label for="year">Year</label>
-      <input type="year" id="year" name="year" ng-model="year">
+      <input type="number" min="1900" max="2014" id="year" name="year" ng-model="year">
     </div>
     <div class="half column">
       <label for="pages"># of Pages</label>
-      <input type="text" name="pages" ng-model="pages">
+      <input type="number" min="1" max="2000" name="pages" ng-model="pages">
     </div>
   </div>
   <div class="item">

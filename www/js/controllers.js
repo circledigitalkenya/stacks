@@ -37,17 +37,17 @@ angular.module('stacks.controllers', [])
         title : this.title || '',
         author : this.author || '',
         publisher : this.publisher || '',
-        year : this.year || '',
+        year : this.year || new Date().getFullYear(),
         pages : this.pages || '',
       };
 
       database.query(
-        "INSERT INTO books(title, author, publisher, pubdate, pages) " +
+        "INSERT INTO books(title, author, publisher, pubyear, pages) " +
         "VALUES (" +
           "'"+book.title.replace(/[']/g, "''") +"',"+
           "'"+book.author.replace(/[']/g, "''") +"',"+
           "'"+book.publisher.replace(/[']/g, "''") +"',"+
-          "date('"+book.year +"'),"+
+          "'"+book.year +"',"+
           "'"+book.pages+"'"+
         ")"
       ).then(function(d) {
@@ -244,7 +244,7 @@ angular.module('stacks.controllers', [])
     $scope.addToLibrary = function() {
       database
         .query(
-          "INSERT INTO books( isbn, title, author, description, publisher, pubdate, image, pages, price) "+
+          "INSERT INTO books( isbn, title, author, description, publisher, pubdate, pubyear, image, pages, price) "+
           "VALUES (" +
             "'"+$scope.book.isbn+"',"+ 
             "'"+$scope.book.title.replace(/[']/g, "''")+"',"+ 
@@ -252,6 +252,7 @@ angular.module('stacks.controllers', [])
             "'"+$scope.book.description.replace(/[']/g, "''")+"',"+ 
             "'"+$scope.book.publisher+"',"+ 
             "date('"+$scope.book.pubdate+"'),"+ 
+            "date('%Y','"+$scope.book.pubdate+"'),"+ 
             "'"+$scope.book.image+"',"+ 
             "'"+$scope.book.pages+"',"+ 
             "'"+$scope.book.price+"'"+
