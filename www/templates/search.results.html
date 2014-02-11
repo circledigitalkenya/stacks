@@ -10,6 +10,7 @@
     </a>
   </li>
   <li ng-show="hasmore">
-    <a class="button green" ng-click="loadMoreResults(q,'2')">load more items</a><!-- 2 is hardcoded as we are returning max 2 pages --> 
+    <a ng-hide="working" class="button green" ng-click="loadMoreResults(q,nextpage)">load more items</a><!-- 2 is hardcoded as we are returning max 2 pages --> 
+    <img ng-show="working" src="img/ajax-loader.gif" alt="" />
   </li>
 </ul>

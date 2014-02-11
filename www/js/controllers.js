@@ -4,10 +4,13 @@ angular.module('stacks.controllers', [])
     $rootScope.back = function(){
       $window.history.back();
     }
+
+    $rootScope.working = false; // just toggling the loading indicator
+
   })
   .controller('AddBookController', function($scope, $state, $rootScope, $q, $location, BookService, database) {
 
-    $rootScope.working = false; // just toggling the loading indicator
+    
 
     $rootScope.searchAmazon = function(q, page) {
       q = this.q || q // query can be from a form or from params
@@ -19,9 +22,11 @@ angular.module('stacks.controllers', [])
         .search_amazon(q, page)
         .then(
           function success(response, status, headers, config) {
+            $scope.working = false;
             if (response.data.status == 'success' && response.data.books.length > 0) {
               BookService.books = response.data.books; //cache the results
               BookService.hasmore = response.data.hasmore; // are there are more books
+              BookService.nextpage = response.data.nextpage; // are there are more books
               BookService.query = response.data.query; // are there are more books
 
               $state.go('tab.searchresults');
@@ -100,11 +105,11 @@ angular.module('stacks.controllers', [])
         if (isbn) {
           if (amazon_search) {
             $scope.working = true;
-            
             // search the book from amazon
             $scope
               .search_ISBN_From_Amazon(isbn)
               .then(function(response) {
+                $scope.working = false;
                 if (response) {
                   $state
                     .go('tab.book')
@@ -178,15 +183,19 @@ angular.module('stacks.controllers', [])
     $scope.q = BookService.query;
     $scope.hasmore = BookService.hasmore;
     $scope.books = BookService.books;
+    $scope.nextpage = BookService.nextpage;
 
     $scope.loadMoreResults = function(q, page){
+      $scope.working = true;
       BookService
         .search_amazon(q, page)
         .then(
           function success(response, status, headers, config) {
+            $scope.working = false;
             if (response.data.status == 'success' && response.data.books.length > 0) {
               $scope.books = $scope.books.concat(response.data.books);
               $scope.hasmore = response.data.hasmore;
+              $scope.nextpage = response.data.nextpage;
             }
           }
         )
