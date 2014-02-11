@@ -287,7 +287,8 @@ angular.module('stacks.controllers', [])
     }
 
     $scope.loanBook = function(bookid){
-      
+      BookService.current_book_id = bookid; // copy the current book id to service since services persist data across the app
+
       // we already requested contact permissions from our config.xml
       // but here we just want to inform the user on why we need access
       // to contacts, if user clicks cancel,nothing happens
@@ -299,7 +300,6 @@ angular.module('stacks.controllers', [])
           function(buttonindex){
             if( buttonindex === 1){
               $rootScope.allowed_to_access_contacts = true;
-              BookService.current_book_id = bookid; // copy the current book id to service since services persist data across the app
               $state.go('tab.contactlist');
             }
           },
@@ -333,7 +333,6 @@ angular.module('stacks.controllers', [])
       });
 
     $scope.loanToContact = function(contactid, contactname){
-
       database
         .query(
           "UPDATE books SET "+ 
