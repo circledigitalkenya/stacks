@@ -146,6 +146,7 @@ angular.module('stacks.services', [])
         // find all contacts
         var options = new ContactFindOptions();
         options.filter = "";
+        options.multiple = true;
         var filter = ["displayName", "addresses"];
         navigator.contacts.find(filter, deferred.resolve, deferred.reject, options);
 
@@ -238,7 +239,7 @@ angular.module('stacks.services', [])
                 }
 
                 deferred.resolve(responses); //at the end of processing the responses
-              }, _self.defaultNullHandler, _self.defaultErrorHandler);
+              }, deferred.resolve, deferred.reject);
             });
 
             return deferred.promise; // Return the promise to the controller

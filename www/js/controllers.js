@@ -176,25 +176,20 @@ angular.module('stacks.controllers', [])
 
   .controller('LibraryController', function($scope, $state, $rootScope, $location, database) {
 
-    $scope.getAllbooks = function() {
-      // loop through the result set to create an object to pass to the template
-      return database
-        .query('SELECT * FROM books')
-        .then(function(d) {
-          var len = d.length;
-          var books = [];
+    database
+      .query('SELECT * FROM books')
+      .then(function(d) {
+        var len = d.length;
+        var books = [];
 
-          for (var i = 0; i < len; i++) {
-            var _loan_date = new Date(d[i].loaned_date);
-            d[i].nice_loaned_date = _loan_date.getDay() +' '+ $rootScope.monthnames[_loan_date.getMonth()] +' '+_loan_date.getFullYear(); 
-            books.push(d[i]);
-          }
-
-          $scope.books = books
-        });
-    }
-
-    $scope.getAllbooks();
+        for (var i = 0; i < len; i++) {
+          var _loan_date = new Date(d[i].loaned_date);
+          d[i].nice_loaned_date = _loan_date.getDay() +' '+ $rootScope.monthnames[_loan_date.getMonth()] +' '+_loan_date.getFullYear(); 
+          books.push(d[i]);
+        }
+        
+        $scope.books = books
+      });
 
   })
 
@@ -215,7 +210,7 @@ angular.module('stacks.controllers', [])
               $scope.book.id = data[0].id;
               $scope.book.exists_in_library = true;
               $scope.book.yearpublished = new Date($scope.book.pubdate).getFullYear();
-              if( $scope.book.loaned_date.length > 0) {
+              if( $scope.book.loaned_date ) {
                 var _loan_date = new Date($scope.book.loaned_date);
                 $scope.book.nice_loaned_date = _loan_date.getDay() +' '+ $rootScope.monthnames[_loan_date.getMonth()] +' '+_loan_date.getFullYear(); 
               }
@@ -231,7 +226,7 @@ angular.module('stacks.controllers', [])
               $scope.book = data[0];
               $scope.book.exists_in_library = true;
               $scope.book.yearpublished = new Date($scope.book.pubdate).getFullYear(); // extract the pub year for display only
-              if( $scope.book.loaned_date.length > 0) {
+              if( $scope.book.loaned_date ) {
                 var _loan_date = new Date($scope.book.loaned_date);
                 $scope.book.nice_loaned_date = _loan_date.getDay() +' '+ $rootScope.monthnames[_loan_date.getMonth()] +' '+_loan_date.getFullYear(); 
               }
@@ -294,6 +289,7 @@ angular.module('stacks.controllers', [])
       } else {
         $state.go('tab.contactlist');
       }
+
     }
 
 
@@ -322,18 +318,15 @@ angular.module('stacks.controllers', [])
         .query(
           "UPDATE books SET "+ 
           "loaned_to_contact_id = '"+contactid+"',"+
-          "loaned_to_contact_name = '"+contactname+"' "+
-          "loaned_date = date('now')"+
+          "loaned_to_contact_name = '"+contactname+"',"+
+          "loaned_date = date('now') "+
           "WHERE id='"+BookService.current_book_id+"'"
         )
         .then(function(){
-          $state
-            .go('tab.bookloaned')
-            .data({
-              name : contactname
-            });
-        }, function(){
+          $state.go('tab.bookloaned', { name : contactname });
+        }, function(error){
           //query failed
+          console.log('query failed due to: '+ error)
         })
     }
 
