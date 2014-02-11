@@ -7,19 +7,23 @@ angular.module('stacks.controllers', [])
   })
   .controller('AddBookController', function($scope, $state, $rootScope, $q, $location, BookService, database) {
 
-    $scope.working = false; // just toggling the loading indicator
+    $rootScope.working = false; // just toggling the loading indicator
 
-    $scope.searchAmazon = function(q) {
+    $rootScope.searchAmazon = function(q, page) {
+      q = this.q || q // query can be from a form or from params
+      page = page || 1; //default to first page
+
       $scope.working = true;
-
-      var query = this.q || q;
       
       BookService
-        .search_amazon(query)
+        .search_amazon(q, page)
         .then(
           function success(response, status, headers, config) {
-            if (response.data.status == 'success' && response.data.result.length > 0) {
-              BookService.setResults(response.data.result); //cache the results
+            if (response.data.status == 'success' && response.data.books.length > 0) {
+              BookService.books = response.data.books; //cache the results
+              BookService.hasmore = response.data.hasmore; // are there are more books
+              BookService.query = response.data.query; // are there are more books
+
               $state.go('tab.searchresults');
             } else {
               $state.go('tab.noresults'); // no results page
@@ -158,8 +162,8 @@ angular.module('stacks.controllers', [])
         .search_amazon(isbn)
         .then(
           function success(response, status, headers, config) {
-            if (response.data.status == 'success' && response.data.result.length > 0) {
-              BookService.setResults(response.data.result);
+            if (response.data.status == 'success' && response.data.books.length > 0) {
+              BookService.setResults(response.data.books);
               return true
             } else {
               return false
@@ -171,7 +175,23 @@ angular.module('stacks.controllers', [])
   })
 
   .controller('SearchResults', function($scope, $state, $location, BookService) {
+    $scope.q = BookService.query;
+    $scope.hasmore = BookService.hasmore;
     $scope.books = BookService.books;
+
+    $scope.loadMoreResults = function(q, page){
+      BookService
+        .search_amazon(q, page)
+        .then(
+          function success(response, status, headers, config) {
+            if (response.data.status == 'success' && response.data.books.length > 0) {
+              $scope.books = $scope.books.concat(response.data.books);
+              $scope.hasmore = response.data.hasmore;
+            }
+          }
+        )
+    }
+
   })
 
   .controller('LibraryController', function($scope, $state, $rootScope, $location, database) {

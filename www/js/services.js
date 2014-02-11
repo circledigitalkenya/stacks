@@ -4,14 +4,10 @@ angular.module('stacks.services', [])
     var current_book_id;
 
     return {
-
       books : [],
 
-      search_amazon: function(q) {
-        return $http.get('http://circle.co.ke/amazon/?q=' + q);
-      },
-      setResults: function(results) {
-        this.books = results
+      search_amazon: function(q, page) {
+        return $http.get('http://circle.co.ke/amazon/?q=' +q+'&page='+page);
       },
 
       findByISBN: function(isbn) {
