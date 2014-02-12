@@ -213,7 +213,7 @@ angular.module('stacks.controllers', [])
 
         for (var i = 0; i < len; i++) {
           var _loan_date = new Date(d[i].loaned_date);
-          d[i].nice_loaned_date = _loan_date.getDay() +' '+ $rootScope.monthnames[_loan_date.getMonth()] +' '+_loan_date.getFullYear(); 
+          d[i].nice_loaned_date = _loan_date.getDate() +' '+ $rootScope.monthnames[_loan_date.getMonth()] +' '+_loan_date.getFullYear(); 
           books.push(d[i]);
         }
         
