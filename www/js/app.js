@@ -71,6 +71,10 @@ document.addEventListener('deviceready', function(){
         url:"/bookadded",
         templateUrl: "templates/book.added.html"
       })
+      .state('tab.bookreturned',{
+        url:"/bookreturned",
+        templateUrl: "templates/book.returned.html"
+      })
       .state('tab.searchresults',{
         url:"/searchresults",
         templateUrl: "templates/search.results.html",
