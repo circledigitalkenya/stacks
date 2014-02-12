@@ -101,81 +101,30 @@ angular.module('stacks.controllers', [])
       promise.then(function(ean) {
         // convert the raw EAN to ISBN
         var isbn = BookService.EAN_to_ISBN(ean);
-        console.log('ean after conversion to isbn becomes: ' + isbn);
 
         if (isbn) {
-          if (amazon_search) {
-            $scope.working = true;
-            // search the book from amazon
-            $scope
-              .search_ISBN_From_Amazon(isbn)
-              .then(function(response) {
+          $scope.working = true;
+          // search the book from amazon
+          BookService
+            .search_amazon(isbn)
+            .then(
+              function success(response, status, headers, config) {
                 $scope.working = false;
-                if (response) {
-                  $state
-                    .go('tab.book')
-                    .data({
-                      isbn: isbn
-                    });
+                if (response.data.status == 'success' && response.data.books.length > 0) {
+                  BookService.books = response.data.books;
+                  $state.go('tab.book', { id : isbn });
                 } else {
-                  $state.go('tab.scannoresults')
+                  $state.go('tab.scannoresults');
                 }
-              });
-          } else {
-            // search the book from users library
-            $scope
-              .search_ISBN_Locally(isbn)
-              .then(function(response) {
-                if (response) {
-                  // if its a single book, show the book view
-                  $state
-                    .go('tab.book')
-                    .data({
-                      isbn: isbn
-                    });
-
-                } else {
-                  // go to the scan/noresults page
-                  $state.go('tab.scannoresults')
-                }
-              });
-          }
+              },
+              function(){
+                $state.go('tab.scannoresults');
+              }
+            )
         } else {
           $state.go('tab.scannoresults')
         }
       })
-
-    }
-
-
-    $scope.search_ISBN_Locally = function(isbn) {
-
-      return database
-        .query("SELECT id,isbn FROM books where isbn = '"+isbn+"' LIMIT 0, 1")
-        .then(function(data) {
-          if (data.length) {
-            BookService.setResults(data); //cache the results in the service
-            return true;
-          } else {
-            return false;
-          }
-        });
-    }
-
-    $scope.search_ISBN_From_Amazon = function(isbn) {
-
-      return BookService
-        .search_amazon(isbn)
-        .then(
-          function success(response, status, headers, config) {
-            if (response.data.status == 'success' && response.data.books.length > 0) {
-              BookService.setResults(response.data.books);
-              return true
-            } else {
-              return false
-            }
-          }
-      );
 
     }
   })

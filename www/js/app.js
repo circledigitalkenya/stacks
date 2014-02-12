@@ -44,7 +44,8 @@ document.addEventListener('deviceready', function(){
       })
       .state('tab.build', {
         url: "/build",
-        templateUrl: "templates/build_library.html"
+        templateUrl: "templates/build_library.html",
+        controller: "AddBookController"
       })
       .state('tab.add', {
         url: "/add",
@@ -106,6 +107,10 @@ document.addEventListener('deviceready', function(){
             $scope.books = books;
           });
         }
+      })
+      .state('tab.scannoresults', {
+        url:"/scannoresults",
+        templateUrl: "templates/scan.no_results.html",
       })
       .state('tab.bookloaned',{
         url:"/bookloaned/:name",

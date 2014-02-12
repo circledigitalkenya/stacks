@@ -7,6 +7,7 @@ angular.module('stacks.services', [])
       books : [],
 
       search_amazon: function(q, page) {
+        page = page || 1;
         return $http.get('http://circle.co.ke/amazon/?q=' +q+'&page='+page);
       },
 
