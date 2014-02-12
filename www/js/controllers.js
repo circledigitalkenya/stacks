@@ -269,6 +269,23 @@ angular.module('stacks.controllers', [])
 
     }
 
+    $scope.returnBook = function(id) {
+      navigator.notification.confirm(
+        'Are you sure this book has been returned?',
+        function(buttonindex){
+          if( buttonindex === 1){
+            database
+              .query("UPDATE FROM books SET loaned_to_contact_id ='', loaned_to_contact_name = '', loaned_date = '' WHERE id='"+id+"'")
+              .then(function(d) {
+                $scope.book.loaned_to_contact_id = '';
+                navigator.notification.alert('Book returned successfuly!');
+              })
+          }
+        },
+        'Return loaned book',
+        ['Yes','No']
+      );
+    }
 
   })
   .controller('LoanController', function($scope, $state, $location, BookService, ContactService, database){
