@@ -46,7 +46,8 @@ angular.module('stacks.controllers', [])
         title : this.title || '',
         author : this.author || '',
         publisher : this.publisher || '',
-        year : this.year || new Date().getFullYear(),
+        // year : this.year || new Date().getFullYear(),
+        year : this.year || '',
         pages : this.pages || '',
       };
 
@@ -238,7 +239,6 @@ angular.module('stacks.controllers', [])
             if (data.length) {
               $scope.book.id = data[0].id;
               $scope.book.exists_in_library = true;
-              $scope.book.yearpublished = new Date($scope.book.pubdate).getFullYear();
               if( $scope.book.loaned_date ) {
                 var _loan_date = new Date($scope.book.loaned_date);
                 $scope.book.nice_loaned_date = _loan_date.getDay() +' '+ $rootScope.monthnames[_loan_date.getMonth()] +' '+_loan_date.getFullYear(); 
@@ -254,7 +254,6 @@ angular.module('stacks.controllers', [])
             if (data.length) {
               $scope.book = data[0];
               $scope.book.exists_in_library = true;
-              $scope.book.yearpublished = new Date($scope.book.pubdate).getFullYear(); // extract the pub year for display only
               if( $scope.book.loaned_date ) {
                 var _loan_date = new Date($scope.book.loaned_date);
                 $scope.book.nice_loaned_date = _loan_date.getDay() +' '+ $rootScope.monthnames[_loan_date.getMonth()] +' '+_loan_date.getFullYear(); 
