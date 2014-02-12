@@ -11,9 +11,9 @@ angular.module('stacks.services', [])
         return $http.get('http://circle.co.ke/amazon/?q=' +q+'&page='+page);
       },
  
-      findByISBN: function(isbn) {
+      findByHash: function(hash) {
         for (var i = 0; i < this.books.length; i++) {
-          if (this.books[i].isbn == isbn) {
+          if (this.books[i].hash == hash) {
             return this.books[i];
           }
         }

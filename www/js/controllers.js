@@ -174,11 +174,11 @@ angular.module('stacks.controllers', [])
 
   .controller('BookController', function($scope, $rootScope, $state, $location, $stateParams, BookService, database) {
 
-    // param id can be either the ISBN or book id
+    // param id can be either the Hash or book id
     if ($stateParams.id) {
 
       // find the book in cache
-      $scope.book = BookService.findByISBN($stateParams.id);
+      $scope.book = BookService.findByHash($stateParams.id);
       
       if( $scope.book ) {
         // cache hit, find out if this book already exists in our database
