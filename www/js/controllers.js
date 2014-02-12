@@ -270,20 +270,11 @@ angular.module('stacks.controllers', [])
     }
 
     $scope.returnBook = function(id) {
-      navigator.notification.confirm(
-        'Are you sure this book has been returned?',
-        function(buttonindex){
-          if( buttonindex === 1){
-            database
-              .query("UPDATE books SET loaned_to_contact_id ='', loaned_to_contact_name = '', loaned_date = '' WHERE id='"+id+"'")
-              .then(function(d) {
-                $state.go('tab.bookreturned');
-              })
-          }
-        },
-        'Confirm Book Returned',
-        ['Yes','No']
-      );
+      database
+        .query("UPDATE books SET loaned_to_contact_id ='', loaned_to_contact_name = '', loaned_date = '' WHERE id='"+id+"'")
+        .then(function(d) {
+          $state.go('tab.bookreturned');
+        })
     }
 
   })
