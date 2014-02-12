@@ -300,6 +300,16 @@ angular.module('stacks.controllers', [])
             name : contacts[i].displayName
           })
         }
+        // sort in alphabetical order
+        nice_contacts.sort(function (a, b) {
+          if (a.name > b.name)
+            return 1;
+          if (a.name < b.name)
+            return -1;
+          // a must be equal to b
+          return 0;
+        });
+
         $scope.contacts = nice_contacts;
 
       }, function(e){
