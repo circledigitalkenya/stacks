@@ -10,7 +10,7 @@ angular.module('stacks.services', [])
         page = page || 1;
         return $http.get('http://circle.co.ke/amazon/?q=' +q+'&page='+page);
       },
-
+ 
       findByISBN: function(isbn) {
         for (var i = 0; i < this.books.length; i++) {
           if (this.books[i].isbn == isbn) {

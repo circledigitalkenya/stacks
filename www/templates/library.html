@@ -1,9 +1,9 @@
 <h2>Books in your library</h2>
 <form class="clearfix search-container full-width">
-    <input type="search" ng-model="search" placeholder="Search ISBN, title or author" style="border: solid 1px #ccc;" class="ng-pristine ng-valid"> 
+    <input type="search" ng-model="search" placeholder="Search ISBN, title or author" style="border: solid 1px #ccc;"> 
 </form>
 <ul class="list">
-  <li ng-repeat="book in lbooks = ( books | filter:search )">
+  <li ng-repeat="book in filtered_books = ( books | filter:search )">
     <a href="#/tab/book/{{book.id}}" class="clearfix">
       <img ng-src="{{book.image}}" alt="">
       <div>
@@ -15,5 +15,5 @@
       </div>
     </a>
   </li>
-  <li ng-show="lbooks.length == 0">Nothing found for search: '{{search}}'</li>
+  <li ng-show="filtered_books.length == 0">Nothing found for search: '{{search}}'</li>
 </ul>
