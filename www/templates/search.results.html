@@ -5,7 +5,7 @@
       <img ng-src="{{book.image}}" alt="">
       <div>
         <h4>{{book.title}}</h4>
-        <p class="light">by {{book.author}}</p>
+        <p ng-show="book.author.length > 0" class="light">by {{book.author}}</p>
       </div>
     </a>
   </li>

@@ -144,7 +144,7 @@ angular.module('stacks.services', [])
         var options = new ContactFindOptions();
         options.filter = "";
         options.multiple = true;
-        var filter = ["displayName", "addresses"];
+        var filter = ["displayName"];
         navigator.contacts.find(filter, deferred.resolve, deferred.reject, options);
 
         return deferred.promise;

@@ -183,7 +183,7 @@ angular.module('stacks.controllers', [])
       if( $scope.book ) {
         // cache hit, find out if this book already exists in our database
         database
-          .query("SELECT * FROM books where id = '"+$stateParams.id+"' OR isbn = '"+$stateParams.id+"' LIMIT 0, 1")
+          .query("SELECT * FROM books where isbn = '"+$scope.book.isbn+"' LIMIT 0, 1")
           .then(function(data) {
             if (data.length) {
               $scope.book.id = data[0].id;

@@ -1,11 +1,9 @@
 <img ng-src="{{book.image}}" alt="">
 <div class="item">
   <h1>{{book.title}}</h1>
-  <h3 class="light">by {{book.author}}</h3>
+  <h3 ng-show="book.author.length > 0" class="light">by {{book.author}}</h3>
   <h3 class="light">
-    <span ng-if="book.publisher.length > 0">
-      {{book.publisher}}, 
-    </span>
+    <span ng-show="book.publisher.length > 0">{{book.publisher}},</span>
     {{book.pubyear}}
   </h3>
 </div>
