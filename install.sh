@@ -27,9 +27,15 @@ if [ ! -d "plugins/org.apache.cordova.contacts/" ]; then
   cordova plugin add org.apache.cordova.contacts;
 fi
 
-# if [ ! -d "plugins/org.apache.cordova.network-information/" ]; then
-#   cordova plugin add org.apache.cordova.network-information # the newtwork info plugin comes with a whole set of issues when previewing the app on a browser http://stackoverflow.com/questions/20321532/phone-gap-device-ready-not-fired-after-5-seconds
-# fi
+# remove these two plugins since they bring problems when
+# viewing the app on a browser
+if [ -d "plugins/org.apache.cordova.device/" ]; then
+  cordova plugin rm org.apache.cordova.device;
+fi
+
+if [ -d "plugins/org.apache.cordova.network-information/" ]; then
+  cordova plugin rm org.apache.cordova.network-information # the newtwork info plugin comes with a whole set of issues when previewing the app on a browser http://stackoverflow.com/questions/20321532/phone-gap-device-ready-not-fired-after-5-seconds
+fi
 
 
 

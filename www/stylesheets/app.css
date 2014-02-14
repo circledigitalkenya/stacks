@@ -194,6 +194,12 @@ h1, h2, h3, h4, h5, h6, p, label, a, li, ul {
   -webkit-user-select: none;
 }
 
+/* line 67, ../sass/modules/_general.sass */
+.tab {
+  background: white;
+  width: 100%;
+}
+
 /* line 1, ../sass/modules/_form.sass */
 input {
   border: 1px #e6e6e6 solid;
