@@ -21,10 +21,6 @@
     "tests"
   ],
   "dependencies": {
-    "angular": "~1.2.9",
-    "angular-route": "~1.2.9",
-    "angular-touch": "~1.2.10",
-    "angular-animate": "~1.2.10",
-    "angular-ui-router": "0.2.8-bowratic-tedium"
+    "ionic": "0.9.24"
   }
 }

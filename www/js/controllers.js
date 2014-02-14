@@ -12,8 +12,6 @@ angular.module('stacks.controllers', [])
   })
   .controller('AddBookController', function($scope, $state, $rootScope, $q, $location, BookService, database) {
 
-    
-
     $rootScope.searchAmazon = function(q, page) {
       q = this.q || q // query can be from a form or from params
       page = page || 1; //default to first page
@@ -48,7 +46,6 @@ angular.module('stacks.controllers', [])
         title : this.title || '',
         author : this.author || '',
         publisher : this.publisher || '',
-        // year : this.year || new Date().getFullYear(),
         year : this.year || '',
         pages : this.pages || '',
       };
