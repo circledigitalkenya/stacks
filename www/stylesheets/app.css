@@ -495,103 +495,889 @@ a.button.green {
   -webkit-transform: translate3d(60px, -70px, 0);
 }
 
-/* line 1, ../sass/modules/_animations.sass */
-.tab {
-  background: white;
-  width: 100%;
+/*
+ * ionic framework files
+ */
+/**
+ * Animations
+ * --------------------------------------------------
+ * The animations in this file are "simple" - not too complex
+ * and pretty easy on performance. They can be overidden
+ * and enhanced easily.
+ */
+/**
+ * Keyframes
+ * --------------------------------------------------
+ */
+@-webkit-keyframes slideInUp {
+  /* line 18, ../bower_components/ionic/scss/_animations.scss */
+  0% {
+    -webkit-transform: translate3d(0, 100%, 0);
+    -moz-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+    opacity: 0;
+  }
+
+  /* line 22, ../bower_components/ionic/scss/_animations.scss */
+  100% {
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
 }
 
-/* line 5, ../sass/modules/_animations.sass */
-.slide-left.ng-enter,
-.slide-left.ng-leave,
-.slide-right.ng-enter,
-.slide-right.ng-leave {
+@-webkit-keyframes slideOutUp {
+  /* line 28, ../bower_components/ionic/scss/_animations.scss */
+  0% {
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+
+  /* line 32, ../bower_components/ionic/scss/_animations.scss */
+  100% {
+    -webkit-transform: translate3d(0, 100%, 0);
+    -moz-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes slideInFromLeft {
+  /* line 42, ../bower_components/ionic/scss/_animations.scss */
+  from {
+    -webkit-transform: translate3d(-100%, 0, 0);
+  }
+
+  /* line 43, ../bower_components/ionic/scss/_animations.scss */
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+  }
+}
+
+@-moz-keyframes slideInFromLeft {
+  /* line 46, ../bower_components/ionic/scss/_animations.scss */
+  from {
+    -moz-transform: translateX(-100%);
+  }
+
+  /* line 47, ../bower_components/ionic/scss/_animations.scss */
+  to {
+    -moz-transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromLeft {
+  /* line 50, ../bower_components/ionic/scss/_animations.scss */
+  from {
+    transform: translateX(-100%);
+  }
+
+  /* line 51, ../bower_components/ionic/scss/_animations.scss */
+  to {
+    transform: translateX(0);
+  }
+}
+
+@-webkit-keyframes slideInFromRight {
+  /* line 59, ../bower_components/ionic/scss/_animations.scss */
+  from {
+    -webkit-transform: translate3d(100%, 0, 0);
+  }
+
+  /* line 60, ../bower_components/ionic/scss/_animations.scss */
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+  }
+}
+
+@-moz-keyframes slideInFromRight {
+  /* line 63, ../bower_components/ionic/scss/_animations.scss */
+  from {
+    -moz-transform: translateX(100%);
+  }
+
+  /* line 64, ../bower_components/ionic/scss/_animations.scss */
+  to {
+    -moz-transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromRight {
+  /* line 67, ../bower_components/ionic/scss/_animations.scss */
+  from {
+    transform: translateX(100%);
+  }
+
+  /* line 68, ../bower_components/ionic/scss/_animations.scss */
+  to {
+    transform: translateX(0);
+  }
+}
+
+@-webkit-keyframes slideOutToLeft {
+  /* line 76, ../bower_components/ionic/scss/_animations.scss */
+  from {
+    -webkit-transform: translate3d(0, 0, 0);
+  }
+
+  /* line 77, ../bower_components/ionic/scss/_animations.scss */
+  to {
+    -webkit-transform: translate3d(-100%, 0, 0);
+  }
+}
+
+@-moz-keyframes slideOutToLeft {
+  /* line 80, ../bower_components/ionic/scss/_animations.scss */
+  from {
+    -moz-transform: translateX(0);
+  }
+
+  /* line 81, ../bower_components/ionic/scss/_animations.scss */
+  to {
+    -moz-transform: translateX(-100%);
+  }
+}
+
+@keyframes slideOutToLeft {
+  /* line 84, ../bower_components/ionic/scss/_animations.scss */
+  from {
+    transform: translateX(0);
+  }
+
+  /* line 85, ../bower_components/ionic/scss/_animations.scss */
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@-webkit-keyframes slideOutToRight {
+  /* line 93, ../bower_components/ionic/scss/_animations.scss */
+  from {
+    -webkit-transform: translate3d(0, 0, 0);
+  }
+
+  /* line 94, ../bower_components/ionic/scss/_animations.scss */
+  to {
+    -webkit-transform: translate3d(100%, 0, 0);
+  }
+}
+
+@-moz-keyframes slideOutToRight {
+  /* line 97, ../bower_components/ionic/scss/_animations.scss */
+  from {
+    -moz-transform: translateX(0);
+  }
+
+  /* line 98, ../bower_components/ionic/scss/_animations.scss */
+  to {
+    -moz-transform: translateX(100%);
+  }
+}
+
+@keyframes slideOutToRight {
+  /* line 101, ../bower_components/ionic/scss/_animations.scss */
+  from {
+    transform: translateX(0);
+  }
+
+  /* line 102, ../bower_components/ionic/scss/_animations.scss */
+  to {
+    transform: translateX(100%);
+  }
+}
+
+@-webkit-keyframes fadeOut {
+  /* line 110, ../bower_components/ionic/scss/_animations.scss */
+  from {
+    opacity: 1;
+  }
+
+  /* line 111, ../bower_components/ionic/scss/_animations.scss */
+  to {
+    opacity: 0;
+  }
+}
+
+@-moz-keyframes fadeOut {
+  /* line 114, ../bower_components/ionic/scss/_animations.scss */
+  from {
+    opacity: 1;
+  }
+
+  /* line 115, ../bower_components/ionic/scss/_animations.scss */
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeOut {
+  /* line 118, ../bower_components/ionic/scss/_animations.scss */
+  from {
+    opacity: 1;
+  }
+
+  /* line 119, ../bower_components/ionic/scss/_animations.scss */
+  to {
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes fadeIn {
+  /* line 127, ../bower_components/ionic/scss/_animations.scss */
+  from {
+    opacity: 0;
+  }
+
+  /* line 128, ../bower_components/ionic/scss/_animations.scss */
+  to {
+    opacity: 1;
+  }
+}
+
+@-moz-keyframes fadeIn {
+  /* line 131, ../bower_components/ionic/scss/_animations.scss */
+  from {
+    opacity: 0;
+  }
+
+  /* line 132, ../bower_components/ionic/scss/_animations.scss */
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  /* line 135, ../bower_components/ionic/scss/_animations.scss */
+  from {
+    opacity: 0;
+  }
+
+  /* line 136, ../bower_components/ionic/scss/_animations.scss */
+  to {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes spin {
+  /* line 144, ../bower_components/ionic/scss/_animations.scss */
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@-moz-keyframes spin {
+  /* line 147, ../bower_components/ionic/scss/_animations.scss */
+  100% {
+    -moz-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  /* line 150, ../bower_components/ionic/scss/_animations.scss */
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* line 154, ../bower_components/ionic/scss/_animations.scss */
+.no-animation > .ng-enter, .no-animation.ng-enter, .no-animation > .ng-leave, .no-animation.ng-leave {
+  -webkit-transition: none;
+  -moz-transition: none;
+  transition: none;
+}
+
+/* line 159, ../bower_components/ionic/scss/_animations.scss */
+.noop-animation > .ng-enter, .noop-animation.ng-enter, .noop-animation > .ng-leave, .noop-animation.ng-leave {
+  -webkit-transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 250ms;
+  -moz-transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 250ms;
+  transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 250ms;
   position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  background: inherit;
-  -webkit-transition: ease-in-out 1s;
-  -moz-transition: ease-in-out 1s;
-  -o-transition: ease-in-out 1s;
-  transition: ease-in-out 1s;
 }
 
-/* line 17, ../sass/modules/_animations.sass */
-.slide-left.ng-enter {
+/* line 171, ../bower_components/ionic/scss/_animations.scss */
+.ng-animate .pane {
+  position: absolute;
+}
+
+/**
+ * Slide Left-Right
+ * --------------------------------------------------
+ * NEW content slides IN from the RIGHT, OLD slides OUT to the LEFT
+ * Reverse: NEW content slides IN from the LEFT, OLD slides OUT to the RIGHT
+ */
+/* line 185, ../bower_components/ionic/scss/_animations.scss */
+.slide-left-right > .ng-enter, .slide-left-right.ng-enter,
+.slide-left-right > .ng-leave, .slide-left-right.ng-leave {
+  -webkit-transition: all ease-in-out 250ms;
+  -moz-transition: all ease-in-out 250ms;
+  transition: all ease-in-out 250ms;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+/* line 193, ../bower_components/ionic/scss/_animations.scss */
+.slide-left-right > .ng-enter, .slide-left-right.ng-enter {
   /* NEW content placed far RIGHT BEFORE it slides IN from the RIGHT */
   -webkit-transform: translate3d(100%, 0, 0);
   -moz-transform: translate3d(100%, 0, 0);
-  -ms-transform: translate3d(100%, 0, 0);
-  -o-transform: translate3d(100%, 0, 0);
   transform: translate3d(100%, 0, 0);
 }
-
-/* line 21, ../sass/modules/_animations.sass */
-.slide-left.ng-enter.ng-enter-active,
-.slide-left.ng-leave {
+/* line 197, ../bower_components/ionic/scss/_animations.scss */
+.slide-left-right > .ng-enter.ng-enter-active, .slide-left-right.ng-enter.ng-enter-active {
   /* NEW content ACTIVELY sliding IN from the RIGHT */
   -webkit-transform: translate3d(0, 0, 0);
   -moz-transform: translate3d(0, 0, 0);
-  -ms-transform: translate3d(0, 0, 0);
-  -o-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
 }
-
-/* line 27, ../sass/modules/_animations.sass */
-.slide-left.ng-leave {
-  -webkit-transform: translate3d(0, 0, 0);
-  -moz-transform: translate3d(0, 0, 0);
-  -ms-transform: translate3d(0, 0, 0);
-  -o-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0);
-}
-
-/* line 30, ../sass/modules/_animations.sass */
-.slide-left.ng-leave.ng-leave-active {
+/* line 201, ../bower_components/ionic/scss/_animations.scss */
+.slide-left-right > .ng-leave.ng-leave-active, .slide-left-right.ng-leave.ng-leave-active {
   /* OLD content ACTIVELY sliding OUT to the LEFT */
   -webkit-transform: translate3d(-100%, 0, 0);
   -moz-transform: translate3d(-100%, 0, 0);
-  -ms-transform: translate3d(-100%, 0, 0);
-  -o-transform: translate3d(-100%, 0, 0);
   transform: translate3d(-100%, 0, 0);
 }
-
-/* line 34, ../sass/modules/_animations.sass */
-.slide-right.ng-enter {
+/* line 207, ../bower_components/ionic/scss/_animations.scss */
+.slide-left-right.reverse > .ng-enter, .slide-left-right.reverse.ng-enter, .slide-left-right.reverse > .ng-leave, .slide-left-right.reverse.ng-leave {
+  -webkit-transition: all ease-in-out 250ms;
+  -moz-transition: all ease-in-out 250ms;
+  transition: all ease-in-out 250ms;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+/* line 215, ../bower_components/ionic/scss/_animations.scss */
+.slide-left-right.reverse > .ng-enter, .slide-left-right.reverse.ng-enter {
+  /* NEW content placed far LEFT BEFORE it slides IN from the LEFT */
   -webkit-transform: translate3d(-100%, 0, 0);
   -moz-transform: translate3d(-100%, 0, 0);
-  -ms-transform: translate3d(-100%, 0, 0);
-  -o-transform: translate3d(-100%, 0, 0);
   transform: translate3d(-100%, 0, 0);
 }
-
-/* line 37, ../sass/modules/_animations.sass */
-.slide-right.ng-enter.ng-enter-active,
-.slide-right.ng-leave {
+/* line 219, ../bower_components/ionic/scss/_animations.scss */
+.slide-left-right.reverse > .ng-enter.ng-enter-active, .slide-left-right.reverse.ng-enter.ng-enter-active {
+  /* NEW content ACTIVELY sliding IN from the LEFT */
   -webkit-transform: translate3d(0, 0, 0);
   -moz-transform: translate3d(0, 0, 0);
-  -ms-transform: translate3d(0, 0, 0);
-  -o-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
 }
-
-/* line 41, ../sass/modules/_animations.sass */
-.slide-right.ng-leave.ng-leave-active {
+/* line 223, ../bower_components/ionic/scss/_animations.scss */
+.slide-left-right.reverse > .ng-leave.ng-leave-active, .slide-left-right.reverse.ng-leave.ng-leave-active {
+  /* OLD content ACTIVELY sliding OUT to the RIGHT */
   -webkit-transform: translate3d(100%, 0, 0);
   -moz-transform: translate3d(100%, 0, 0);
-  -ms-transform: translate3d(100%, 0, 0);
-  -o-transform: translate3d(100%, 0, 0);
   transform: translate3d(100%, 0, 0);
 }
 
-/* line 25, ../sass/app.sass */
+/**
+ * iOS7 style slide left to right 
+ * --------------------------------------------------
+ */
+/* line 240, ../bower_components/ionic/scss/_animations.scss */
+.slide-left-right-ios7 > .ng-enter, .slide-left-right-ios7.ng-enter,
+.slide-left-right-ios7 > .ng-leave, .slide-left-right-ios7.ng-leave {
+  -webkit-transition: all ease-in-out 250ms;
+  -moz-transition: all ease-in-out 250ms;
+  transition: all ease-in-out 250ms;
+  position: absolute;
+  top: 0;
+  right: -1px;
+  bottom: 0;
+  left: -1px;
+  width: auto;
+  border-right: 1px solid #ddd;
+  border-left: 1px solid #ddd;
+}
+/* line 251, ../bower_components/ionic/scss/_animations.scss */
+.slide-left-right-ios7 > .ng-enter, .slide-left-right-ios7.ng-enter {
+  /* NEW content placed far RIGHT BEFORE it slides IN from the RIGHT */
+  -webkit-transform: translate3d(100%, 0, 0);
+  -moz-transform: translate3d(100%, 0, 0);
+  transform: translate3d(100%, 0, 0);
+}
+/* line 255, ../bower_components/ionic/scss/_animations.scss */
+.slide-left-right-ios7 > .ng-enter.ng-enter-active, .slide-left-right-ios7.ng-enter.ng-enter-active {
+  /* NEW content ACTIVELY sliding IN from the RIGHT */
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+/* line 259, ../bower_components/ionic/scss/_animations.scss */
+.slide-left-right-ios7 > .ng-leave.ng-leave-active, .slide-left-right-ios7.ng-leave.ng-leave-active {
+  /* OLD content ACTIVELY sliding OUT to the LEFT */
+  -webkit-transform: translate3d(-15%, 0, 0);
+  -moz-transform: translate3d(-15%, 0, 0);
+  transform: translate3d(-15%, 0, 0);
+}
+/* line 265, ../bower_components/ionic/scss/_animations.scss */
+.slide-left-right-ios7.reverse > .ng-enter, .slide-left-right-ios7.reverse.ng-enter, .slide-left-right-ios7.reverse > .ng-leave, .slide-left-right-ios7.reverse.ng-leave {
+  -webkit-transition: all ease-in-out 250ms;
+  -moz-transition: all ease-in-out 250ms;
+  transition: all ease-in-out 250ms;
+  position: absolute;
+  top: 0;
+  right: -1px;
+  bottom: 0;
+  left: -1px;
+  width: auto;
+  border-right: 1px solid #ddd;
+  border-left: 1px solid #ddd;
+}
+/* line 276, ../bower_components/ionic/scss/_animations.scss */
+.slide-left-right-ios7.reverse > .ng-enter, .slide-left-right-ios7.reverse.ng-enter {
+  /* NEW content placed far LEFT BEFORE it slides IN from the LEFT */
+  -webkit-transform: translate3d(-100%, 0, 0);
+  -moz-transform: translate3d(-100%, 0, 0);
+  transform: translate3d(-100%, 0, 0);
+}
+/* line 280, ../bower_components/ionic/scss/_animations.scss */
+.slide-left-right-ios7.reverse > .ng-enter.ng-enter-active, .slide-left-right-ios7.reverse.ng-enter.ng-enter-active {
+  /* NEW content ACTIVELY sliding IN from the LEFT */
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+/* line 284, ../bower_components/ionic/scss/_animations.scss */
+.slide-left-right-ios7.reverse > .ng-leave.ng-leave-active, .slide-left-right-ios7.reverse.ng-leave.ng-leave-active {
+  /* OLD content ACTIVELY sliding OUT to the RIGHT */
+  -webkit-transform: translate3d(15%, 0, 0);
+  -moz-transform: translate3d(15%, 0, 0);
+  transform: translate3d(15%, 0, 0);
+}
+
+/* line 293, ../bower_components/ionic/scss/_animations.scss */
+.slide-in-left {
+  -webkit-transform: translate3d(0%, 0, 0);
+  -moz-transform: translate3d(0%, 0, 0);
+  transform: translate3d(0%, 0, 0);
+}
+/* line 295, ../bower_components/ionic/scss/_animations.scss */
+.slide-in-left.ng-enter, .slide-in-left > .ng-enter {
+  -webkit-animation-name: slideInFromLeft;
+  -moz-animation-name: slideInFromLeft;
+  animation-name: slideInFromLeft;
+  -webkit-animation-duration: 250ms;
+  -moz-animation-duration: 250ms;
+  animation-duration: 250ms;
+  -webkit-animation-timing-function: ease-in-out;
+  -moz-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out;
+  -webkit-animation-fill-mode: both;
+  -moz-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+/* line 301, ../bower_components/ionic/scss/_animations.scss */
+.slide-in-left.ng-leave, .slide-in-left > .ng-leave {
+  -webkit-animation-name: slideOutToLeft;
+  -moz-animation-name: slideOutToLeft;
+  animation-name: slideOutToLeft;
+  -webkit-animation-duration: 250ms;
+  -moz-animation-duration: 250ms;
+  animation-duration: 250ms;
+  -webkit-animation-timing-function: ease-in-out;
+  -moz-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out;
+  -webkit-animation-fill-mode: both;
+  -moz-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+/* line 310, ../bower_components/ionic/scss/_animations.scss */
+.slide-in-left-add {
+  -webkit-transform: translate3d(100%, 0, 0);
+  -moz-transform: translate3d(100%, 0, 0);
+  transform: translate3d(100%, 0, 0);
+  -webkit-animation-duration: 250ms;
+  -moz-animation-duration: 250ms;
+  animation-duration: 250ms;
+  -webkit-animation-timing-function: ease-in-out;
+  -moz-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out;
+  -webkit-animation-fill-mode: both;
+  -moz-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+/* line 316, ../bower_components/ionic/scss/_animations.scss */
+.slide-in-left-add-active {
+  -webkit-animation-name: slideInFromLeft;
+  -moz-animation-name: slideInFromLeft;
+  animation-name: slideInFromLeft;
+}
+
+/* line 320, ../bower_components/ionic/scss/_animations.scss */
+.slide-out-left {
+  -webkit-transform: translate3d(-100%, 0, 0);
+  -moz-transform: translate3d(-100%, 0, 0);
+  transform: translate3d(-100%, 0, 0);
+}
+/* line 322, ../bower_components/ionic/scss/_animations.scss */
+.slide-out-left.ng-enter, .slide-out-left > .ng-enter {
+  -webkit-animation-name: slideOutToLeft;
+  -moz-animation-name: slideOutToLeft;
+  animation-name: slideOutToLeft;
+  -webkit-animation-duration: 250ms;
+  -moz-animation-duration: 250ms;
+  animation-duration: 250ms;
+  -webkit-animation-timing-function: ease-in-out;
+  -moz-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out;
+  -webkit-animation-fill-mode: both;
+  -moz-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+/* line 328, ../bower_components/ionic/scss/_animations.scss */
+.slide-out-left.ng-leave, .slide-out-left > .ng-leave {
+  -webkit-animation-name: slideOutToLeft;
+  -moz-animation-name: slideOutToLeft;
+  animation-name: slideOutToLeft;
+  -webkit-animation-duration: 250ms;
+  -moz-animation-duration: 250ms;
+  animation-duration: 250ms;
+  -webkit-animation-timing-function: ease-in-out;
+  -moz-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out;
+  -webkit-animation-fill-mode: both;
+  -moz-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+/* line 339, ../bower_components/ionic/scss/_animations.scss */
+.slide-out-left-add {
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  -webkit-animation-duration: 250ms;
+  -moz-animation-duration: 250ms;
+  animation-duration: 250ms;
+  -webkit-animation-timing-function: ease-in-out;
+  -moz-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out;
+  -webkit-animation-fill-mode: both;
+  -moz-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+/* line 345, ../bower_components/ionic/scss/_animations.scss */
+.slide-out-left-add-active {
+  -webkit-animation-name: slideOutToLeft;
+  -moz-animation-name: slideOutToLeft;
+  animation-name: slideOutToLeft;
+}
+
+/* line 349, ../bower_components/ionic/scss/_animations.scss */
+.slide-in-right {
+  -webkit-transform: translate3d(0%, 0, 0);
+  -moz-transform: translate3d(0%, 0, 0);
+  transform: translate3d(0%, 0, 0);
+}
+/* line 351, ../bower_components/ionic/scss/_animations.scss */
+.slide-in-right.ng-enter, .slide-in-right > .ng-enter {
+  -webkit-animation-name: slideInFromRight;
+  -moz-animation-name: slideInFromRight;
+  animation-name: slideInFromRight;
+  -webkit-animation-duration: 250ms;
+  -moz-animation-duration: 250ms;
+  animation-duration: 250ms;
+  -webkit-animation-timing-function: ease-in-out;
+  -moz-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out;
+  -webkit-animation-fill-mode: both;
+  -moz-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+/* line 357, ../bower_components/ionic/scss/_animations.scss */
+.slide-in-right.ng-leave, .slide-in-right > .ng-leave {
+  -webkit-animation-name: slideInFromRight;
+  -moz-animation-name: slideInFromRight;
+  animation-name: slideInFromRight;
+  -webkit-animation-duration: 250ms;
+  -moz-animation-duration: 250ms;
+  animation-duration: 250ms;
+  -webkit-animation-timing-function: ease-in-out;
+  -moz-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out;
+  -webkit-animation-fill-mode: both;
+  -moz-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+/* line 365, ../bower_components/ionic/scss/_animations.scss */
+.slide-in-right-add {
+  -webkit-transform: translate3d(-100%, 0, 0);
+  -moz-transform: translate3d(-100%, 0, 0);
+  transform: translate3d(-100%, 0, 0);
+  -webkit-animation-duration: 250ms;
+  -moz-animation-duration: 250ms;
+  animation-duration: 250ms;
+  -webkit-animation-timing-function: ease-in-out;
+  -moz-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out;
+  -webkit-animation-fill-mode: both;
+  -moz-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+/* line 371, ../bower_components/ionic/scss/_animations.scss */
+.slide-in-right-add-active {
+  -webkit-animation-name: slideInFromRight;
+  -moz-animation-name: slideInFromRight;
+  animation-name: slideInFromRight;
+}
+
+/* line 375, ../bower_components/ionic/scss/_animations.scss */
+.slide-out-right {
+  -webkit-transform: translate3d(100%, 0, 0);
+  -moz-transform: translate3d(100%, 0, 0);
+  transform: translate3d(100%, 0, 0);
+}
+/* line 377, ../bower_components/ionic/scss/_animations.scss */
+.slide-out-right.ng-enter, .slide-out-right > .ng-enter {
+  -webkit-animation-name: slideOutToRight;
+  -moz-animation-name: slideOutToRight;
+  animation-name: slideOutToRight;
+  -webkit-animation-duration: 250ms;
+  -moz-animation-duration: 250ms;
+  animation-duration: 250ms;
+  -webkit-animation-timing-function: ease-in-out;
+  -moz-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out;
+  -webkit-animation-fill-mode: both;
+  -moz-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+/* line 383, ../bower_components/ionic/scss/_animations.scss */
+.slide-out-right.ng-leave, .slide-out-right > .ng-leave {
+  -webkit-animation-name: slideOutToRight;
+  -moz-animation-name: slideOutToRight;
+  animation-name: slideOutToRight;
+  -webkit-animation-duration: 250ms;
+  -moz-animation-duration: 250ms;
+  animation-duration: 250ms;
+  -webkit-animation-timing-function: ease-in-out;
+  -moz-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out;
+  -webkit-animation-fill-mode: both;
+  -moz-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+/* line 393, ../bower_components/ionic/scss/_animations.scss */
+.slide-out-right-add {
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  -webkit-animation-duration: 250ms;
+  -moz-animation-duration: 250ms;
+  animation-duration: 250ms;
+  -webkit-animation-timing-function: ease-in-out;
+  -moz-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out;
+  -webkit-animation-fill-mode: both;
+  -moz-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+/* line 399, ../bower_components/ionic/scss/_animations.scss */
+.slide-out-right-add-active {
+  -webkit-animation-name: slideOutToRight;
+  -moz-animation-name: slideOutToRight;
+  animation-name: slideOutToRight;
+}
+
+/* line 403, ../bower_components/ionic/scss/_animations.scss */
+.slide-in-up {
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  opacity: 1;
+}
+/* line 408, ../bower_components/ionic/scss/_animations.scss */
+.slide-in-up.ng-enter, .slide-in-up .ng-enter {
+  -webkit-transform: translate3d(0, 100%, 0);
+  -moz-transform: translate3d(0, 100%, 0);
+  transform: translate3d(0, 100%, 0);
+  -webkit-animation-duration: 400ms;
+  -moz-animation-duration: 400ms;
+  animation-duration: 400ms;
+  -webkit-animation-timing-function: cubic-bezier(0.1, 0.7, 0.1, 1);
+  -moz-animation-timing-function: cubic-bezier(0.1, 0.7, 0.1, 1);
+  animation-timing-function: cubic-bezier(0.1, 0.7, 0.1, 1);
+  -webkit-animation-fill-mode: both;
+  -moz-animation-fill-mode: both;
+  animation-fill-mode: both;
+  opacity: 0;
+}
+/* line 419, ../bower_components/ionic/scss/_animations.scss */
+.slide-in-up.ng-enter-active, .slide-in-up .ng-enter-active {
+  -webkit-animation-name: slideInUp;
+  -moz-animation-name: slideInUp;
+  animation-name: slideInUp;
+}
+/* line 423, ../bower_components/ionic/scss/_animations.scss */
+.slide-in-up.ng-leave, .slide-in-up .ng-leave {
+  -webkit-animation-duration: 400ms;
+  -moz-animation-duration: 400ms;
+  animation-duration: 400ms;
+  -webkit-animation-timing-function: cubic-bezier(0.1, 0.7, 0.1, 1);
+  -moz-animation-timing-function: cubic-bezier(0.1, 0.7, 0.1, 1);
+  animation-timing-function: cubic-bezier(0.1, 0.7, 0.1, 1);
+  -webkit-animation-fill-mode: both;
+  -moz-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+/* line 429, ../bower_components/ionic/scss/_animations.scss */
+.slide-in-up.ng-leave-active, .slide-in-up .ng-leave {
+  -webkit-animation-name: slideOutUp;
+  -moz-animation-name: slideOutUp;
+  animation-name: slideOutUp;
+}
+
+/* line 434, ../bower_components/ionic/scss/_animations.scss */
+.slide-in-up-add {
+  -webkit-animation-duration: 400ms;
+  -moz-animation-duration: 400ms;
+  animation-duration: 400ms;
+  -webkit-animation-timing-function: cubic-bezier(0.1, 0.7, 0.1, 1);
+  -moz-animation-timing-function: cubic-bezier(0.1, 0.7, 0.1, 1);
+  animation-timing-function: cubic-bezier(0.1, 0.7, 0.1, 1);
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
+
+/* line 439, ../bower_components/ionic/scss/_animations.scss */
+.slide-in-up-add-active {
+  -webkit-animation-name: slideInUp;
+  -moz-animation-name: slideInUp;
+  animation-name: slideInUp;
+}
+
+/* line 443, ../bower_components/ionic/scss/_animations.scss */
+.slide-in-up-remove {
+  -webkit-animation-duration: 400ms;
+  -moz-animation-duration: 400ms;
+  animation-duration: 400ms;
+  -webkit-animation-timing-function: cubic-bezier(0.1, 0.7, 0.1, 1);
+  -moz-animation-timing-function: cubic-bezier(0.1, 0.7, 0.1, 1);
+  animation-timing-function: cubic-bezier(0.1, 0.7, 0.1, 1);
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
+
+/* line 448, ../bower_components/ionic/scss/_animations.scss */
+.slide-in-up-remove-active {
+  -webkit-animation-name: slideOutUp;
+  -moz-animation-name: slideOutUp;
+  animation-name: slideOutUp;
+}
+
+/* line 452, ../bower_components/ionic/scss/_animations.scss */
+.fade-in {
+  -webkit-animation: fadeOut 0.3s;
+  -moz-animation: fadeOut 0.3s;
+  animation: fadeOut 0.3s;
+}
+/* line 454, ../bower_components/ionic/scss/_animations.scss */
+.fade-in.active {
+  -webkit-animation: fadeIn 0.3s;
+  -moz-animation: fadeIn 0.3s;
+  animation: fadeIn 0.3s;
+}
+
+/* line 460, ../bower_components/ionic/scss/_animations.scss */
+.fade-in-not-out.ng-enter, .fade-in-not-out .ng-enter {
+  -webkit-animation: fadeIn 0.3s;
+  -moz-animation: fadeIn 0.3s;
+  animation: fadeIn 0.3s;
+  position: relative;
+}
+/* line 464, ../bower_components/ionic/scss/_animations.scss */
+.fade-in-not-out.ng-leave, .fade-in-not-out .ng-leave {
+  display: none;
+}
+
+/**
+ * Some component specific animations
+ */
+/* line 476, ../bower_components/ionic/scss/_animations.scss */
+.nav-title-slide-ios7 > .ng-enter, .nav-title-slide-ios7.ng-enter,
+.nav-title-slide-ios7 > .ng-leave, .nav-title-slide-ios7.ng-leave {
+  -webkit-transition: all 250ms;
+  -moz-transition: all 250ms;
+  transition: all 250ms;
+  -webkit-transition-timing-function: ease-in-out;
+  -moz-transition-timing-function: ease-in-out;
+  transition-timing-function: ease-in-out;
+  opacity: 1;
+}
+/* line 481, ../bower_components/ionic/scss/_animations.scss */
+.nav-title-slide-ios7 > .ng-enter, .nav-title-slide-ios7.ng-enter {
+  -webkit-transform: translate3d(30%, 0, 0);
+  -moz-transform: translate3d(30%, 0, 0);
+  transform: translate3d(30%, 0, 0);
+  opacity: 0;
+}
+/* line 485, ../bower_components/ionic/scss/_animations.scss */
+.nav-title-slide-ios7 > .ng-enter.ng-enter-active, .nav-title-slide-ios7.ng-enter.ng-enter-active {
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  opacity: 1;
+}
+/* line 489, ../bower_components/ionic/scss/_animations.scss */
+.nav-title-slide-ios7 > .ng-leave.ng-leave-active, .nav-title-slide-ios7.ng-leave.ng-leave-active {
+  -webkit-transform: translate3d(-30%, 0, 0);
+  -moz-transform: translate3d(-30%, 0, 0);
+  transform: translate3d(-30%, 0, 0);
+  opacity: 0;
+}
+/* line 496, ../bower_components/ionic/scss/_animations.scss */
+.nav-title-slide-ios7.reverse > .ng-enter, .nav-title-slide-ios7.reverse.ng-enter,
+.nav-title-slide-ios7.reverse > .ng-leave, .nav-title-slide-ios7.reverse.ng-leave {
+  -webkit-transition: all ease-in-out 250ms;
+  -moz-transition: all ease-in-out 250ms;
+  transition: all ease-in-out 250ms;
+  opacity: 1;
+}
+/* line 500, ../bower_components/ionic/scss/_animations.scss */
+.nav-title-slide-ios7.reverse > .ng-enter, .nav-title-slide-ios7.reverse.ng-enter {
+  -webkit-transform: translate3d(-30%, 0, 0);
+  -moz-transform: translate3d(-30%, 0, 0);
+  transform: translate3d(-30%, 0, 0);
+  opacity: 0;
+}
+/* line 504, ../bower_components/ionic/scss/_animations.scss */
+.nav-title-slide-ios7.reverse > .ng-enter.ng-enter-active, .nav-title-slide-ios7.reverse.ng-enter.ng-enter-active {
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  opacity: 1;
+}
+/* line 508, ../bower_components/ionic/scss/_animations.scss */
+.nav-title-slide-ios7.reverse > .ng-leave.ng-leave-active, .nav-title-slide-ios7.reverse.ng-leave.ng-leave-active {
+  -webkit-transform: translate3d(30%, 0, 0);
+  -moz-transform: translate3d(30%, 0, 0);
+  transform: translate3d(30%, 0, 0);
+  opacity: 0;
+}
+
+/* line 34, ../sass/app.sass */
 .addbookform input.ng-invalid.ng-dirty {
   border-color: #a94442;
   background-color: #f2dfde;
 }
-/* line 29, ../sass/app.sass */
+/* line 38, ../sass/app.sass */
 .addbookform input.ng-valid.ng-dirty {
   border-color: #3c763d;
   background-color: #bbdcbc;

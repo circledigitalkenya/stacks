@@ -19,7 +19,16 @@
 @import "modules/buttons"
 @import "modules/check"
 @import "modules/bottom-button"
-@import "modules/animations"
+
+/**
+ * ionic framework files
+ */
+@import "../bower_components/ionic/scss/mixins"
+@import "../bower_components/ionic/scss/variables"
+@import "../bower_components/ionic/scss/animations.scss"
+
+
+
 
 .addbookform
   input.ng-invalid.ng-dirty
@@ -29,3 +38,4 @@
   input.ng-valid.ng-dirty
     border-color: #3c763d
     background-color: lighten(#3c763d, 45%)
+
