@@ -5,6 +5,8 @@ angular.module('stacks.controllers', [])
       $window.history.back();
     }
 
+    $scope.slide = 'slide-left';
+
     $rootScope.working = false; // just toggling the loading indicator
 
   })

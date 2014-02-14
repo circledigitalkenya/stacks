@@ -7,39 +7,37 @@
 .slide-right.ng-enter,
 .slide-right.ng-leave
   position: absolute
-  background: inherit
-  top: 0
-  right: 0
-  bottom: 0
+  top: 0 
+  right: 0 
+  bottom: 0 
   left: 0
-  @include transition(ease-in-out 250ms)
+  background: inherit
+  @include transition(ease-in-out 1s)
 
 .slide-left.ng-enter 
   /* NEW content placed far RIGHT BEFORE it slides IN from the RIGHT */
   @include transform(translate3d(100%, 0, 0))
 
-.slide-left.ng-enter.ng-enter-active
-  position: absolute
-  width: 100%
+.slide-left.ng-enter.ng-enter-active,
+.slide-left.ng-leave
   /* NEW content ACTIVELY sliding IN from the RIGHT */
   @include transform(translate3d(0, 0, 0))
 
-.slide-left.ng-leave 
-  @include transform(translateX(0))
+
+.slide-left.ng-leave
+  @include transform(translate3d(0, 0, 0))
 
 .slide-left.ng-leave.ng-leave-active
-  opacity: 0
   /* OLD content ACTIVELY sliding OUT to the LEFT */
   @include transform(translate3d(-100%, 0, 0))
 
 .slide-right.ng-enter
-  @include transform(translateX(-100%))
+  @include transform(translate3d(-100%, 0, 0))
 
 .slide-right.ng-enter.ng-enter-active, 
 .slide-right.ng-leave
-  position: absolute
-  width: 100%
-  @include transform(translateX(0))
+  @include transform(translate3d(0, 0, 0))
 
 .slide-right.ng-leave.ng-leave-active
-  @include transform(translateX(100%))
+  @include transform(translate3d(100%, 0, 0))
+

@@ -507,15 +507,15 @@ a.button.green {
 .slide-right.ng-enter,
 .slide-right.ng-leave {
   position: absolute;
-  background: inherit;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  -webkit-transition: ease-in-out 250ms;
-  -moz-transition: ease-in-out 250ms;
-  -o-transition: ease-in-out 250ms;
-  transition: ease-in-out 250ms;
+  background: inherit;
+  -webkit-transition: ease-in-out 1s;
+  -moz-transition: ease-in-out 1s;
+  -o-transition: ease-in-out 1s;
+  transition: ease-in-out 1s;
 }
 
 /* line 17, ../sass/modules/_animations.sass */
@@ -529,9 +529,8 @@ a.button.green {
 }
 
 /* line 21, ../sass/modules/_animations.sass */
-.slide-left.ng-enter.ng-enter-active {
-  position: absolute;
-  width: 100%;
+.slide-left.ng-enter.ng-enter-active,
+.slide-left.ng-leave {
   /* NEW content ACTIVELY sliding IN from the RIGHT */
   -webkit-transform: translate3d(0, 0, 0);
   -moz-transform: translate3d(0, 0, 0);
@@ -542,16 +541,15 @@ a.button.green {
 
 /* line 27, ../sass/modules/_animations.sass */
 .slide-left.ng-leave {
-  -webkit-transform: translateX(0);
-  -moz-transform: translateX(0);
-  -ms-transform: translateX(0);
-  -o-transform: translateX(0);
-  transform: translateX(0);
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
 }
 
 /* line 30, ../sass/modules/_animations.sass */
 .slide-left.ng-leave.ng-leave-active {
-  opacity: 0;
   /* OLD content ACTIVELY sliding OUT to the LEFT */
   -webkit-transform: translate3d(-100%, 0, 0);
   -moz-transform: translate3d(-100%, 0, 0);
@@ -560,34 +558,32 @@ a.button.green {
   transform: translate3d(-100%, 0, 0);
 }
 
-/* line 35, ../sass/modules/_animations.sass */
+/* line 34, ../sass/modules/_animations.sass */
 .slide-right.ng-enter {
-  -webkit-transform: translateX(-100%);
-  -moz-transform: translateX(-100%);
-  -ms-transform: translateX(-100%);
-  -o-transform: translateX(-100%);
-  transform: translateX(-100%);
+  -webkit-transform: translate3d(-100%, 0, 0);
+  -moz-transform: translate3d(-100%, 0, 0);
+  -ms-transform: translate3d(-100%, 0, 0);
+  -o-transform: translate3d(-100%, 0, 0);
+  transform: translate3d(-100%, 0, 0);
 }
 
-/* line 38, ../sass/modules/_animations.sass */
+/* line 37, ../sass/modules/_animations.sass */
 .slide-right.ng-enter.ng-enter-active,
 .slide-right.ng-leave {
-  position: absolute;
-  width: 100%;
-  -webkit-transform: translateX(0);
-  -moz-transform: translateX(0);
-  -ms-transform: translateX(0);
-  -o-transform: translateX(0);
-  transform: translateX(0);
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
 }
 
-/* line 44, ../sass/modules/_animations.sass */
+/* line 41, ../sass/modules/_animations.sass */
 .slide-right.ng-leave.ng-leave-active {
-  -webkit-transform: translateX(100%);
-  -moz-transform: translateX(100%);
-  -ms-transform: translateX(100%);
-  -o-transform: translateX(100%);
-  transform: translateX(100%);
+  -webkit-transform: translate3d(100%, 0, 0);
+  -moz-transform: translate3d(100%, 0, 0);
+  -ms-transform: translate3d(100%, 0, 0);
+  -o-transform: translate3d(100%, 0, 0);
+  transform: translate3d(100%, 0, 0);
 }
 
 /* line 25, ../sass/app.sass */
