@@ -282,13 +282,20 @@ angular.module('stacks.controllers', [])
     ContactService
       .findAll()
       .then(function(contacts){
-        var nice_contacts = [];
+        // create a contact list
+        // of unique names only
+        var nice_contacts = [], _names = [];
         for (var i = 0; i < contacts.length; i++) {
-          nice_contacts.push({
-            id : contacts[i].id,
-            name : contacts[i].displayName
-          })
+          if( _names.indexOf(contacts[i].displayName.toLowerCase()) === -1 ) {
+            _names.push(contacts[i].displayName.toLowerCase());
+
+            nice_contacts.push({
+              id : contacts[i].id,
+              name : contacts[i].displayName
+            })            
+          }
         }
+
         // sort in alphabetical order
         nice_contacts.sort(function (a, b) {
           if (a.name > b.name)
