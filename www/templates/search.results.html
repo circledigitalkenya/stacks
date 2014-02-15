@@ -1,16 +1,16 @@
-<h3>Search Results</h3>
-<ul class="list">
-  <li ng-repeat="book in books">
-    <a href="#/tab/book/{{book.hash}}" class="clearfix">
-      <img ng-src="{{book.image}}" alt="">
-      <div>
-        <h4>{{book.title}}</h4>
-        <p ng-show="book.author.length > 0" class="light">by {{book.author}}</p>
-      </div>
-    </a>
-  </li>
-  <li ng-show="hasmore">
-    <a ng-hide="working" class="button green" ng-click="loadMoreResults(q,nextpage)">load more items</a><!-- 2 is hardcoded as we are returning max 2 pages --> 
-    <img ng-show="working" src="img/ajax-loader.gif" alt="" />
-  </li>
-</ul>
+<content padding="true" has-header="true">
+  <h3>Search Results</h3>
+  <ul class="list">
+    <li ng-repeat="book in books">
+      <a href="#/tab/book/{{book.hash}}" class="item item-thumbnail-left">
+        <img ng-src="{{book.image}}" alt="">
+        <h2>{{book.title}}</h2>
+        <p ng-show="book.author.length > 0">by {{book.author}}</p>
+      </a>
+    </li>
+    <li ng-show="hasmore">
+      <a ng-hide="working" class="button button-block button-positive icon-add" ng-click="loadMoreResults(q,nextpage)"></a><!-- 2 is hardcoded as we are returning max 2 pages --> 
+      <img ng-show="working" src="img/ajax-loader.gif" alt="" />
+    </li>
+  </ul>
+</content>

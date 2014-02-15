@@ -1,11 +1,11 @@
-<div class="button-group">
-  <a ng-show="connection_available" ng-click="scanBook()" class="button green">
+<content padding="true" has-header="true">
+  <a ng-show="connection_available" ng-click="scanBook()" class="button button-block button-stable">
     Scan ISBN <img ng-show="working" src="img/ajax-loader.gif" alt="" />
   </a>
 
-  <a ng-show="connection_available ? false : true" class="button green disabled">
+  <a ng-show="connection_available ? false : true" class="button  button-block button-stable disabled">
     Scan ISBN HEY WE ARE OFFLINE!
   </a>
 
-  <a ui-sref="tab.add" class="button green">No ISBN? Enter it manually</a>
-</div>
+  <a ui-sref="tab.add" class="button button-clear button-stable">No ISBN? Enter it manually</a>
+</content>

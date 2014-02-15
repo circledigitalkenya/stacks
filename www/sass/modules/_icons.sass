@@ -1,0 +1,69 @@
+@include fontFace('Icon','../fonts/stacks-icon')
+
+[data-icon]:before
+  font-family: "Icon" !important
+  content: attr(data-icon)
+  font-style: normal !important
+  font-weight: normal !important
+  font-variant: normal !important
+  text-transform: none !important
+  speak: none
+  line-height: 1
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
+
+[class^="icon-"]:before, [class*=" icon-"]:before
+  font-family: "Icon" !important
+  font-style: normal !important
+  font-weight: normal !important
+  font-variant: normal !important
+  text-transform: none !important
+  speak: none
+  line-height: 1
+  -webkit-font-smoothing: antialiased
+
+.icon-arrow-back:before
+  content: "a"
+
+.icon-home:before
+  content: "b"
+
+.icon-arrow-forward:before
+  content: "c"
+
+.icon-add:before
+  content: "d"
+
+.icon-star:before
+  content: "e"
+
+.icon-book:before
+  content: "f"
+
+.icon-search:before
+  content: "g"
+
+.giant-icon
+  font-size: 4em
+
+.placeholder-icon
+  margin: 3px 7px 0 3px
+
+.badge.badge-small
+  padding: 1px 8px
+  font-size: 12px
+  float: none
+
+small
+  color: #999
+
+.block
+  display: block
+
+.bar .button.button-clear .icon:before, .bar .button.button-clear.icon:before, .bar .button.button-clear.icon-left:before, .bar .button.button-clear.icon-right:before
+  font-size: 20px
+  line-height: 31px
+
+a.item:after, button.item:after
+  font-family: 'Icon'
+  content: "c"

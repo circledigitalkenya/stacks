@@ -1,4 +1,5 @@
-<h2>Manual entry</h2>
+<content padding="true" has-header="true">
+<h3>Manual entry</h3>
 <form name="addbookform" novalidate ng-submit="submitBook()" class="addbookform">
   <div class="item">
     <label for="title">Title</label>
@@ -12,17 +13,16 @@
     <label for="pub">Publisher</label>
     <input type="text" id="pub" name="publisher" ng-model="publisher">
   </div>
-  <div class="item clearfix">
-    <div class="half column">
-      <label for="year">Year</label>
+  <div class="item ">
+      <label for="year">Year Published</label>
       <input type="number" min="1900" max="2014" id="year" name="year" ng-model="year">
-    </div>
-    <div class="half column">
-      <label for="pages"># of Pages</label>
-      <input type="number" min="1" max="2000" name="pages" ng-model="pages">
-    </div>
   </div>
   <div class="item">
-    <input type="submit" class="orange" ng-disabled="addbookform.$invalid">
+      <label for="pages"># of Pages</label>
+      <input type="number" min="1" max="2000" name="pages" ng-model="pages">
   </div>
+
+    <input type="submit" class="button button-block button-positive" ng-disabled="addbookform.$invalid">
+
 </form>
+</content>

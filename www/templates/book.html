@@ -1,37 +1,47 @@
-<img ng-src="{{book.image}}" alt="">
-<div class="item">
-  <h1>{{book.title}}</h1>
-  <h3 ng-show="book.author.length > 0" class="light">by {{book.author}}</h3>
-  <h3 class="light">
-    <span ng-show="book.publisher.length > 0">{{book.publisher}},</span>
-    {{book.pubyear}}
-  </h3>
-</div>
+<content padding="true" has-header="true">
+  <div class="row">
+    <div class="col">
+      <img ng-src="{{book.image}}" alt="">
+    </div>
+    <div class="col book-details">
+      <h4>{{book.title}}</h4>
+      <p ng-show="book.author.length > 0">by {{book.author}}
+        <br/><span ng-show="book.publisher.length > 0">{{book.publisher}},</span>
+        {{book.pubyear}}
+      </p>
+    </div>
+  </div>
 
-<div class="button-group" ng-if="book.exists_in_library ? false : true">
-  <a class="button gray" href=""  ng-click="addToLibrary()">
-    + Add to library
-  </a>
-  <br/><br/>
-  <a class="button gray">
-    Buy this book <i ng-if="book.price.length > 0">( {{book.price}} )</i>
-  </a>
-</div>
+  <div class="button-bar" ng-if="book.exists_in_library ? false : true">
+    <a class="button button-balanced" href=""  ng-click="addToLibrary()">
+      + Add
+    </a>
+    <a class="button button-energized">
+      Buy<i ng-if="book.price.length > 0">({{book.price}})</i>
+    </a>
+  </div>
 
-<div class="button-group" ng-if="book.exists_in_library">
-  <a class="button gray" ng-click="removeFromLibrary(book.id)">
-    Remove from library
-  </a>
-  <br/><br/>
-  <span ng-if="!book.loaned_to_contact_id">
-    <a class="button gray" ng-click="loanBook(book.id)">
-      Loan this book
-    </a>      
-  </span>
+  <div ng-if="book.exists_in_library">
+    <div class="card" ng-if="book.loaned_to_contact_id.length > 0">
+      <div class="item item-text-wrap center">
+        Loaned to {{book.loaned_to_contact_name}}<br/>
+        <small>since {{book.nice_loaned_date}}</small>
+      </div>
+      <a class="item balanced" href="#" ng-click="returnBook(book.id)">
+        Book returned?
+      </a>
+    </div>
+  </div>
 
-  <span ng-if="book.loaned_to_contact_id.length > 0">
-    Book loaned to {{book.loaned_to_contact_name}} since {{book.nice_loaned_date}}
-
-    <a href="" ng-click="returnBook(book.id)" class="button green">Book Returned!</a>
-  </span>
-</div>
+  <div ng-if="book.exists_in_library" class="button-bar">
+    <a class="button button-assertive" ng-click="removeFromLibrary(book.id)">
+      Remove
+    </a>
+    <a class="button button-calm" ng-if="!book.loaned_to_contact_id" ng-click="loanBook(book.id)">
+      Loan
+    </a>
+   <!--  <a href="" ng-click="returnBook(book.id)" ng-if="book.loaned_to_contact_id.length > 0" class="button button-stable">
+      Returned?
+    </a> -->
+  </div>
+</content>

@@ -2,6 +2,21 @@
  * In this file you should write your main styles. (or centralize your imports)
  * Import this file using the following HTML or equivalent:
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* line 15, ../sass/modules/_general.sass */
+.left {
+  float: left;
+}
+
+/* line 18, ../sass/modules/_general.sass */
+.right {
+  float: left;
+}
+
+/* line 21, ../sass/modules/_general.sass */
+.center {
+  text-align: center;
+}
+
 /*
  * ionic framework files
  */
@@ -9473,12 +9488,146 @@ a.button {
   line-height: 48px;
 }
 
-/* line 34, ../sass/app.sass */
+@font-face {
+  font-family: "InconsolataReg";
+  src: url("../fonts/inconsolata-regular-webfont.eot");
+  src: url("../fonts/inconsolata-regular-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/inconsolata-regular-webfont.woff") format("woff"), url("../fonts/inconsolata-regular-webfont.ttf") format("truetype"), url("../fonts/inconsolata-regular-webfont.svg#InconsolataReg") format("svg");
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "InconsolataBold";
+  src: url("../fonts/inconsolata-bold-webfont.eot");
+  src: url("../fonts/inconsolata-bold-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/inconsolata-bold-webfont.woff") format("woff"), url("../fonts/inconsolata-bold-webfont.ttf") format("truetype"), url("../fonts/inconsolata-bold-webfont.svg#InconsolataBold") format("svg");
+  font-style: normal;
+  font-weight: normal;
+}
+
+/* line 17, ../sass/modules/_typography.sass */
+.col.book-details h4 {
+  margin-top: 0;
+}
+
+/* line 19, ../sass/modules/_typography.sass */
+.item p {
+  white-space: normal;
+}
+
+@font-face {
+  font-family: "Icon";
+  src: url("../fonts/stacks-icon.eot");
+  src: url("../fonts/stacks-icon.eot?#iefix") format("embedded-opentype"), url("../fonts/stacks-icon.woff") format("woff"), url("../fonts/stacks-icon.ttf") format("truetype"), url("../fonts/stacks-icon.svg#Icon") format("svg");
+  font-style: normal;
+  font-weight: normal;
+}
+
+/* line 3, ../sass/modules/_icons.sass */
+[data-icon]:before {
+  font-family: "Icon" !important;
+  content: attr(data-icon);
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* line 15, ../sass/modules/_icons.sass */
+[class^="icon-"]:before, [class*=" icon-"]:before {
+  font-family: "Icon" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* line 25, ../sass/modules/_icons.sass */
+.icon-arrow-back:before {
+  content: "a";
+}
+
+/* line 28, ../sass/modules/_icons.sass */
+.icon-home:before {
+  content: "b";
+}
+
+/* line 31, ../sass/modules/_icons.sass */
+.icon-arrow-forward:before {
+  content: "c";
+}
+
+/* line 34, ../sass/modules/_icons.sass */
+.icon-add:before {
+  content: "d";
+}
+
+/* line 37, ../sass/modules/_icons.sass */
+.icon-star:before {
+  content: "e";
+}
+
+/* line 40, ../sass/modules/_icons.sass */
+.icon-book:before {
+  content: "f";
+}
+
+/* line 43, ../sass/modules/_icons.sass */
+.icon-search:before {
+  content: "g";
+}
+
+/* line 46, ../sass/modules/_icons.sass */
+.giant-icon {
+  font-size: 4em;
+}
+
+/* line 49, ../sass/modules/_icons.sass */
+.placeholder-icon {
+  margin: 3px 7px 0 3px;
+}
+
+/* line 52, ../sass/modules/_icons.sass */
+.badge.badge-small {
+  padding: 1px 8px;
+  font-size: 12px;
+  float: none;
+}
+
+/* line 57, ../sass/modules/_icons.sass */
+small {
+  color: #999999;
+}
+
+/* line 60, ../sass/modules/_icons.sass */
+.block {
+  display: block;
+}
+
+/* line 63, ../sass/modules/_icons.sass */
+.bar .button.button-clear .icon:before, .bar .button.button-clear.icon:before, .bar .button.button-clear.icon-left:before, .bar .button.button-clear.icon-right:before {
+  font-size: 20px;
+  line-height: 31px;
+}
+
+/* line 67, ../sass/modules/_icons.sass */
+a.item:after, button.item:after {
+  font-family: "Icon";
+  content: "c";
+}
+
+/* line 37, ../sass/app.sass */
 .addbookform input.ng-invalid.ng-dirty {
   border-color: #a94442;
   background-color: #f2dfde;
 }
-/* line 38, ../sass/app.sass */
+/* line 41, ../sass/app.sass */
 .addbookform input.ng-valid.ng-dirty {
   border-color: #3c763d;
   background-color: #bbdcbc;

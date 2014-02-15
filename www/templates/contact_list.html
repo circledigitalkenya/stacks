@@ -1,12 +1,17 @@
-<h4>Select a friend you'd like to loan the book to</h4>
-<form class="clearfix search-container full-width">
-    <input type="search" ng-model="search.name" placeholder="Search by name" style="border: solid 1px #ccc;"> 
-</form>
-<ul>
-  <li ng-repeat="contact in filtered_contacts = ( contacts | filter:search:strict )" style="padding: 10px 5px; border-bottom: solid 1px #ccc;">
-    <a href="" ng-click="loanToContact(contact.id, contact.name)">
-      {{contact.name}}
-    </a>
-  </li>
-  <li ng-show="filtered_contacts.length == 0">Nothing found for search: '{{search.name}}'</li>
-</ul>
+<content padding="true" has-header="true">
+  <h3>Select a friend you'd like to loan the book to</h3>
+  <form>
+     <label class="item item-input">
+      <i class="icon icon-search placeholder-icon"></i>
+      <input type="search" ng-model="search.name" placeholder="Search by name">
+    </label>
+  </form>
+  <ul class="list">
+    <li ng-repeat="contact in filtered_contacts = ( contacts | filter:search:strict )">
+      <a href="" ng-click="loanToContact(contact.id, contact.name)" class="item">
+        {{contact.name}}
+      </a>
+    </li>
+    <li ng-show="filtered_contacts.length == 0">Nothing found for search: '{{search.name}}'</li>
+  </ul>
+</content>
