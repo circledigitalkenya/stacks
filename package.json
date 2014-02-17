@@ -5,7 +5,6 @@
     "grunt": "~0.4.2",
     "grunt-cli": "0.1.x",
     "grunt-shell": "0.2.x",
-    "grunt-contrib-watch": "~0.3.1",
-    "grunt-contrib-compass": "~0.7.2"
+    "grunt-contrib-watch": "~0.3.1"
   }
 }

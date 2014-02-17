@@ -1,16 +1,14 @@
 <content padding="true" has-header="true">
   <h3>Search Results</h3>
-  <ul class="list">
-    <li ng-repeat="book in books">
-      <a href="#/tab/book/{{book.hash}}" class="item item-thumbnail-left">
-        <img ng-src="{{book.image}}" alt="">
-        <h2>{{book.title}}</h2>
-        <p ng-show="book.author.length > 0">by {{book.author}}</p>
-      </a>
-    </li>
-    <li ng-show="hasmore">
-      <a ng-hide="working" class="button button-block button-positive icon-add" ng-click="loadMoreResults(q,nextpage)"></a><!-- 2 is hardcoded as we are returning max 2 pages --> 
+  <list class="list">
+    <item ng-repeat="book in books"  href="#/tab/book/{{book.hash}}">
+      <img ng-src="{{book.image}}" alt="">
+      <h2>{{book.title}}</h2>
+      <p ng-show="book.author.length > 0">by {{book.author}}</p>
+    </item>
+    <item ng-show="hasmore">
+      <a ng-hide="working" class="button button-block button-positive icon-add" ng-click="loadMoreResults(q,nextpage)"></a>
       <img ng-show="working" src="img/ajax-loader.gif" alt="" />
-    </li>
-  </ul>
+    </item>
+  </list>
 </content>

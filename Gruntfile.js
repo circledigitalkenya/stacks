@@ -6,21 +6,15 @@ module.exports = function(grunt) {
           files: [
             'www/**'
           ],
-          tasks: ['compass','shell']
-        },
-        compass: {                  // Task
-          dev: {                   // Target
-            options: {              // Target options
-              sassDir: 'www/sass',
-              cssDir: 'www/stylesheets',
-              environment: 'development'
-            }
-          }
+          tasks: ['shell']
         },
         shell: {
           _options: {
             failOnError: true,
             stdout: true
+          },
+          compass_compile : {
+            command : 'compass compile'
           },
           debug_ios: {
             command: 'cordova prepare ios'
@@ -30,7 +24,6 @@ module.exports = function(grunt) {
 
     grunt.loadNpmTasks('grunt-shell');
     grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-contrib-compass');
 
     // Default task
     grunt.registerTask('default', ['watch']);
