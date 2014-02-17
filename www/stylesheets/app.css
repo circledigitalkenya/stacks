@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* Welcome to Compass.
  * In this file you should write your main styles. (or centralize your imports)
  * Import this file using the following HTML or equivalent:
@@ -8321,8 +8322,6 @@ a.button {
   -webkit-transition: all ease-in-out 250ms;
   -moz-transition: all ease-in-out 250ms;
   transition: all ease-in-out 250ms;
-  position: absolute;
-  top: 0;
   right: 0;
   bottom: 0;
   left: 0;
@@ -8353,8 +8352,6 @@ a.button {
   -webkit-transition: all ease-in-out 250ms;
   -moz-transition: all ease-in-out 250ms;
   transition: all ease-in-out 250ms;
-  position: absolute;
-  top: 0;
   right: 0;
   bottom: 0;
   left: 0;
@@ -8391,7 +8388,6 @@ a.button {
   -webkit-transition: all ease-in-out 250ms;
   -moz-transition: all ease-in-out 250ms;
   transition: all ease-in-out 250ms;
-  position: absolute;
   top: 0;
   right: -1px;
   bottom: 0;
@@ -8426,7 +8422,6 @@ a.button {
   -webkit-transition: all ease-in-out 250ms;
   -moz-transition: all ease-in-out 250ms;
   transition: all ease-in-out 250ms;
-  position: absolute;
   top: 0;
   right: -1px;
   bottom: 0;

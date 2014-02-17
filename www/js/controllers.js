@@ -238,7 +238,7 @@ angular.module('stacks.controllers', [])
       database
         .query("DELETE FROM books WHERE id='"+id+"'")
         .then(function(d) {
-          $state.go('tab.library'); // successfuly deleted book
+          $state.go('tab.bookremoved'); // successfuly removed book
         })
     }
 
