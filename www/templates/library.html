@@ -8,8 +8,8 @@
         <input type="search" ng-model="search" placeholder="Search">
       </label>
     </form>
-    <list class="list">
-      <item ng-repeat="book in filtered_books = ( books | filter:search )" ng-href="#/tab/book/{{book.id}}">
+    <list class="list" option-buttons="libButtons">
+      <item ng-repeat="book in filtered_books = ( books | filter:search )" item="book" href="#/tab/book/{{book.id}}">
         <img ng-src="{{book.image}}" alt="">
         <h2>{{book.title}}</h4>
         <p>by {{book.author}}
