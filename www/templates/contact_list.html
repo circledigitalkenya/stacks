@@ -7,10 +7,8 @@
     </label>
   </form>
   <list class="list">
-    <item ng-repeat="contact in filtered_contacts = ( contacts | filter:search:strict )">
-      <a href="" ng-click="loanToContact(contact.id, contact.name)" class="item">
+    <item ng-repeat="contact in filtered_contacts = ( contacts | filter:search:strict )" ng-click="loanToContact(contact.id, contact.name)" class="item">
         {{contact.name}}
-      </a>
     </item>
     <item ng-show="filtered_contacts.length == 0">Nothing found for search: '{{search.name}}'</item>
   </list>
