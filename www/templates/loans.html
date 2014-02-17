@@ -6,20 +6,20 @@
         <input type="search" ng-model="search" placeholder="Search" class="ng-pristine ng-valid"> 
       </label>
   </form>
-  <ul class="list">
-    <li ng-repeat="book in lbooks = ( books | filter:search )">
-      <a href="#/tab/book/{{book.id}}" class="item item-thumbnail-left">
-        <img ng-src="{{book.image}}" alt="">
-        <h2>{{book.title}}</h2>
-        <p>by {{book.author}}
-          <span class="block" ng-if="book.loaned_to_contact_id.length > 0">
-            <span class="badge badge-small badge-calm">
-              {{book.loaned_to_contact_name}}<!--  since {{book.nice_loaned_date}} -->
-            </span>
+  <list>
+    <item ng-repeat="book in lbooks = ( books | filter:search )" href="#/tab/book/{{book.id}}">
+      <img ng-src="{{book.image}}" alt="">
+      <h2>{{book.title}}</h2>
+      <p>by {{book.author}}
+        <span class="block" ng-if="book.loaned_to_contact_id.length > 0">
+          <span class="badge badge-small badge-calm">
+            {{book.loaned_to_contact_name}}<!--  since {{book.nice_loaned_date}} -->
           </span>
-        </p>
-      </a>
-    </li>
-    <li ng-show="lbooks.length == 0">Nothing found for search: '{{search}}'</li>
-  </ul>
+        </span>
+      </p>
+    </item>
+    <item ng-show="lbooks.length == 0">Nothing found for search: '{{search}}'</item>
+  </list>
+
+
 </content>

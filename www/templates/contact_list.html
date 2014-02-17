@@ -6,12 +6,12 @@
       <input type="search" ng-model="search.name" placeholder="Search by name">
     </label>
   </form>
-  <ul class="list">
-    <li ng-repeat="contact in filtered_contacts = ( contacts | filter:search:strict )">
+  <list class="list">
+    <item ng-repeat="contact in filtered_contacts = ( contacts | filter:search:strict )">
       <a href="" ng-click="loanToContact(contact.id, contact.name)" class="item">
         {{contact.name}}
       </a>
-    </li>
-    <li ng-show="filtered_contacts.length == 0">Nothing found for search: '{{search.name}}'</li>
-  </ul>
+    </item>
+    <item ng-show="filtered_contacts.length == 0">Nothing found for search: '{{search.name}}'</item>
+  </list>
 </content>

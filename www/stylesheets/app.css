@@ -9637,3 +9637,10 @@ a.item:after, button.item:after {
 .has-header {
   top: 44px !important;
 }
+
+/* line 49, ../sass/app.sass */
+.item-content > img {
+  padding: 0 10px;
+  float: left;
+  width: 34%;
+}
