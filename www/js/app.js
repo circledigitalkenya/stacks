@@ -103,6 +103,17 @@ document.addEventListener('deviceready', function(){
             }
             $scope.books = books;
           });
+
+          $scope.loanButtons = [
+            {
+              text: 'Return',
+              type: 'button-calm',
+              onTap: function(book) {
+                $scope.returnBook(book.id);
+              }
+            }
+          ];
+
         }
       })
       .state('tab.scannoresults', {

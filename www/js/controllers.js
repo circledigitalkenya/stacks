@@ -36,6 +36,15 @@ angular.module('stacks.controllers', [])
 
     }
 
+    $scope.returnBook = function(id) {
+      database
+        .query("UPDATE books SET loaned_to_contact_id ='', loaned_to_contact_name = '', loaned_date = '' WHERE id='"+id+"'")
+        .then(function(d) {
+          $state.go('tab.bookreturned');
+        })
+    }
+
+
   })
   .controller('AddBookController', function($scope, $state, $rootScope, $q, $location, BookService, database) {
 
@@ -196,7 +205,6 @@ angular.module('stacks.controllers', [])
         $scope.books = books
       });
 
-    // 
     $scope.libButtons = [
       {
         text: 'Loan',
@@ -206,8 +214,6 @@ angular.module('stacks.controllers', [])
         }
       }
     ];
-
-
 
   })
 
@@ -282,14 +288,6 @@ angular.module('stacks.controllers', [])
         })
     }
 
-    $scope.returnBook = function(id) {
-      database
-        .query("UPDATE books SET loaned_to_contact_id ='', loaned_to_contact_name = '', loaned_date = '' WHERE id='"+id+"'")
-        .then(function(d) {
-          $state.go('tab.bookreturned');
-        })
-    }
-
   })
   .controller('LoanController', function($scope, $state, $location, BookService, ContactService, database){
 
@@ -342,6 +340,5 @@ angular.module('stacks.controllers', [])
           console.log('query failed due to: '+ error)
         })
     }
-
 
   });
