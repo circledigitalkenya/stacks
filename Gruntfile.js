@@ -6,7 +6,16 @@ module.exports = function(grunt) {
           files: [
             'www/**'
           ],
-          tasks: ['shell']
+          tasks: ['compass','shell']
+        },
+        compass: {                  // Task
+          dev: {                   // Target
+            options: {              // Target options
+              sassDir: 'www/sass',
+              cssDir: 'www/stylesheets',
+              environment: 'development'
+            }
+          }
         },
         shell: {
           _options: {
@@ -21,6 +30,7 @@ module.exports = function(grunt) {
 
     grunt.loadNpmTasks('grunt-shell');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-contrib-compass');
 
     // Default task
     grunt.registerTask('default', ['watch']);

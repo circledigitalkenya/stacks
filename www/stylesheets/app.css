@@ -8322,6 +8322,8 @@ a.button {
   -webkit-transition: all ease-in-out 250ms;
   -moz-transition: all ease-in-out 250ms;
   transition: all ease-in-out 250ms;
+  position: absolute;
+  top: 0;
   right: 0;
   bottom: 0;
   left: 0;
@@ -8388,6 +8390,7 @@ a.button {
   -webkit-transition: all ease-in-out 250ms;
   -moz-transition: all ease-in-out 250ms;
   transition: all ease-in-out 250ms;
+  position: absolute;
   top: 0;
   right: -1px;
   bottom: 0;
@@ -8422,6 +8425,7 @@ a.button {
   -webkit-transition: all ease-in-out 250ms;
   -moz-transition: all ease-in-out 250ms;
   transition: all ease-in-out 250ms;
+  position: absolute;
   top: 0;
   right: -1px;
   bottom: 0;
@@ -9626,4 +9630,9 @@ a.item:after, button.item:after {
 .addbookform input.ng-valid.ng-dirty {
   border-color: #3c763d;
   background-color: #bbdcbc;
+}
+
+/* line 45, ../sass/app.sass */
+.has-header {
+  top: 44px !important;
 }
