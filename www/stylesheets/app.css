@@ -9622,23 +9622,23 @@ a.item:after, button.item:after {
   content: "c";
 }
 
-/* line 37, ../sass/app.sass */
+/* line 17, ../sass/app.sass */
 .addbookform input.ng-invalid.ng-dirty {
   border-color: #a94442;
   background-color: #f2dfde;
 }
-/* line 41, ../sass/app.sass */
+/* line 21, ../sass/app.sass */
 .addbookform input.ng-valid.ng-dirty {
   border-color: #3c763d;
   background-color: #bbdcbc;
 }
 
-/* line 45, ../sass/app.sass */
+/* line 25, ../sass/app.sass */
 .has-header {
   top: 44px !important;
 }
 
-/* line 49, ../sass/app.sass */
+/* line 29, ../sass/app.sass */
 .item-content > img {
   padding: 0 10px;
   float: left;
