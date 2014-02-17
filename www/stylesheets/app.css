@@ -1,4 +1,3 @@
-@charset "UTF-8";
 /* Welcome to Compass.
  * In this file you should write your main styles. (or centralize your imports)
  * Import this file using the following HTML or equivalent:
@@ -16,6 +15,16 @@
 /* line 21, ../sass/modules/_general.sass */
 .center {
   text-align: center;
+}
+
+/* line 24, ../sass/modules/_general.sass */
+small {
+  color: #999999;
+}
+
+/* line 27, ../sass/modules/_general.sass */
+.block {
+  display: block;
 }
 
 /*
@@ -8354,6 +8363,8 @@ a.button {
   -webkit-transition: all ease-in-out 250ms;
   -moz-transition: all ease-in-out 250ms;
   transition: all ease-in-out 250ms;
+  position: absolute;
+  top: 0;
   right: 0;
   bottom: 0;
   left: 0;
@@ -9508,8 +9519,8 @@ a.button {
   margin-top: 0;
 }
 
-/* line 19, ../sass/modules/_typography.sass */
-.item p {
+/* line 20, ../sass/modules/_typography.sass */
+.item p, .item h2 {
   white-space: normal;
 }
 
@@ -9600,22 +9611,12 @@ a.button {
 }
 
 /* line 57, ../sass/modules/_icons.sass */
-small {
-  color: #999999;
-}
-
-/* line 60, ../sass/modules/_icons.sass */
-.block {
-  display: block;
-}
-
-/* line 63, ../sass/modules/_icons.sass */
 .bar .button.button-clear .icon:before, .bar .button.button-clear.icon:before, .bar .button.button-clear.icon-left:before, .bar .button.button-clear.icon-right:before {
   font-size: 20px;
   line-height: 31px;
 }
 
-/* line 67, ../sass/modules/_icons.sass */
+/* line 61, ../sass/modules/_icons.sass */
 a.item:after, button.item:after {
   font-family: "Icon";
   content: "c";
