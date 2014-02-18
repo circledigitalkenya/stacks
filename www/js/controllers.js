@@ -1,5 +1,11 @@
 angular.module('stacks.controllers', [])
   .controller('MainController', function($scope, $window, $state, $rootScope, $q, $location, BookService, database) {
+    
+    $rootScope.$on('$stateChangeSuccess', function(){
+      $rootScope.hasbackbutton = $state.current.data.hasbackbutton;
+    });
+
+
     // back button
     $rootScope.back = function(){
       $window.history.back();

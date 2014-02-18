@@ -24,37 +24,56 @@ document.addEventListener('deviceready', function(){
       .state('home', {
         url: "/home",
         templateUrl: "templates/home.html",
-        
+        data : {
+          hasbackbutton : true
+        }
       })
       .state('tab', {
         url: "/tab",
         templateUrl: "templates/tabs.html",
-        
+        data : {
+          hasbackbutton : true
+        }
       })
       .state('tab.build', {
         url: "/build",
         templateUrl: "templates/build_library.html",
-        controller: "AddBookController"
+        controller: "AddBookController",
+        data : {
+          hasbackbutton : true
+        }
       })
       .state('tab.add', {
         url: "/add",
         templateUrl: "templates/add.html",
-        controller: "AddBookController"
+        controller: "AddBookController",
+        data : {
+          hasbackbutton : true
+        }
       })
       .state('tab.addmanually',{
         url:"/addmanually",
         templateUrl: "templates/add.manually.html",
-        controller: "AddBookController"
+        controller: "AddBookController",
+        data : {
+          hasbackbutton : true
+        }
       })
       .state('tab.book',{
         url:"/book/:id",
         templateUrl: "templates/book.html",
-        controller: "BookController"
+        controller: "BookController",
+        data : {
+          hasbackbutton : true
+        }
       })
       .state('tab.search',{
         url:"/search",
         templateUrl: "templates/search.html",
-        controller: "BookController"
+        controller: "BookController",
+        data : {
+          hasbackbutton : true
+        }
       })
       .state('tab.bookadded',{
         url:"/bookadded",
@@ -62,31 +81,49 @@ document.addEventListener('deviceready', function(){
       })
       .state('tab.bookremoved',{
         url:"/bookremoved",
-        templateUrl: "templates/book.removed.html"
+        templateUrl: "templates/book.removed.html",
+        data : {
+          hasbackbutton : false
+        }
       })
       .state('tab.bookreturned',{
         url:"/bookreturned",
-        templateUrl: "templates/book.returned.html"
+        templateUrl: "templates/book.returned.html",
+        data : {
+          hasbackbutton : false
+        }
       })
       .state('tab.searchresults',{
         url:"/searchresults",
         templateUrl: "templates/search.results.html",
-        controller: "SearchResults"
+        controller: "SearchResults",
+        data : {
+          hasbackbutton : true
+        }
       })
       .state('tab.no_results',{
         url:"/noresults",
         templateUrl: "templates/search.no_results.html",
-        controller: "BookController"
+        controller: "BookController",
+        data : {
+          hasbackbutton : true
+        }
       })
       .state('tab.library',{
         url:"/library",
         templateUrl: "templates/library.html",
-        controller: "LibraryController"
+        controller: "LibraryController",
+        data : {
+          hasbackbutton : true
+        }
       })
       .state('tab.contactlist',{
         url:"/contactlist",
         templateUrl: "templates/contact_list.html",
-        controller: "LoanController"
+        controller: "LoanController",
+        data : {
+          hasbackbutton : true
+        }
       })
       .state('tab.loans', {
         url: "/loans",
@@ -114,6 +151,9 @@ document.addEventListener('deviceready', function(){
             }
           ];
 
+        },
+        data : {
+          hasbackbutton : true
         }
       })
       .state('tab.scannoresults', {
@@ -125,6 +165,9 @@ document.addEventListener('deviceready', function(){
         templateUrl: "templates/book.loaned.html",
         controller: function($scope,$stateParams){
           $scope.name = $stateParams.name
+        },
+        data : {
+          hasbackbutton : false
         }
       });
 
