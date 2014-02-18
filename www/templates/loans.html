@@ -1,9 +1,9 @@
 <content padding="true" has-header="true">
   <h3>Loaned out books</h3>
-  <form class="clearfix search-container full-width">
+  <form name="filterform" class="clearfix search-container full-width">
       <label class="item item-input">
         <i class="icon icon-search placeholder-icon"></i>
-        <input type="search" ng-model="search" placeholder="Search" class="ng-pristine ng-valid"> 
+        <input name="search" type="search" ng-model="search" placeholder="Search"> 
       </label>
   </form>
   <list option-buttons="loanButtons">
@@ -18,8 +18,7 @@
         </span>
       </p>
     </item>
-    <item ng-show="lbooks.length == 0">Nothing found for search: '{{search}}'</item>
+    <item ng-show="search.length > 0 && lbooks.length == 0">Nothing found for search: '{{search}}'</item>
   </list>
-
 
 </content>

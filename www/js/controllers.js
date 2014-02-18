@@ -1,7 +1,10 @@
 angular.module('stacks.controllers', [])
   .controller('MainController', function($scope, $window, $state, $rootScope, $q, $location, BookService, database) {
 
-    // toggle the backbutton while transitioning between views
+    
+    // hide the back button if we are from a page where 
+    // it was already hidden, otherwise render the default behaviour
+    $rootScope.hasbackbutton = $state.current.data.hasbackbutton
     $rootScope.$on('$stateChangeStart', function(e, toState, toParams, fromState, fromParams){
       if( fromState.data.hasbackbutton === false) {
         $rootScope.hasbackbutton = false;
@@ -9,7 +12,6 @@ angular.module('stacks.controllers', [])
         $rootScope.hasbackbutton = toState.data.hasbackbutton;
       }
     });
-    
 
     // back button
     $rootScope.back = function(){

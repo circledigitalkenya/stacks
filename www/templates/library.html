@@ -2,10 +2,10 @@
   <h3>Books in your library</h3>
 
 
-    <form class="clearfix">
+    <form name="filterform" class="clearfix">
       <label class="item item-input">
         <i class=" icon-search placeholder-icon"></i>
-        <input type="search" ng-model="search" placeholder="Search">
+        <input name="search" type="search" ng-model="search" placeholder="Search">
       </label>
     </form>
     <list class="list" option-buttons="libButtons">
@@ -19,6 +19,6 @@
             <!-- With {{book.loaned_to_contact_name}} since {{book.nice_loaned_date}} -->
         </p>
       </item>
-      <item ng-show="filtered_books.length == 0">Nothing found for search: '{{search}}'</item>
+      <item ng-show="search.length > 0 && filtered_books.length == 0">Nothing found for search: '{{search}}'</item>
     </list>
 </content>

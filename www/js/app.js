@@ -133,7 +133,7 @@ document.addEventListener('deviceready', function(){
         templateUrl: "templates/loans.html",
         controller: function($scope, $rootScope, database){
           database
-          .query("SELECT * FROM books WHERE loaned_date IS NOT NULL")
+          .query("SELECT * FROM books WHERE loaned_date !=''")
           .then(function(d){
             var len = d.length, books = [];
             for (var i = 0; i < len; i++) {
