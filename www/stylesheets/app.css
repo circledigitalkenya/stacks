@@ -9521,12 +9521,19 @@ a.button {
   font-weight: normal;
 }
 
-/* line 17, ../sass/modules/_typography.sass */
+/* line 16, ../sass/modules/_typography.sass */
+.giant {
+  font-size: 70px;
+  text-align: center;
+  color: white;
+}
+
+/* line 22, ../sass/modules/_typography.sass */
 .col.book-details h4 {
   margin-top: 0;
 }
 
-/* line 20, ../sass/modules/_typography.sass */
+/* line 25, ../sass/modules/_typography.sass */
 .item p, .item h2 {
   white-space: normal;
 }
@@ -9639,35 +9646,42 @@ a.item:after, button.item:after {
   content: "c";
 }
 
-/* line 17, ../sass/app.sass */
+/* line 1, ../sass/modules/_home.sass */
+.full {
+  width: 100%;
+  background: #4a87ee;
+  height: 100%;
+}
+
+/* line 18, ../sass/app.sass */
 .addbookform input.ng-invalid.ng-dirty {
   border-color: #a94442;
   background-color: #f2dfde;
 }
-/* line 21, ../sass/app.sass */
+/* line 22, ../sass/app.sass */
 .addbookform input.ng-valid.ng-dirty {
   border-color: #3c763d;
   background-color: #bbdcbc;
 }
 
-/* line 25, ../sass/app.sass */
+/* line 26, ../sass/app.sass */
 .has-header {
   top: 64px !important;
 }
 
-/* line 30, ../sass/app.sass */
+/* line 31, ../sass/app.sass */
 .item-content > img {
   padding: 0 10px;
   float: left;
   width: 34%;
 }
 
-/* line 36, ../sass/app.sass */
+/* line 37, ../sass/app.sass */
 .scroll-content {
   background: white;
 }
 
-/* line 39, ../sass/app.sass */
+/* line 40, ../sass/app.sass */
 .library-list {
   font-weight: 700;
 }
