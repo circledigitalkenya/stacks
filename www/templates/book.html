@@ -16,8 +16,8 @@
     <a class="button button-balanced" href=""  ng-click="addToLibrary()">
       + Add
     </a>
-    <a class="button button-energized">
-      Buy<i ng-if="book.price.length > 0">({{book.price}})</i>
+    <a class="button button-energized" ng-click="buyBook(book.url)">
+      Buy <i ng-if="book.price.length > 0">({{book.price}})</i>
     </a>
   </div>
 

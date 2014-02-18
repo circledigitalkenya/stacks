@@ -3,11 +3,11 @@
   <p>Books pre-1970 don't have ISBN numbers so you can search for them in our database or add in the data by hand</p>
 
 
-  <form ng-show="connection_available" ng-submit="searchAmazon()" class="clearfix search-container">
+  <form name="search_amazon_form" ng-show="connection_available" novalidate ng-submit="searchAmazon()" class="clearfix search-container">
       <label class="item item-input">
-        <input type="search" ng-model="q" placeholder="ISBN, title or author">
+        <input type="search" ng-model="q" placeholder="ISBN, title or author" required>
       </label>
-      <input type="submit" value="Search" class="button button-block button-balanced">
+      <input type="submit" value="Search" class="button button-block button-balanced" ng-disabled="search_amazon_form.$invalid">
   </form>
 
   <form ng-show="connection_available ? false : true" class="clearfix search-container">

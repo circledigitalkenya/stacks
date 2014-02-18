@@ -154,7 +154,7 @@ document.addEventListener('deviceready', function(){
 
     $rootScope.monthnames = [ "January", "February", "March", "April", "May", "June","July", "August", "September", "October", "November", "December" ];
 
-    
+    $rootScope.amazon_affiliate_id = 'boap0d-20'
   })
 
   angular.bootstrap(document, ['stacks']);

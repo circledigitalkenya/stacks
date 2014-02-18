@@ -50,6 +50,7 @@ angular.module('stacks.controllers', [])
 
     $rootScope.searchAmazon = function(q, page) {
       q = this.q || q // query can be from a form or from params
+
       page = page || 1; //default to first page
 
       $scope.working = true;
@@ -258,6 +259,9 @@ angular.module('stacks.controllers', [])
 
     } 
 
+    $scope.buyBook = function(url){
+      window.open(url, '_blank', 'location=yes,closebuttoncaption=back,toolbar=yes');
+    }
     $scope.addToLibrary = function() {
       database
         .query(

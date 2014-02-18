@@ -27,6 +27,10 @@ if [ ! -d "plugins/org.apache.cordova.contacts/" ]; then
   cordova plugin add org.apache.cordova.contacts;
 fi
 
+if [ ! -d "plugins/org.apache.cordova.inappbrowser/" ]; then
+  cordova plugin add org.apache.cordova.inappbrowser;
+fi
+
 # remove these two plugins since they bring problems when
 # viewing the app on a browser
 if [ -d "plugins/org.apache.cordova.device/" ]; then
