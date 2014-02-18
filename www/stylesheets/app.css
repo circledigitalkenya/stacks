@@ -9563,60 +9563,70 @@ a.button {
   content: "a";
 }
 
-/* line 28, ../sass/modules/_icons.sass */
+/* line 27, ../sass/modules/_icons.sass */
 .icon-home:before {
   content: "b";
 }
 
-/* line 31, ../sass/modules/_icons.sass */
+/* line 29, ../sass/modules/_icons.sass */
 .icon-arrow-forward:before {
   content: "c";
 }
 
-/* line 34, ../sass/modules/_icons.sass */
+/* line 31, ../sass/modules/_icons.sass */
 .icon-add:before {
   content: "d";
 }
 
-/* line 37, ../sass/modules/_icons.sass */
-.icon-star:before {
-  content: "e";
-}
-
-/* line 40, ../sass/modules/_icons.sass */
+/* line 33, ../sass/modules/_icons.sass */
 .icon-book:before {
   content: "f";
 }
 
-/* line 43, ../sass/modules/_icons.sass */
+/* line 35, ../sass/modules/_icons.sass */
 .icon-search:before {
   content: "g";
 }
 
-/* line 46, ../sass/modules/_icons.sass */
+/* line 37, ../sass/modules/_icons.sass */
+.icon-delete:before {
+  content: "e";
+}
+
+/* line 39, ../sass/modules/_icons.sass */
+.icon-add-2:before {
+  content: "j";
+}
+
+/* line 41, ../sass/modules/_icons.sass */
+.icon-check:before {
+  content: "h";
+}
+
+/* line 44, ../sass/modules/_icons.sass */
 .giant-icon {
   font-size: 4em;
 }
 
-/* line 49, ../sass/modules/_icons.sass */
+/* line 47, ../sass/modules/_icons.sass */
 .placeholder-icon {
   margin: 3px 7px 0 3px;
 }
 
-/* line 52, ../sass/modules/_icons.sass */
+/* line 50, ../sass/modules/_icons.sass */
 .badge.badge-small {
   padding: 1px 8px;
   font-size: 12px;
   float: none;
 }
 
-/* line 57, ../sass/modules/_icons.sass */
+/* line 55, ../sass/modules/_icons.sass */
 .bar .button.button-clear .icon:before, .bar .button.button-clear.icon:before, .bar .button.button-clear.icon-left:before, .bar .button.button-clear.icon-right:before {
   font-size: 20px;
   line-height: 31px;
 }
 
-/* line 61, ../sass/modules/_icons.sass */
+/* line 59, ../sass/modules/_icons.sass */
 a.item:after, button.item:after {
   font-family: "Icon";
   content: "c";
