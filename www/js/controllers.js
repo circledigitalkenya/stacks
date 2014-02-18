@@ -161,7 +161,7 @@ angular.module('stacks.controllers', [])
                 $scope.working = false;
                 if (response.data.status == 'success' && response.data.books.length > 0) {
                   BookService.books = response.data.books;
-                  $state.go('tab.book', { id : isbn });
+                  $state.go('tab.book', { id : response.data.books[0].hash });
                 } else {
                   $state.go('tab.scannoresults');
                 }
