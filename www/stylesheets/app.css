@@ -2,6 +2,13 @@
  * In this file you should write your main styles. (or centralize your imports)
  * Import this file using the following HTML or equivalent:
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* line 9, ../sass/modules/_mixins.sass */
+.clearfix:after, .item-content:after, .item:after, .item-complex:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
 /* line 15, ../sass/modules/_general.sass */
 .left {
   float: left;
@@ -9250,17 +9257,17 @@ a.button {
 }
 
 /* line 57, ../bower_components/ionic/scss/_util.scss */
-.clearfix {
+.clearfix, .item-content, .item, .item-complex {
   *zoom: 1;
 }
 /* line 60, ../bower_components/ionic/scss/_util.scss */
-.clearfix:before, .clearfix:after {
+.clearfix:before, .item-content:before, .item:before, .item-complex:before, .clearfix:after, .item-content:after, .item:after, .item-complex:after {
   display: table;
   content: "";
   line-height: 0;
 }
 /* line 67, ../bower_components/ionic/scss/_util.scss */
-.clearfix:after {
+.clearfix:after, .item-content:after, .item:after, .item-complex:after {
   clear: both;
 }
 
@@ -9648,14 +9655,19 @@ a.item:after, button.item:after {
   top: 64px !important;
 }
 
-/* line 29, ../sass/app.sass */
+/* line 30, ../sass/app.sass */
 .item-content > img {
   padding: 0 10px;
   float: left;
   width: 34%;
 }
 
-/* line 33, ../sass/app.sass */
+/* line 36, ../sass/app.sass */
 .scroll-content {
   background: white;
+}
+
+/* line 39, ../sass/app.sass */
+.library-list {
+  font-weight: 700;
 }

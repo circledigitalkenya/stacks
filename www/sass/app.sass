@@ -26,9 +26,15 @@
   top: 64px !important
 
 .item-content
+  @extend .clearfix
   >img
     padding: 0 10px
     float: left
     width: 34%
+.item, .item-complex
+  @extend .clearfix
 .scroll-content
   background: white
+
+.library-list
+  font-weight: 700
