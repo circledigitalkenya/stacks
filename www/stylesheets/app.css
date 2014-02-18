@@ -9644,3 +9644,8 @@ a.item:after, button.item:after {
   float: left;
   width: 34%;
 }
+
+/* line 33, ../sass/app.sass */
+.scroll-content {
+  background: white;
+}
