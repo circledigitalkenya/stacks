@@ -1,10 +1,15 @@
 angular.module('stacks.controllers', [])
   .controller('MainController', function($scope, $window, $state, $rootScope, $q, $location, BookService, database) {
-    
-    $rootScope.$on('$stateChangeSuccess', function(){
-      $rootScope.hasbackbutton = $state.current.data.hasbackbutton;
-    });
 
+    // toggle the backbutton while transitioning between views
+    $rootScope.$on('$stateChangeStart', function(e, toState, toParams, fromState, fromParams){
+      if( fromState.data.hasbackbutton === false) {
+        $rootScope.hasbackbutton = false;
+      } else {
+        $rootScope.hasbackbutton = toState.data.hasbackbutton;
+      }
+    });
+    
 
     // back button
     $rootScope.back = function(){

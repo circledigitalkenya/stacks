@@ -2,21 +2,25 @@
 module.exports = function(grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
-        watch: {
-          files: [
-            'www/**'
-          ],
-          tasks: ['shell']
+        watch : {
+          css : {
+            files: ['www/sass/**'],
+            tasks: ['shell:compass_compile']            
+          },
+          app : {
+            files: ['www/**'],
+            tasks: ['shell:debug_ios']            
+          }
         },
         shell: {
-          _options: {
+          _options : {
             failOnError: true,
             stdout: true
           },
           compass_compile : {
             command : 'compass compile'
           },
-          debug_ios: {
+          debug_ios : {
             command: 'cordova prepare ios'
           }
         },

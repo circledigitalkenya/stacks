@@ -77,7 +77,10 @@ document.addEventListener('deviceready', function(){
       })
       .state('tab.bookadded',{
         url:"/bookadded",
-        templateUrl: "templates/book.added.html"
+        templateUrl: "templates/book.added.html",
+        data : {
+          hasbackbutton : false
+        }
       })
       .state('tab.bookremoved',{
         url:"/bookremoved",
