@@ -26,26 +26,36 @@ angular.module('stacks.controllers', [])
     $scope.loanBook = function(bookid){
       BookService.current_book_id = bookid; // copy the current book id to service since services persist data across the app
 
-      // we already requested contact permissions from our config.xml
-      // but here we just want to inform the user on why we need access
-      // to contacts, if user clicks cancel,nothing happens
-      // show this dialog only once
-      if( ! $rootScope.allowed_to_access_contacts ) {
-        // do dialog, and list all contacts
-        navigator.notification.confirm(
-          'We use your contacts just so you don\'t have to type in names.',
-          function(buttonindex){
-            if( buttonindex === 1){
-              $rootScope.allowed_to_access_contacts = true;
-              $state.go('tab.contactlist');
-            }
-          },
-          'Allow app to access contacts',
-          ['Allow','Cancel']
-        );        
-      } else {
-        $state.go('tab.contactlist');
-      }
+      database
+      .query("SELECT * FROM app_meta WHERE key = '_allow_contact_access' LIMIT 0,1")
+      .then(function(data){
+        if( data[0].value == '0') {
+          // we already requested contact permissions from our config.xml
+          // but here we just want to inform the user on why we need access
+          // to contacts, if user clicks cancel,nothing happens
+          // show this dialog only once
+          // do dialog, and list all contacts
+          navigator.notification.confirm(
+            'We use your contacts just so you don\'t have to type in names.',
+            function(buttonindex){
+              if( buttonindex === 1){
+                database
+                .query("UPDATE app_meta SET value = '1' WHERE key = '_allow_contact_access'")
+                .then(function(){
+                  $state.go('tab.contactlist');
+                });
+                
+              }
+            },
+            'Allow app to access contacts',
+            ['Allow','Cancel']
+          );        
+        } else {
+          $state.go('tab.contactlist');
+        } 
+      });
+
+
 
     }
 
@@ -56,8 +66,6 @@ angular.module('stacks.controllers', [])
           $state.go('tab.bookreturned');
         })
     }
-
-
   })
   .controller('AddBookController', function($scope, $state, $rootScope, $q, $location, BookService, database) {
 
@@ -177,7 +185,6 @@ angular.module('stacks.controllers', [])
 
     }
   })
-
   .controller('SearchResults', function($scope, $state, $location, BookService) {
     $scope.q = BookService.query;
     $scope.hasmore = BookService.hasmore;
@@ -199,9 +206,7 @@ angular.module('stacks.controllers', [])
           }
         )
     }
-
   })
-
   .controller('LibraryController', function($scope, $state, $rootScope, $location, database) {
 
     database
@@ -228,9 +233,7 @@ angular.module('stacks.controllers', [])
         }
       }
     ];
-
   })
-
   .controller('BookController', function($scope, $rootScope, $state, $location, $stateParams, BookService, database) {
 
     // param id can be either the Hash or book id
@@ -304,7 +307,6 @@ angular.module('stacks.controllers', [])
           $state.go('tab.bookremoved'); // successfuly removed book
         })
     }
-
   })
   .controller('LoanController', function($scope, $state, $location, BookService, ContactService, database){
 
@@ -357,5 +359,4 @@ angular.module('stacks.controllers', [])
           console.log('query failed due to: '+ error)
         })
     }
-
   });

@@ -196,8 +196,6 @@ document.addEventListener('deviceready', function(){
       $rootScope.connection_available = true;
     }
 
-    $rootScope.allowed_to_access_contacts = false;
-
     $rootScope.monthnames = [ "January", "February", "March", "April", "May", "June","July", "August", "September", "October", "November", "December" ];
 
     $rootScope.amazon_affiliate_id = 'boap0d-20'

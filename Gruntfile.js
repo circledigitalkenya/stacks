@@ -5,11 +5,17 @@ module.exports = function(grunt) {
         watch : {
           css : {
             files: ['www/sass/**'],
-            tasks: ['shell:compass_compile']            
+            tasks: ['shell:compass_compile'],
+            options : {
+              debounceDelay : 1000
+            }            
           },
           app : {
             files: ['www/**'],
-            tasks: ['shell:debug_ios']            
+            tasks: ['shell:debug_ios'],
+            options : {
+              debounceDelay : 1000
+            }            
           }
         },
         shell: {

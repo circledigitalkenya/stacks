@@ -167,13 +167,21 @@ angular.module('stacks.services', [])
 
     this.setupTables = function() {
 
-      this.db.transaction(function(tx) {
 
-        // @todo: remove this line in production
-        tx.executeSql("DROP TABLE IF EXISTS books"); // only for debugging purposes, setup a fresh table on each app launch
+      this.db.transaction(function(tx) {
+        // tx.executeSql("DROP TABLE IF EXISTS books;");
+        // tx.executeSql("DROP TABLE IF EXISTS app_meta;");
+
+        // create tables
+        tx.executeSql(
+          "CREATE TABLE IF NOT EXISTS app_meta("+
+            "id INTEGER PRIMARY KEY AUTOINCREMENT,"+
+            "key TEXT,"+
+            "value TEXT"+
+          ");"
+        );
 
         tx.executeSql(
-
           "CREATE TABLE IF NOT EXISTS books("+
             "id INTEGER PRIMARY KEY AUTOINCREMENT,"+
             "isbn TEXT,"+
@@ -189,19 +197,16 @@ angular.module('stacks.services', [])
             "loaned_to_contact_name TEXT,"+
             "loaned_to_contact_id TEXT,"+
             "loaned_date TEXT"+
-          ")"
+          ");"
         );
 
-      });
+        // seed the database
+        tx.executeSql('INSERT OR IGNORE INTO app_meta(id, key, value) VALUES("1", "_allow_contact_access", "0")');
+        tx.executeSql('INSERT OR IGNORE INTO books(id, isbn, title, author) VALUES("1", "0007189885","Purple Hibiscus","Chimamanda Ngozi Adichie")');
+        tx.executeSql('INSERT OR IGNORE INTO books(id, isbn, title, author) VALUES("2", "0307961206","Dust","Yvonne Adhiambo")');
+        tx.executeSql('INSERT OR IGNORE INTO books(id, isbn, title, author, loaned_to_contact_id,loaned_to_contact_name, loaned_date) VALUES("3", "0262620200","History and Class Consciousness: Studies in Marxist Dialectics","YGyorgy Lukacs", "1", "John Doe",date(\'now\'))');
 
-      //seed
-      this.db.transaction(function(tx){
-        tx.executeSql('INSERT INTO books(isbn, title, author) VALUES("0435905554","So Long a Letter","Mariama Ba")');
-        tx.executeSql('INSERT INTO books(isbn, title, author) VALUES("0007189885","Purple Hibiscus","Chimamanda Ngozi Adichie")');
-        tx.executeSql('INSERT INTO books(isbn, title, author) VALUES("0307961206","Dust","Yvonne Adhiambo Owuor")');
-        tx.executeSql('INSERT INTO books(isbn, title, author, loaned_to_contact_id,loaned_to_contact_name, loaned_date) VALUES("0262620200","History and Class Consciousness: Studies in Marxist Dialectics","YGyorgy Lukacs", "1", "John Doe",date(\'now\'))');
       });
-
 
     };
 
