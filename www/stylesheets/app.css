@@ -2,6 +2,13 @@
  * In this file you should write your main styles. (or centralize your imports)
  * Import this file using the following HTML or equivalent:
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* line 9, ../sass/modules/_mixins.sass */
+.clearfix:after, .item-content:after, .item:after, .item-complex:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
 /* line 15, ../sass/modules/_general.sass */
 .left {
   float: left;
@@ -9250,17 +9257,17 @@ a.button {
 }
 
 /* line 57, ../bower_components/ionic/scss/_util.scss */
-.clearfix {
+.clearfix, .item-content, .item, .item-complex {
   *zoom: 1;
 }
 /* line 60, ../bower_components/ionic/scss/_util.scss */
-.clearfix:before, .clearfix:after {
+.clearfix:before, .item-content:before, .item:before, .item-complex:before, .clearfix:after, .item-content:after, .item:after, .item-complex:after {
   display: table;
   content: "";
   line-height: 0;
 }
 /* line 67, ../bower_components/ionic/scss/_util.scss */
-.clearfix:after {
+.clearfix:after, .item-content:after, .item:after, .item-complex:after {
   clear: both;
 }
 
@@ -9514,12 +9521,19 @@ a.button {
   font-weight: normal;
 }
 
-/* line 17, ../sass/modules/_typography.sass */
+/* line 16, ../sass/modules/_typography.sass */
+.giant {
+  font-size: 70px;
+  text-align: center;
+  color: white;
+}
+
+/* line 22, ../sass/modules/_typography.sass */
 .col.book-details h4 {
   margin-top: 0;
 }
 
-/* line 20, ../sass/modules/_typography.sass */
+/* line 25, ../sass/modules/_typography.sass */
 .item p, .item h2 {
   white-space: normal;
 }
@@ -9563,89 +9577,111 @@ a.button {
   content: "a";
 }
 
-/* line 28, ../sass/modules/_icons.sass */
+/* line 27, ../sass/modules/_icons.sass */
 .icon-home:before {
   content: "b";
 }
 
-/* line 31, ../sass/modules/_icons.sass */
+/* line 29, ../sass/modules/_icons.sass */
 .icon-arrow-forward:before {
   content: "c";
 }
 
-/* line 34, ../sass/modules/_icons.sass */
+/* line 31, ../sass/modules/_icons.sass */
 .icon-add:before {
   content: "d";
 }
 
-/* line 37, ../sass/modules/_icons.sass */
-.icon-star:before {
-  content: "e";
-}
-
-/* line 40, ../sass/modules/_icons.sass */
+/* line 33, ../sass/modules/_icons.sass */
 .icon-book:before {
   content: "f";
 }
 
-/* line 43, ../sass/modules/_icons.sass */
+/* line 35, ../sass/modules/_icons.sass */
 .icon-search:before {
   content: "g";
 }
 
-/* line 46, ../sass/modules/_icons.sass */
+/* line 37, ../sass/modules/_icons.sass */
+.icon-delete:before {
+  content: "e";
+}
+
+/* line 39, ../sass/modules/_icons.sass */
+.icon-add-2:before {
+  content: "j";
+}
+
+/* line 41, ../sass/modules/_icons.sass */
+.icon-check:before {
+  content: "h";
+}
+
+/* line 44, ../sass/modules/_icons.sass */
 .giant-icon {
   font-size: 4em;
 }
 
-/* line 49, ../sass/modules/_icons.sass */
+/* line 47, ../sass/modules/_icons.sass */
 .placeholder-icon {
   margin: 3px 7px 0 3px;
 }
 
-/* line 52, ../sass/modules/_icons.sass */
+/* line 50, ../sass/modules/_icons.sass */
 .badge.badge-small {
   padding: 1px 8px;
   font-size: 12px;
   float: none;
 }
 
-/* line 57, ../sass/modules/_icons.sass */
+/* line 55, ../sass/modules/_icons.sass */
 .bar .button.button-clear .icon:before, .bar .button.button-clear.icon:before, .bar .button.button-clear.icon-left:before, .bar .button.button-clear.icon-right:before {
   font-size: 20px;
   line-height: 31px;
 }
 
-/* line 61, ../sass/modules/_icons.sass */
+/* line 59, ../sass/modules/_icons.sass */
 a.item:after, button.item:after {
   font-family: "Icon";
   content: "c";
 }
 
-/* line 17, ../sass/app.sass */
+/* line 1, ../sass/modules/_home.sass */
+.full {
+  width: 100%;
+  background: #4a87ee;
+  height: 100%;
+}
+
+/* line 18, ../sass/app.sass */
 .addbookform input.ng-invalid.ng-dirty {
   border-color: #a94442;
   background-color: #f2dfde;
 }
-/* line 21, ../sass/app.sass */
+/* line 22, ../sass/app.sass */
 .addbookform input.ng-valid.ng-dirty {
   border-color: #3c763d;
   background-color: #bbdcbc;
 }
 
-/* line 25, ../sass/app.sass */
+/* line 26, ../sass/app.sass */
 .has-header {
   top: 64px !important;
 }
 
-/* line 29, ../sass/app.sass */
+/* line 31, ../sass/app.sass */
 .item-content > img {
   padding: 0 10px;
   float: left;
   width: 34%;
 }
 
-/* line 33, ../sass/app.sass */
+/* line 37, ../sass/app.sass */
 .scroll-content {
   background: white;
+}
+
+/* line 40, ../sass/app.sass */
+.library-list {
+  font-weight: 700;
 }

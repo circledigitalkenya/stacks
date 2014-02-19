@@ -5,3 +5,8 @@
     src: url('#{$src}.eot?#iefix') format('embedded-opentype'), url('#{$src}.woff') format('woff'), url('#{$src}.ttf') format('truetype'), url('#{$src}.svg##{$family}') format('svg') // legacy iOS
     font-style: $style
     font-weight: $weight
+.clearfix
+  &:after
+    content: ""
+    display: table
+    clear: both

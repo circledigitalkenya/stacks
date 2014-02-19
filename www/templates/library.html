@@ -1,4 +1,4 @@
-<content padding="true" has-header="true">
+<content padding="false" has-header="true">
   <h3>Books in your library</h3>
 
 
@@ -8,16 +8,20 @@
         <input name="search" type="search" ng-model="search" placeholder="Search">
       </label>
     </form>
-    <list class="list" option-buttons="libButtons">
+    <list class="list library-list" option-buttons="libButtons">
       <item ng-repeat="book in filtered_books = ( books | filter:search )" item="book" href="#/tab/book/{{book.id}}">
         <img ng-src="{{book.image}}" alt="">
-        <h2>{{book.title}}</h4>
+        {{book.title}}
+        <span ng-if="book.loaned_date" class="block">
+          <span class="badge badge-calm badge-small">On Loan</span>
+        </span>
+       <!--  <h2>{{book.title}}</h2>
         <p>by {{book.author}}
           <span ng-if="book.loaned_date" class="block">
             <span class="badge badge-calm badge-small">On Loan</span>
-          </span>
+          </span> -->
             <!-- With {{book.loaned_to_contact_name}} since {{book.nice_loaned_date}} -->
-        </p>
+       <!--  </p> -->
       </item>
       <item ng-show="search.length > 0 && filtered_books.length == 0">Nothing found for search: '{{search}}'</item>
     </list>
