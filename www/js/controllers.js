@@ -249,7 +249,7 @@ angular.module('stacks.controllers', [])
               $scope.book.exists_in_library = true;
               if( $scope.book.loaned_date ) {
                 var _loan_date = new Date($scope.book.loaned_date);
-                $scope.book.nice_loaned_date = _loan_date.getDay() +' '+ $rootScope.monthnames[_loan_date.getMonth()] +' '+_loan_date.getFullYear(); 
+                $scope.book.nice_loaned_date = _loan_date.getDate() +' '+ $rootScope.monthnames[_loan_date.getMonth()] +' '+_loan_date.getFullYear(); 
               }
             }
           })
@@ -264,7 +264,7 @@ angular.module('stacks.controllers', [])
               $scope.book.exists_in_library = true;
               if( $scope.book.loaned_date ) {
                 var _loan_date = new Date($scope.book.loaned_date);
-                $scope.book.nice_loaned_date = _loan_date.getDay() +' '+ $rootScope.monthnames[_loan_date.getMonth()] +' '+_loan_date.getFullYear(); 
+                $scope.book.nice_loaned_date = _loan_date.getDate() +' '+ $rootScope.monthnames[_loan_date.getMonth()] +' '+_loan_date.getFullYear(); 
               }
             }
           })
